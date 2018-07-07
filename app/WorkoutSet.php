@@ -14,6 +14,6 @@ class WorkoutSet extends Model
   }
 
   public function exercise(){
-    return $this->hasOne('App\Exercise');
+    return $this->hasOne('App\Exercise', 'id', 'exercise_id');
   }
 }

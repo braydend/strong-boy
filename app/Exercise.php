@@ -8,4 +8,8 @@ class Exercise extends Model
 {
     protected $table = 'exercises';
     protected $fillable = ['name'];
+
+    public function workout_sets(){
+      return $this->belongsTo('App\WorkoutSet');
+    }
 }
