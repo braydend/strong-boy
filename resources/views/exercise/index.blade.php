@@ -1,17 +1,38 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Exercises</div>
-
-                <div class="card-body">
-                    {{  $user->name }}
-                </div>
-            </div>
+<div class="container justify-content-center">
+    <div class="row">
+        <div class="col-md">
+          <h2 class="display-2">Exercises</h2>
         </div>
+    </div>
+    <div class="row">
+      <div class="col-md">
+        <a href="{{ URL::to('exercise/create')  }}" class="btn btn-success">Create exercise</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Workouts logged</th>
+              <th scope="col">Your personal best</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach($exercises as $exercise)
+              <tr>
+                <td>{{  $exercise->name }}</td>
+                <td>NEED TO SOURCE DATA</td>
+                <td>NEED TO SOURCE DATA</td>
+              </tr>
+            @endforeach
+          </tbody>
+        </table>
+      </div>
     </div>
 </div>
 @endsection

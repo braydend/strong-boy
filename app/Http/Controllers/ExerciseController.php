@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use View;
 use Illuminate\Support\Facades\Redirect;
+use App\Exercise;
+use \Validator;
+use Input;
+use Session;
 
 class ExerciseController extends Controller
 {
@@ -22,7 +26,7 @@ class ExerciseController extends Controller
         }
         $exercises = Exercise::all();
         return View::make('exercise.index')
-          ->with('user', $user);
+          ->with('exercises', $exercises);
     }
 
     /**
@@ -30,64 +34,110 @@ class ExerciseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+     public function create()
+     {
+       return View::make('exercise.create');
+     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+     /**
+      * Store a newly created resource in storage.
+      *
+      * @param  \Illuminate\Http\Request  $request
+      * @return \Illuminate\Http\Response
+      */
+     public function store(Request $request)
+     {
+       //Validate
+       $rules = array(
+           'name' => 'required'
+       );
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+       $validator = Validator::make(Input::all(), $rules);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+       if($validator->fails()){
+         return Redirect::to('exercise/create')
+           ->withErrors($validator);
+         }else{
+           //Store the data to the Database
+           $exercise = new Exercise;
+           $exercise->name = Input::get('name');
+           $exercise->save();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+           //Redirect
+           Session::flash('message', 'Successfully created exercise!');
+           return Redirect::to('/');
+       }
+     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-}
+     /**
+      * Display the specified resource.
+      *
+      * @param  int  $id
+      * @return \Illuminate\Http\Response
+      */
+     public function show($id)
+     {
+         $exercise = Exercise::find($id);
+         return View::make('exercise.show')
+           ->with('exercise', $exercise);
+     }
+
+     /**
+      * Show the form for editing the specified resource.
+      *
+      * @param  int  $id
+      * @return \Illuminate\Http\Response
+      */
+     public function edit($id)
+     {
+         $exercise = Exercise::find($id);
+         return View::make('exercise.edit')
+           ->with('exercise', $exercise);
+     }
+
+     /**
+      * Update the specified resource in storage.
+      *
+      * @param  \Illuminate\Http\Request  $request
+      * @param  int  $id
+      * @return \Illuminate\Http\Response
+      */
+     public function update(Request $request, $id)
+     {
+       //Validate
+       $rules = array(
+           'name' => 'required'
+       );
+
+       $validator = Validator::make(Input::all(), $rules);
+
+       if($validator->fails()){
+         return Redirect::to('exercise/edit')
+           ->withErrors($validator);
+         }else{
+           //Store the data to the Database
+           $exercise = Exercise::find($id);
+           $exercise->name = Input::get('name');
+           $exercise->save();
+
+           //Redirect
+           Session::flash('message', 'Successfully updated exercise!');
+           return Redirect::to('/');
+       }
+     }
+
+     /**
+      * Remove the specified resource from storage.
+      *
+      * @param  int  $id
+      * @return \Illuminate\Http\Response
+      */
+     public function destroy($id)
+     {
+         $exercise = Exercise::find($id);
+         $exercise->delete();
+
+         Session::flash('message', 'Successfully deleted the exercise');
+         return Redirect::to('/');
+     }
+ }

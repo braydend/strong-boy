@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use View;
 use Illuminate\Support\Facades\Redirect;
+use App\WorkoutSet;
 
 class WorkoutSetController extends Controller
 {
@@ -33,7 +34,9 @@ class WorkoutSetController extends Controller
      */
     public function create()
     {
-        //
+      $exercises = Exercise::all();
+      return View::make('workout_set.create')
+        ->with('exercises', $exercises);
     }
 
     /**
@@ -44,7 +47,30 @@ class WorkoutSetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      //Validate
+      $rules = array(
+          'weight' => 'required|numeric',
+          'reps' => 'required|numeric',
+      );
+
+      $validator = Validator::make(Input::all(), $rules);
+
+      if($validator->fails()){
+        return Redirect::to('workout_set/create')
+          ->withErrors($validator);
+        }else{
+          //Store the data to the Database
+          $set = new WorkoutSet;
+          $set->user_id = Input::get('user_id');
+          $set->exercise_id = Input::get('exercise_id');
+          $set->weight = Input::get('weight');
+          $set->reps = Input::get('reps');
+          $set->save();
+
+          //Redirect
+          Session::flash('message', 'Successfully logged workout!');
+          return Redirect::to('/');
+      }
     }
 
     /**
@@ -55,7 +81,9 @@ class WorkoutSetController extends Controller
      */
     public function show($id)
     {
-        //
+        $set = WorkoutSet::find($id);
+        return View::make('workout_set.show')
+          ->with('set', $set);
     }
 
     /**
@@ -66,7 +94,9 @@ class WorkoutSetController extends Controller
      */
     public function edit($id)
     {
-        //
+        $set = WorkoutSet::find($id);
+        return View::make('workout_set.edit')
+          ->with('set', $set);
     }
 
     /**
@@ -78,7 +108,30 @@ class WorkoutSetController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      //Validate
+      $rules = array(
+          'weight' => 'required|numeric',
+          'reps' => 'required|numeric',
+      );
+
+      $validator = Validator::make(Input::all(), $rules);
+
+      if($validator->fails()){
+        return Redirect::to('workout_set/edit')
+          ->withErrors($validator);
+        }else{
+          //Store the data to the Database
+          $set = WorkoutSet::find($id);
+          $set->user_id = Input::get('user_id');
+          $set->exercise_id = Input::get('exercise_id');
+          $set->weight = Input::get('weight');
+          $set->reps = Input::get('reps');
+          $set->save();
+
+          //Redirect
+          Session::flash('message', 'Successfully updated workout!');
+          return Redirect::to('/');
+      }
     }
 
     /**
@@ -89,6 +142,10 @@ class WorkoutSetController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $set = WorkoutSet::find($id);
+        $set->delete();
+
+        Session::flash('message', 'Successfully deleted the workout');
+        return Redirect::to('/');
     }
 }

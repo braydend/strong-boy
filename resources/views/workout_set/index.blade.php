@@ -1,19 +1,42 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Sets</div>
-
-                <div class="card-body">
-                  @foreach($sets as $set)
-                    <p>{{ $set->exercise->name  }} | {{ $set->reps  }} | {{ $set->weight  }}</p>
-                  @endforeach
-                </div>
-            </div>
+<div class="container justify-content-center">
+    <div class="row">
+        <div class="col-md">
+          <h2 class="display-2">Workouts</h2>
         </div>
+    </div>
+    <div class="row">
+      <div class="col-md">
+        <a href="{{ URL::to('workout_set/create')  }}" class="btn btn-success">Log workout</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Exercise</th>
+              <th scope="col">Reps</th>
+              <th scope="col">Weight</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach($sets as $set)
+              <tr>
+                <td>
+                  <a href="{{ URL::to('sets/' . $set->id) }}">
+                    {{  $set->exercise->name }}
+                  </a>
+                </td>
+                <td>{{  $set->reps  }}</td>
+                <td>{{  $set->weight  }}</td>
+              </tr>
+            @endforeach
+          </tbody>
+        </table>
+      </div>
     </div>
 </div>
 @endsection
