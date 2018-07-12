@@ -10,6 +10,6 @@ class Exercise extends Model
     protected $fillable = ['name'];
 
     public function workout_sets(){
-      return $this->belongsTo('App\WorkoutSet');
+      return $this->hasMany('App\WorkoutSet');
     }
 }

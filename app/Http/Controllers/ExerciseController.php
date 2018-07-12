@@ -11,6 +11,8 @@ use \Validator;
 use Input;
 use Session;
 
+use Khill\Lavacharts\Lavacharts;
+
 class ExerciseController extends Controller
 {
     /**
@@ -77,7 +79,20 @@ class ExerciseController extends Controller
       */
      public function show($id)
      {
-         $exercise = Exercise::find($id);
+        $exercise = Exercise::find($id);
+
+        $weight = \Lava::DataTable();
+
+        $weight->addDateColumn('Date')
+                    ->addNumberColumn('Weight used');
+
+        foreach($exercise->workout_sets as $set){
+          $weight->addRow(array($set['created_at'], $set['weight']));
+        }
+
+        \Lava::LineChart('Weight', $weight, [
+           'title' => 'Weights'
+        ]);
          return View::make('exercise.show')
            ->with('exercise', $exercise);
      }

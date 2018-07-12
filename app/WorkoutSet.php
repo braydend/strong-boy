@@ -10,10 +10,10 @@ class WorkoutSet extends Model
   protected $fillable = ['exercise_id', 'user_id', 'weight', 'reps'];
 
   public function user(){
-    return $this->hasOne('App\User');
+    return $this->belongsTo('App\User');
   }
 
   public function exercise(){
-    return $this->hasOne('App\Exercise', 'id', 'exercise_id');
+    return $this->belongsTo('App\Exercise');
   }
 }

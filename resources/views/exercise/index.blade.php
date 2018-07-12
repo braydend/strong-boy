@@ -26,8 +26,8 @@
             @foreach($exercises as $exercise)
               <tr>
                 <td>{{  $exercise->name }}</td>
-                <td>NEED TO SOURCE DATA</td>
-                <td>NEED TO SOURCE DATA</td>
+                <td>{{  $exercise->workout_sets->count()  }}</td>
+                <td>{{  $exercise->workout_sets->max('weight')  }}</td>
               </tr>
             @endforeach
           </tbody>
