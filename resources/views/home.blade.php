@@ -15,6 +15,9 @@
                     @endif
 
                     You are logged in!
+
+                    <a href="{{ URL::to('/exercise')  }}">Exercises</a>
+                    <a href="{{ URL::to('/sets')  }}">Sets</a>
                 </div>
             </div>
         </div>
