@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Exercise;
+use App\WorkoutSet;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $exercises = Exercise::all();
+        $sets = WorkoutSet::all();
+        return view('home')
+          ->with('exercises', $exercises)
+          ->with('sets', $sets);
     }
 }
