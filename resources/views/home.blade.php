@@ -2,30 +2,37 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md">
-          @if($message != null)
-            <div class="alert alert-danger" role="alert">
-              {{  $message  }}
-            </div>
-          @endif
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-
-                    <a href="{{ URL::to('/exercise')  }}">Exercises</a>
-                    <a href="{{ URL::to('/sets')  }}">Sets</a>
-                </div>
-            </div>
+  <div class="row">
+    <div class="col-md">
+      @if($message != null)
+        <div class="alert alert-danger" role="alert">
+          {{  $message  }}
         </div>
+      @endif
     </div>
+  </div>
+  <div class="row">
+    <?PHP $row = false; ?>
+    @foreach($sets as $set)
+    <div class="col-md-6">
+      <div class="card text-center">
+        <div class="card-header">{{ $set->exercise->name  }}</div>
+        <div class="card-body">
+          <p>Weight: {{ $set->weight  }} kg</p>
+          <p>Reps: {{ $set->reps  }}</p>
+        </div>
+        <div class="card-footer text-muted">
+          {{  $set->days_since  }}
+        </div>
+      </div>
+    </div>
+    @if($row == true)
+  </div>
+  <br />
+  <div class="row">
+    @endif
+    <?PHP $row = !$row; ?>
+    @endforeach
+  </div>
 </div>
 @endsection

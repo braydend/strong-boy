@@ -34,7 +34,12 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                      <li class="nav-item">
+                        <a href="{{ URL::to('/exercise')  }}" class="nav-link">Exercises</a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="{{ URL::to('/sets')  }}" class="nav-link">Sets</a>
+                      </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
