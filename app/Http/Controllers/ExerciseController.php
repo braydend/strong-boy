@@ -91,7 +91,8 @@ class ExerciseController extends Controller
         }
 
         \Lava::LineChart('Weight', $weight, [
-           'title' => 'Weights'
+           'title' => 'Weights',
+           'pointSize' => 5
         ]);
          return View::make('exercise.show')
            ->with('exercise', $exercise);
