@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use View;
 use Illuminate\Support\Facades\Redirect;
 use App\Exercise;
+use App\WorkoutSet;
 use \Validator;
 use Input;
 use Session;
@@ -81,6 +82,7 @@ class ExerciseController extends Controller
      {
         $exercise = Exercise::find($id);
 
+        //Graph progress
         $weight = \Lava::DataTable();
 
         $weight->addDateColumn('Date')
@@ -94,8 +96,16 @@ class ExerciseController extends Controller
            'title' => 'Weights',
            'pointSize' => 5
         ]);
+
+        //Store personal best
+        $pb = WorkoutSet::where('exercise_id', '=', $id)->orderBy('weight', 'desc')->first()['id'];
+        //get all sets
+        $sets = $exercise->workout_sets;
+        //display to user
          return View::make('exercise.show')
-           ->with('exercise', $exercise);
+           ->with('exercise', $exercise)
+           ->with('sets', $sets)
+           ->with('pb_id', $pb);
      }
 
      /**

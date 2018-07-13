@@ -20,6 +20,7 @@
               <th scope="col">Exercise</th>
               <th scope="col">Reps</th>
               <th scope="col">Weight</th>
+              <th scope="col">Date</th>
             </tr>
           </thead>
           <tbody>
@@ -31,7 +32,8 @@
                   </a>
                 </td>
                 <td>{{  $set->reps  }}</td>
-                <td>{{  $set->weight  }}</td>
+                <td>{{  $set->weight  }} kg</td>
+                <td>{{  $set->created_at->toFormattedDateString()  }}</td>
               </tr>
             @endforeach
           </tbody>

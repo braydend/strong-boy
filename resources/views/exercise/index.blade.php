@@ -25,9 +25,13 @@
           <tbody>
             @foreach($exercises as $exercise)
               <tr>
-                <td>{{  $exercise->name }}</td>
+                <td>
+                  <a href="{{ URL::to('exercise/' . $exercise->id)  }}">
+                    {{  $exercise->name }}
+                  </a>
+                </td>
                 <td>{{  $exercise->workout_sets->count()  }}</td>
-                <td>{{  $exercise->workout_sets->max('weight')  }}</td>
+                <td>{{  $exercise->workout_sets->max('weight')  }} kg</td>
               </tr>
             @endforeach
           </tbody>
