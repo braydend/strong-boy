@@ -9,7 +9,7 @@
     </div>
     <div class="row">
       <div class="col-md">
-        <a href="{{ URL::to('workout_set/create')  }}" class="btn btn-success">Log workout</a>
+        <a href="{{ URL::to('sets/create')  }}" class="btn btn-success">Log workout</a>
       </div>
     </div>
     <div class="row">

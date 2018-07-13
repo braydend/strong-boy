@@ -10,10 +10,10 @@
     <div class="row">
       <div class="col-md">
   			{{ HTML::ul($errors->all(), array('class' => 'alert alert-danger')) }}
-  			{{	Form::open(array('url' => 'workout_set'))	}}
+  			{{	Form::open(array('url' => 'sets'))	}}
         <div class="form-group">
 					{{	Form::label('exercise_id', 'Exercise')	}}
-					<select name="customer_id" class="form-control">
+					<select name="exercise_id" class="form-control">
 						@foreach($exercises as $exercise)
 							<option value="{{	$exercise->id	}}">{{	$exercise->name	}}</option>
 						@endforeach

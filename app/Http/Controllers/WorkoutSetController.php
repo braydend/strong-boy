@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Auth;
 use View;
 use Illuminate\Support\Facades\Redirect;
 use App\WorkoutSet;
+use App\Exercise;
+use \Validator;
+use Input;
+use Session;
 
 class WorkoutSetController extends Controller
 {
@@ -47,6 +51,7 @@ class WorkoutSetController extends Controller
      */
     public function store(Request $request)
     {
+      $user = Auth::user();
       //Validate
       $rules = array(
           'weight' => 'required|numeric',
@@ -56,12 +61,12 @@ class WorkoutSetController extends Controller
       $validator = Validator::make(Input::all(), $rules);
 
       if($validator->fails()){
-        return Redirect::to('workout_set/create')
+        return Redirect::to('sets/create')
           ->withErrors($validator);
         }else{
           //Store the data to the Database
           $set = new WorkoutSet;
-          $set->user_id = Input::get('user_id');
+          $set->user_id = $user->id;
           $set->exercise_id = Input::get('exercise_id');
           $set->weight = Input::get('weight');
           $set->reps = Input::get('reps');
