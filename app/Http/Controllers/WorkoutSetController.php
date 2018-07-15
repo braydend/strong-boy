@@ -58,23 +58,30 @@ class WorkoutSetController extends Controller
           'reps' => 'required|numeric',
       );
 
+      $weightFormat = Input::get('weightFormat');
+
       $validator = Validator::make(Input::all(), $rules);
 
       if($validator->fails()){
         return Redirect::to('sets/create')
           ->withErrors($validator);
         }else{
-          //Store the data to the Database
-          if(Input::get('weight'))
+          // Store the data to the Database
+          // Convert weight from lb to kg
+          if($weightFormat == 'lb'){
+            $weight = Input::get('weight') * 0.453592;
+          }else{
+            $weight = Input::get('weight');
+          }
           $set = new WorkoutSet;
           $set->user_id = $user->id;
           $set->exercise_id = Input::get('exercise_id');
-          $set->weight = Input::get('weight');
+          $set->weight = $weight;
           $set->reps = Input::get('reps');
           $set->save();
 
           //Redirect
-          Session::flash('message', 'Successfully logged workout!');
+          Session::flash('message', 'Successfully logged workout! ' . $weightFormat);
           return Redirect::to('/');
       }
     }

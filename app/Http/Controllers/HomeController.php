@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Exercise;
 use App\WorkoutSet;
 use Carbon\Carbon;
+use Session;
 
 class HomeController extends Controller
 {
@@ -29,12 +30,14 @@ class HomeController extends Controller
         //get last 6 sets organised by descending
         $sets = WorkoutSet::orderBy('created_at', 'desc')->paginate(6);
         $message = null;
+        $diff = 0;
         //Check time since last logged set
-        $last_set = WorkoutSet::orderBy('created_at', 'desc')->first();
-        // $last_set = $last_set['created_at'];
-        $last_set = $last_set->created_at;
-        $now = Carbon::now();
-        $diff = $now->diffInDays($last_set);
+        if(WorkoutSet::all()->count() > 0){
+          $last_set = WorkoutSet::orderBy('created_at', 'desc')->first();
+          $last_set = $last_set->created_at;
+          $now = Carbon::now();
+          $diff = $now->diffInDays($last_set);
+        }
         //store time since in object
         foreach($sets as $set){
           $set['days_since'] = $set->created_at->diffForHumans();

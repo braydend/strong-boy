@@ -26,15 +26,15 @@
   			</div>
         <div class="form-group">
   				{{	Form::label('weight', 'Weight')	}}
-  				{{	Form::text('weight', Input::old('weight'), array('class' => 'form-control'))	}}
+  				{{	Form::number('weight', Input::old('weight'), array('class' => 'form-control'))	}}
   			</div>
         <div class="form-group">
           {{ Form::label('weight-kg', 'Kilograms (kg)') }}
-          {{ Form::radio('weight', 'kg', true, array('id'=>'weight-kg')) }}
+          {{ Form::radio('weightFormat', 'kg', true, array('id'=>'weight-kg')) }}
         </div>
         <div class="form-group">
           {{ Form::label('weight-lb', 'Pounds (lb)') }}
-          {{ Form::radio('weight', 'lb', false, array('id'=>'weight-lb')) }}
+          {{ Form::radio('weightFormat', 'lb', false, array('id'=>'weight-lb')) }}
   			</div>
   			{{	Form::submit('Log the Workout!', array('class' => 'btn btn-primary')) }}
   			{{	Form::close()	}}
