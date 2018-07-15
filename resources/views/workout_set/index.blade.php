@@ -40,5 +40,10 @@
         </table>
       </div>
     </div>
+    <div class="row">
+      <div class="col-md">
+        {{  $sets->links()  }}
+      </div>
+    </div>
 </div>
 @endsection

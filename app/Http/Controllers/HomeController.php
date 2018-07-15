@@ -27,7 +27,7 @@ class HomeController extends Controller
     public function index()
     {
         //get last 6 sets organised by descending
-        $sets = WorkoutSet::orderBy('created_at', 'desc')->take(6)->get();
+        $sets = WorkoutSet::orderBy('created_at', 'desc')->paginate(6);
         $message = null;
         //Check time since last logged set
         $last_set = WorkoutSet::orderBy('created_at', 'desc')->first();

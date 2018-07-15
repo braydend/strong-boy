@@ -38,5 +38,10 @@
         </table>
       </div>
     </div>
+    <div class="row">
+      <div class="col-md">
+        {{  $exercises->links() }}
+      </div>
+    </div>
 </div>
 @endsection

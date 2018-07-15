@@ -12,6 +12,11 @@
     </div>
   </div>
   <div class="row">
+    <div class="col-md text-center">
+      <h2 class="display-2">Recent Workouts</h2>
+    </div>
+  </div>
+  <div class="row">
     <?PHP $row = false; ?>
     @foreach($sets as $set)
     <div class="col-md-6">
@@ -33,6 +38,11 @@
     @endif
     <?PHP $row = !$row; ?>
     @endforeach
+  </div>
+  <div class="row">
+    <div class="col-md">
+      {{  $sets->links()  }}
+    </div>
   </div>
 </div>
 @endsection

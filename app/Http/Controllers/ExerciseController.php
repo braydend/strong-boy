@@ -27,7 +27,7 @@ class ExerciseController extends Controller
         if($user == null){
           return Redirect::to('/');
         }
-        $exercises = Exercise::all();
+        $exercises = Exercise::paginate(10);
         return View::make('exercise.index')
           ->with('exercises', $exercises);
     }

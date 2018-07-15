@@ -25,7 +25,7 @@ class WorkoutSetController extends Controller
         if($user == null){
           return Redirect::to('/');
         }
-        $sets = $user->workout_sets;
+        $sets = $user->workout_sets()->paginate(10);
 
         return View::make('workout_set.index')
           ->with('sets', $sets);
@@ -65,6 +65,7 @@ class WorkoutSetController extends Controller
           ->withErrors($validator);
         }else{
           //Store the data to the Database
+          if(Input::get('weight'))
           $set = new WorkoutSet;
           $set->user_id = $user->id;
           $set->exercise_id = Input::get('exercise_id');
