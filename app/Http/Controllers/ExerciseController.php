@@ -29,7 +29,8 @@ class ExerciseController extends Controller
         }
         $exercises = Exercise::paginate(10);
         return View::make('exercise.index')
-          ->with('exercises', $exercises);
+          ->with('exercises', $exercises)
+          ->with('user', $user);
     }
 
     /**
@@ -81,6 +82,7 @@ class ExerciseController extends Controller
      public function show($id)
      {
         $exercise = Exercise::find($id);
+        $user = Auth::user();
 
         //Graph progress
         $weight = \Lava::DataTable();
@@ -88,7 +90,7 @@ class ExerciseController extends Controller
         $weight->addDateColumn('Date')
                     ->addNumberColumn('Weight used');
 
-        foreach($exercise->workout_sets as $set){
+        foreach($exercise->workout_sets()->where('user_id', $user['id'])->get() as $set){
           $weight->addRow(array($set['created_at'], $set['weight']));
         }
 
@@ -100,7 +102,7 @@ class ExerciseController extends Controller
         //Store personal best
         $pb = WorkoutSet::where('exercise_id', '=', $id)->orderBy('weight', 'desc')->first()['id'];
         //get all sets
-        $sets = $exercise->workout_sets;
+        $sets = $exercise->workout_sets()->where('user_id', $user['id'])->get();
         //display to user
          return View::make('exercise.show')
            ->with('exercise', $exercise)

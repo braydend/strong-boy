@@ -7,6 +7,7 @@ use App\Exercise;
 use App\WorkoutSet;
 use Carbon\Carbon;
 use Session;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -27,13 +28,16 @@ class HomeController extends Controller
      */
     public function index()
     {
+        //get 6 most recent exercises per page
+        // $exercises = Exercises::paginate(10);
         //get last 6 sets organised by descending
-        $sets = WorkoutSet::orderBy('created_at', 'desc')->paginate(6);
+        $user = Auth::user();
+        $sets = $user->workout_sets()->orderBy('created_at', 'desc')->paginate(6);
         $message = null;
         $diff = 0;
         //Check time since last logged set
         if(WorkoutSet::all()->count() > 0){
-          $last_set = WorkoutSet::orderBy('created_at', 'desc')->first();
+          $last_set = WorkoutSet::where('user_id', $user['id'])->orderBy('created_at', 'desc')->first();
           $last_set = $last_set->created_at;
           $now = Carbon::now();
           $diff = $now->diffInDays($last_set);

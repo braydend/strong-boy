@@ -94,7 +94,8 @@ class WorkoutSetController extends Controller
      */
     public function show($id)
     {
-        $set = WorkoutSet::find($id);
+        $user = Auth::user();
+        $set = $user->workout_sets()->find($id);
         return View::make('workout_set.show')
           ->with('set', $set);
     }

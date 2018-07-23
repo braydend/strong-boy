@@ -30,8 +30,12 @@
                     {{  $exercise->name }}
                   </a>
                 </td>
-                <td>{{  $exercise->workout_sets->count()  }}</td>
-                <td>{{  $exercise->workout_sets->max('weight')  }} kg</td>
+                <td>{{  $exercise->workout_sets()->where('user_id', $user->id)->count()  }}</td>
+                @if($exercise->workout_sets()->where('user_id', $user->id)->count() < 1)
+                  <td>Nothing Logged!</td>
+                @else
+                  <td>{{  $exercise->workout_sets()->where('user_id', $user->id)->max('weight')  }} kg</td>
+                @endif
               </tr>
             @endforeach
           </tbody>
