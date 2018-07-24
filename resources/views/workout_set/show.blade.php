@@ -13,7 +13,7 @@
       <div class="col-md">
         <div class="card">
           <p>{{ $set->reps  }}</p>
-          <p>{{ $set->weight  }}</p>
+          <p>{{ $set->weight  }} kg ({{  round($set->weight / 0.453592, 1) }} lb)</p>
         </div>
       </div>
     </div>

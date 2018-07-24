@@ -36,7 +36,7 @@
                 @if($exercise->workout_sets()->where('user_id', $user->id)->count() < 1)
                   <td>Nothing Logged!</td>
                 @else
-                  <td>{{  $exercise->workout_sets()->where('user_id', $user->id)->max('weight')  }} kg</td>
+                  <td>{{  $exercise->workout_sets()->where('user_id', $user->id)->max('weight')  }} kg ({{  round($exercise->workout_sets()->where('user_id', $user->id)->max('weight') / 0.453592, 1) }} lb)</td>
                 @endif
               </tr>
             @endforeach

@@ -34,7 +34,7 @@
                   </a>
                 </td>
                 <td>{{  $set->reps  }}</td>
-                <td>{{  $set->weight  }} kg</td>
+                <td>{{  $set->weight  }} kg ({{  round($set->weight / 0.453592, 1) }} lb)</td>
                 <td>{{  $set->created_at->toFormattedDateString()  }}</td>
               </tr>
             @endforeach
