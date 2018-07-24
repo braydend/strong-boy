@@ -29,7 +29,7 @@ class HomeController extends Controller
     public function index()
     {
         //get 6 most recent exercises per page
-        $exercises = Exercise::paginate(10);
+        $exercises = Exercise::latest()->paginate(10);
         $user = Auth::user();
         $message = null;
         $diff = 0;
