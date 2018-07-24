@@ -27,12 +27,13 @@ Set
   							<option value="{{	$exercise->id	}}">{{	$exercise->name	}}</option>
   						@endforeach
   					</select>
+            <small id="missingExercise" class="form-text text-muted">Exercise not listed? <a href="{{	URL::to('/exercise/create')	}}">Click here to create the exercise</a></small>
           @else
-            <select name="exercise_id" class="form-control" disabled>
-              <option value="{{	$exercise->id	}}" selected>{{	$exercise->name	}}</option>
+            <h3 class="h3">{{ $exercise->name }}</h3>
+            <select name="exercise_id" class="form-control" hidden>
+              <option value="{{	$exercise->id	}}" selected="selected">{{	$exercise->name	}}</option>
             </select>
           @endif
-					<small id="missingExercise" class="form-text text-muted">Exercise not listed? <a href="{{	URL::to('/exercise/create')	}}">Click here to create the exercise</a></small>
 				</div>
         <div class="form-group">
   				{{	Form::label('reps', 'Reps')	}}
