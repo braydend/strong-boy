@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'All Sets')
+
 @section('content')
 <div class="container justify-content-center">
     <div class="row">
@@ -9,7 +11,7 @@
     </div>
     <div class="row">
       <div class="col-md">
-        <a href="{{ URL::to('workout_set/create')  }}" class="btn btn-success">Log workout</a>
+        <a href="{{ URL::to('sets/create')  }}" class="btn btn-success">Log workout</a>
       </div>
     </div>
     <div class="row">
@@ -20,6 +22,7 @@
               <th scope="col">Exercise</th>
               <th scope="col">Reps</th>
               <th scope="col">Weight</th>
+              <th scope="col">Date</th>
             </tr>
           </thead>
           <tbody>
@@ -31,11 +34,17 @@
                   </a>
                 </td>
                 <td>{{  $set->reps  }}</td>
-                <td>{{  $set->weight  }}</td>
+                <td>{{  $set->weight  }} kg</td>
+                <td>{{  $set->created_at->toFormattedDateString()  }}</td>
               </tr>
             @endforeach
           </tbody>
         </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md">
+        {{  $sets->links()  }}
       </div>
     </div>
 </div>

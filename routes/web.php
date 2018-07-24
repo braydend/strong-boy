@@ -19,4 +19,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::Resource('/exercise', 'ExerciseController');
 
+//Create set with exercise id
+Route::get('/sets/create/{id}', 'WorkoutSetController@createWithId');
+
 Route::Resource('/sets', 'WorkoutSetController');

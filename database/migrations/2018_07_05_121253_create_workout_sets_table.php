@@ -19,7 +19,7 @@ class CreateWorkoutSetsTable extends Migration
           $table->foreign('exercise_id')->references('id')->on('exercises')->onDelete('cascade');
           $table->integer('user_id')->unsigned();
           $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-          $table->integer('weight')->unsigned();
+          $table->double('weight', 5, 2)->unsigned();
           $table->integer('reps')->unsigned();
           $table->timestamps();
         });

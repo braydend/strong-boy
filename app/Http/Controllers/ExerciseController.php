@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use View;
 use Illuminate\Support\Facades\Redirect;
 use App\Exercise;
+use App\WorkoutSet;
 use \Validator;
 use Input;
 use Session;
@@ -26,9 +27,10 @@ class ExerciseController extends Controller
         if($user == null){
           return Redirect::to('/');
         }
-        $exercises = Exercise::all();
+        $exercises = Exercise::paginate(10);
         return View::make('exercise.index')
-          ->with('exercises', $exercises);
+          ->with('exercises', $exercises)
+          ->with('user', $user);
     }
 
     /**
@@ -80,21 +82,32 @@ class ExerciseController extends Controller
      public function show($id)
      {
         $exercise = Exercise::find($id);
+        $user = Auth::user();
 
+        //Graph progress
         $weight = \Lava::DataTable();
 
         $weight->addDateColumn('Date')
                     ->addNumberColumn('Weight used');
 
-        foreach($exercise->workout_sets as $set){
+        foreach($exercise->workout_sets()->where('user_id', $user['id'])->get() as $set){
           $weight->addRow(array($set['created_at'], $set['weight']));
         }
 
         \Lava::LineChart('Weight', $weight, [
-           'title' => 'Weights'
+           'title' => 'Weights',
+           'pointSize' => 5
         ]);
+
+        //Store personal best
+        $pb = $user->workout_sets()->where('exercise_id', '=', $id)->orderBy('weight', 'desc')->first()['id'];
+        //get all sets
+        $sets = $exercise->workout_sets()->where('user_id', $user['id'])->get();
+        //display to user
          return View::make('exercise.show')
-           ->with('exercise', $exercise);
+           ->with('exercise', $exercise)
+           ->with('sets', $sets)
+           ->with('pb_id', $pb);
      }
 
      /**

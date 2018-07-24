@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'All Exercises')
+
 @section('content')
 <div class="container justify-content-center">
     <div class="row">
@@ -25,13 +27,26 @@
           <tbody>
             @foreach($exercises as $exercise)
               <tr>
-                <td>{{  $exercise->name }}</td>
-                <td>{{  $exercise->workout_sets->count()  }}</td>
-                <td>{{  $exercise->workout_sets->max('weight')  }}</td>
+                <td>
+                  <a href="{{ URL::to('exercise/' . $exercise->id)  }}">
+                    {{  $exercise->name }}
+                  </a>
+                </td>
+                <td>{{  $exercise->workout_sets()->where('user_id', $user->id)->count()  }}</td>
+                @if($exercise->workout_sets()->where('user_id', $user->id)->count() < 1)
+                  <td>Nothing Logged!</td>
+                @else
+                  <td>{{  $exercise->workout_sets()->where('user_id', $user->id)->max('weight')  }} kg</td>
+                @endif
               </tr>
             @endforeach
           </tbody>
         </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md">
+        {{  $exercises->links() }}
       </div>
     </div>
 </div>

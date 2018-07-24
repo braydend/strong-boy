@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Auth;
 use View;
 use Illuminate\Support\Facades\Redirect;
 use App\WorkoutSet;
+use App\Exercise;
+use \Validator;
+use Input;
+use Session;
 
 class WorkoutSetController extends Controller
 {
@@ -21,7 +25,7 @@ class WorkoutSetController extends Controller
         if($user == null){
           return Redirect::to('/');
         }
-        $sets = $user->workout_sets;
+        $sets = $user->workout_sets()->paginate(10);
 
         return View::make('workout_set.index')
           ->with('sets', $sets);
@@ -40,6 +44,19 @@ class WorkoutSetController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     * Exercise will be pre selected in form
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createWithId($id)
+    {
+      $exercise = Exercise::find($id);
+      return View::make('workout_set.create')
+        ->with('exercise', $exercise);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -47,28 +64,37 @@ class WorkoutSetController extends Controller
      */
     public function store(Request $request)
     {
+      $user = Auth::user();
       //Validate
       $rules = array(
           'weight' => 'required|numeric',
           'reps' => 'required|numeric',
       );
 
+      $weightFormat = Input::get('weightFormat');
+
       $validator = Validator::make(Input::all(), $rules);
 
       if($validator->fails()){
-        return Redirect::to('workout_set/create')
+        return Redirect::to('sets/create')
           ->withErrors($validator);
         }else{
-          //Store the data to the Database
+          // Store the data to the Database
+          // Convert weight from lb to kg
+          if($weightFormat == 'lb'){
+            $weight = Input::get('weight') * 0.453592;
+          }else{
+            $weight = Input::get('weight');
+          }
           $set = new WorkoutSet;
-          $set->user_id = Input::get('user_id');
+          $set->user_id = $user->id;
           $set->exercise_id = Input::get('exercise_id');
-          $set->weight = Input::get('weight');
+          $set->weight = $weight;
           $set->reps = Input::get('reps');
           $set->save();
 
           //Redirect
-          Session::flash('message', 'Successfully logged workout!');
+          Session::flash('message', 'Successfully logged workout! ' . $weightFormat);
           return Redirect::to('/');
       }
     }
@@ -81,7 +107,8 @@ class WorkoutSetController extends Controller
      */
     public function show($id)
     {
-        $set = WorkoutSet::find($id);
+        $user = Auth::user();
+        $set = $user->workout_sets()->find($id);
         return View::make('workout_set.show')
           ->with('set', $set);
     }

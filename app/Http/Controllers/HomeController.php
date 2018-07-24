@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Exercise;
 use App\WorkoutSet;
+use Carbon\Carbon;
+use Session;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -25,10 +28,36 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $exercises = Exercise::all();
-        $sets = WorkoutSet::all();
+        //get 6 most recent exercises per page
+        $exercises = Exercise::paginate(10);
+        //get last 6 sets organised by descending
+        $user = Auth::user();
+        //$sets = $user->workout_sets()->orderBy('created_at', 'desc')->paginate(6);
+        $message = null;
+        $diff = 0;
+        //Check time since last logged set
+        if(WorkoutSet::all()->count() > 0){
+          $last_set = $user->workout_sets()->orderBy('created_at', 'desc')->first();
+          //$last_set = WorkoutSet::where('user_id', $user['id'])->orderBy('created_at', 'desc')->first();
+          $last_set = $last_set->created_at;
+          $now = Carbon::now();
+          $diff = $now->diffInDays($last_set);
+        }
+        //store time since in object
+        // foreach($sets as $set){
+        //   $set['days_since'] = $set->created_at->diffForHumans();
+        // }
+        //set alerts for 1 week, 1 month
+        if($diff > 62){
+          $message = "Look I know I was a bit rude, but seriously, get back to the gym. You'll feel great I promise!";
+        }else if($diff > 31){
+          $message = "Seriously?!?! It's been over a month. Get your fat fucking ass back in the gym!";
+        }else if($diff > 7){
+          $message = "You haven't logged a set in over a week! Don't be a pussy, get back in the gym!";
+        }
         return view('home')
           ->with('exercises', $exercises)
-          ->with('sets', $sets);
+          ->with('message', $message)
+          ->with('user', $user);
     }
 }
