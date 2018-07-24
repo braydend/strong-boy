@@ -29,23 +29,24 @@ class HomeController extends Controller
     public function index()
     {
         //get 6 most recent exercises per page
-        // $exercises = Exercises::paginate(10);
+        $exercises = Exercise::paginate(10);
         //get last 6 sets organised by descending
         $user = Auth::user();
-        $sets = $user->workout_sets()->orderBy('created_at', 'desc')->paginate(6);
+        //$sets = $user->workout_sets()->orderBy('created_at', 'desc')->paginate(6);
         $message = null;
         $diff = 0;
         //Check time since last logged set
         if(WorkoutSet::all()->count() > 0){
-          $last_set = WorkoutSet::where('user_id', $user['id'])->orderBy('created_at', 'desc')->first();
+          $last_set = $user->workout_sets()->orderBy('created_at', 'desc')->first();
+          //$last_set = WorkoutSet::where('user_id', $user['id'])->orderBy('created_at', 'desc')->first();
           $last_set = $last_set->created_at;
           $now = Carbon::now();
           $diff = $now->diffInDays($last_set);
         }
         //store time since in object
-        foreach($sets as $set){
-          $set['days_since'] = $set->created_at->diffForHumans();
-        }
+        // foreach($sets as $set){
+        //   $set['days_since'] = $set->created_at->diffForHumans();
+        // }
         //set alerts for 1 week, 1 month
         if($diff > 62){
           $message = "Look I know I was a bit rude, but seriously, get back to the gym. You'll feel great I promise!";
@@ -55,7 +56,8 @@ class HomeController extends Controller
           $message = "You haven't logged a set in over a week! Don't be a pussy, get back in the gym!";
         }
         return view('home')
-          ->with('sets', $sets)
-          ->with('message', $message);
+          ->with('exercises', $exercises)
+          ->with('message', $message)
+          ->with('user', $user);
     }
 }

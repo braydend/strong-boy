@@ -18,30 +18,55 @@
   </div>
   <div class="row">
     <?PHP $row = false; ?>
-    @foreach($sets as $set)
-    <div class="col-md-6">
-      <div class="card text-center">
-        <div class="card-header">{{ $set->exercise->name  }}</div>
-        <div class="card-body">
-          <p>Weight: {{ $set->weight  }} kg</p>
-          <p>Reps: {{ $set->reps  }}</p>
+    @foreach($exercises as $exercise)
+      @if($exercise->workout_sets()->where('user_id', $user->id)->count() > 0)
+        <div class="col-md-6">
+          <div class="card text-center">
+            <div class="card-header">
+              {{ $exercise->name  }}
+              <span class="exercise_icons">
+                <a href="{{ URL::to('/sets/create/' . $exercise->id)  }}">
+                  <img src="{{ asset('icons/baseline_add_black_18dp.png') }}" alt="Add Workout">
+                </a>
+                <a href="{{ URL::to('/exercise/' . $exercise->id)  }}">
+                  <img src="{{ asset('icons/baseline_show_chart_black_18dp.png') }}" alt="Show Progress">
+                </a>
+              </span>
+            </div>
+            <div class="card-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Weight</th>
+                    <th scope="col">Reps</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach($exercise->workout_sets()->where('user_id', $user->id)->get() as $set)
+                  <tr>
+                      <td>{{  $set->created_at->toFormattedDateString()  }}</td>
+                      <td>{{  $set->weight  }}kg</td>
+                      <td>{{  $set->reps  }}</td>
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
-        <div class="card-footer text-muted">
-          {{  $set->days_since  }}
-        </div>
+        @endif
+        @if($row == true)
       </div>
-    </div>
-    @if($row == true)
-  </div>
-  <br />
-  <div class="row">
-    @endif
-    <?PHP $row = !$row; ?>
+      <br />
+      <div class="row">
+        @endif
+        <?PHP $row = !$row; ?>
     @endforeach
   </div>
   <div class="row">
     <div class="col-md">
-      {{  $sets->links()  }}
+      {{  $exercises->links()  }}
     </div>
   </div>
 </div>

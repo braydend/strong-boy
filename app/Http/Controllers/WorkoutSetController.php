@@ -44,6 +44,19 @@ class WorkoutSetController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     * Exercise will be pre selected in form
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createWithId($id)
+    {
+      $exercise = Exercise::find($id);
+      return View::make('workout_set.create')
+        ->with('exercise', $exercise);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

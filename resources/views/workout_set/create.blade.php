@@ -13,11 +13,17 @@
   			{{	Form::open(array('url' => 'sets'))	}}
         <div class="form-group">
 					{{	Form::label('exercise_id', 'Exercise')	}}
-					<select name="exercise_id" class="form-control">
-						@foreach($exercises as $exercise)
-							<option value="{{	$exercise->id	}}">{{	$exercise->name	}}</option>
-						@endforeach
-					</select>
+          @if($exercise == null)
+  					<select name="exercise_id" class="form-control">
+  						@foreach($exercises as $exercise)
+  							<option value="{{	$exercise->id	}}">{{	$exercise->name	}}</option>
+  						@endforeach
+  					</select>
+          @else
+            <select name="exercise_id" class="form-control" disabled>
+              <option value="{{	$exercise->id	}}" selected>{{	$exercise->name	}}</option>
+            </select>
+          @endif
 					<small id="missingExercise" class="form-text text-muted">Exercise not listed? <a href="{{	URL::to('/exercise/create')	}}">Click here to create the exercise</a></small>
 				</div>
         <div class="form-group">
