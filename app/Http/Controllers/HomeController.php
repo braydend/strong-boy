@@ -30,15 +30,12 @@ class HomeController extends Controller
     {
         //get 6 most recent exercises per page
         $exercises = Exercise::paginate(10);
-        //get last 6 sets organised by descending
         $user = Auth::user();
-        //$sets = $user->workout_sets()->orderBy('created_at', 'desc')->paginate(6);
         $message = null;
         $diff = 0;
         //Check time since last logged set
-        if(WorkoutSet::all()->count() > 0){
+        if($user->workout_sets()->count() > 0){
           $last_set = $user->workout_sets()->orderBy('created_at', 'desc')->first();
-          //$last_set = WorkoutSet::where('user_id', $user['id'])->orderBy('created_at', 'desc')->first();
           $last_set = $last_set->created_at;
           $now = Carbon::now();
           $diff = $now->diffInDays($last_set);
