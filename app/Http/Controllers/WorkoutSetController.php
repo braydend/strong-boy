@@ -25,7 +25,7 @@ class WorkoutSetController extends Controller
         if($user == null){
           return Redirect::to('/');
         }
-        $sets = $user->workout_sets()->paginate(10);
+        $sets = $user->workout_sets()->orderBy('created_at', 'desc')->paginate(10);
 
         return View::make('workout_set.index')
           ->with('sets', $sets);
