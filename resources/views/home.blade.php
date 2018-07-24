@@ -21,7 +21,6 @@
     </div>
   </div>
   <div class="row">
-    <?PHP $row = false; ?>
     @foreach($exercises as $exercise)
       @if($exercise->workout_sets()->where('user_id', $user->id)->count() > 0)
         <div class="col-md-6">
@@ -58,14 +57,9 @@
               </table>
             </div>
           </div>
+          <hr />
         </div>
         @endif
-        @if($row == true)
-      </div>
-      <br />
-      <div class="row">
-        @endif
-        <?PHP $row = !$row; ?>
     @endforeach
   </div>
   <div class="row">
