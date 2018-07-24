@@ -1,5 +1,13 @@
 @extends('layouts.app')
 
+@section('title')
+Log
+  @if(!empty($exercise))
+{{  $exercise->name }}
+  @endif
+Set
+@endsection
+
 @section('content')
 <div class="container justify-content-center">
     <div class="row">
@@ -13,7 +21,7 @@
   			{{	Form::open(array('url' => 'sets'))	}}
         <div class="form-group">
 					{{	Form::label('exercise_id', 'Exercise')	}}
-          @if($exercise == null)
+          @if(empty($exercise))
   					<select name="exercise_id" class="form-control">
   						@foreach($exercises as $exercise)
   							<option value="{{	$exercise->id	}}">{{	$exercise->name	}}</option>

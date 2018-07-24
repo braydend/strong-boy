@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+  {{  $exercise->name }}
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
