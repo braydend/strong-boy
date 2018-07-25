@@ -46,7 +46,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach($exercise->workout_sets()->where('user_id', $user->id)->get() as $set)
+                  @foreach($exercise->workout_sets()->where('user_id', $user->id)->where('warmup', 0)->get()->sortByDesc('id')->take(5) as $set)
                     @if($set->warmup == 0)
                       <tr>
                           <td>{{  $set->created_at->toFormattedDateString()  }}</td>
