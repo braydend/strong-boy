@@ -104,7 +104,7 @@ class ExerciseController extends Controller
         //Store personal best
         $pb = $user->workout_sets()->where('exercise_id', '=', $id)->where('warmup', '0')->orderBy('weight', 'desc')->first()['id'];
         //get all sets
-        $sets = $exercise->workout_sets()->where('user_id', $user['id'])->get();
+        $sets = $exercise->workout_sets()->where('user_id', $user['id'])->get()->sortByDesc('created_at');
         //display to user
          return View::make('exercise.show')
            ->with('exercise', $exercise)
