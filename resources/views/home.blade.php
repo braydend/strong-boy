@@ -47,11 +47,13 @@
                 </thead>
                 <tbody>
                   @foreach($exercise->workout_sets()->where('user_id', $user->id)->get() as $set)
-                  <tr>
-                      <td>{{  $set->created_at->toFormattedDateString()  }}</td>
-                      <td>{{  $set->weight  }}kg ({{  round($set->weight / 0.453592, 1) }} lb)</td>
-                      <td>{{  $set->reps  }}</td>
-                  </tr>
+                    @if($set->warmup == 0)
+                      <tr>
+                          <td>{{  $set->created_at->toFormattedDateString()  }}</td>
+                          <td>{{  $set->weight  }}kg ({{  round($set->weight / 0.453592, 1) }} lb)</td>
+                          <td>{{  $set->reps  }}</td>
+                      </tr>
+                    @endif
                   @endforeach
                 </tbody>
               </table>

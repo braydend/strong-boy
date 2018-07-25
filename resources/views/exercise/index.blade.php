@@ -9,11 +9,13 @@
           <h2 class="display-2">Exercises</h2>
         </div>
     </div>
+    <br />
     <div class="row">
       <div class="col-md">
         <a href="{{ URL::to('exercise/create')  }}" class="btn btn-success">Create exercise</a>
       </div>
     </div>
+    <br />
     <div class="row">
       <div class="col-md">
         <table class="table table-striped">

@@ -51,6 +51,15 @@ Set
           {{ Form::label('weight-lb', 'Pounds (lb)') }}
           {{ Form::radio('weightFormat', 'lb', false, array('id'=>'weight-lb')) }}
   			</div>
+        <h4 class="h4">Warmup Set</h4>
+        <div class="form-group">
+          {{ Form::label('warmup-true', 'Yes') }}
+          {{ Form::radio('warmup', '1', false, array('id'=>'warmup-true')) }}
+        </div>
+        <div class="form-group">
+          {{ Form::label('warmup-false', 'No') }}
+          {{ Form::radio('warmup', '0', true, array('id'=>'warmup-false')) }}
+  			</div>
   			{{	Form::submit('Log the Workout!', array('class' => 'btn btn-primary')) }}
   			{{	Form::close()	}}
   	</div>

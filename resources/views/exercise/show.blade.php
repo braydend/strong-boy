@@ -15,6 +15,15 @@
             @linechart('Weight', 'chart_div')
         </div>
     </div>
+    <br />
+    <div class="row">
+      <div class="col-md">
+        <a href="{{ URL::to('/sets/create/' . $exercise->id)  }}" class="btn btn-primary" title="Add Workout">
+          Add Workout
+        </a>
+      </div>
+    </div>
+    <br />
     <div class="row justify-content-center">
       <div class="col-md">
         <table class="table table-striped">
@@ -28,7 +37,10 @@
           </thead>
           <tbody>
             @foreach($sets as $set)
-              @if($pb_id == $set->id)
+              @if($set->warmup == 1)
+                <tr class="table-secondary">
+                  <td>Warmup</td>
+              @elseif($pb_id == $set->id)
                 <tr class="table-success">
                   <td>PB</td>
               @else

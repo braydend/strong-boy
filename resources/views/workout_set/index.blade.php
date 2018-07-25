@@ -9,11 +9,13 @@
           <h2 class="display-2">Workouts</h2>
         </div>
     </div>
+    <br />
     <div class="row">
       <div class="col-md">
         <a href="{{ URL::to('sets/create')  }}" class="btn btn-success">Log workout</a>
       </div>
     </div>
+    <br />
     <div class="row">
       <div class="col-md">
         <table class="table table-striped">

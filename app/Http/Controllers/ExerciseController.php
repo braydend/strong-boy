@@ -91,7 +91,9 @@ class ExerciseController extends Controller
                     ->addNumberColumn('Weight used');
 
         foreach($exercise->workout_sets()->where('user_id', $user['id'])->get() as $set){
-          $weight->addRow(array($set['created_at'], $set['weight']));
+          if($set['warmup'] == 0){
+            $weight->addRow(array($set['created_at'], $set['weight']));
+          }
         }
 
         \Lava::LineChart('Weight', $weight, [
@@ -100,7 +102,7 @@ class ExerciseController extends Controller
         ]);
 
         //Store personal best
-        $pb = $user->workout_sets()->where('exercise_id', '=', $id)->orderBy('weight', 'desc')->first()['id'];
+        $pb = $user->workout_sets()->where('exercise_id', '=', $id)->where('warmup', '0')->orderBy('weight', 'desc')->first()['id'];
         //get all sets
         $sets = $exercise->workout_sets()->where('user_id', $user['id'])->get();
         //display to user

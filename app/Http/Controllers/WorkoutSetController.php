@@ -91,6 +91,7 @@ class WorkoutSetController extends Controller
           $set->exercise_id = Input::get('exercise_id');
           $set->weight = $weight;
           $set->reps = Input::get('reps');
+          $set->warmup = Input::get('warmup');
           $set->save();
 
           //Redirect
