@@ -29,8 +29,8 @@ class HomeController extends Controller
     public function index()
     {
         //get 6 most recent exercises per page
-        $exercises = Exercise::latest()->paginate(10);
         $user = Auth::user();
+        $exercises = Exercise::latest()->paginate(10);
         $message = null;
         $diff = 0;
         //Check time since last logged set
