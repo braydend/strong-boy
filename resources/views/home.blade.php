@@ -28,7 +28,7 @@
             <div class="card-header">
               <span class="h3"><b>{{ $exercise->name  }}</b></span>
               <span class="exercise_icons">
-                <a href="{{ URL::to('/sets/create/' . $exercise->id)  }}" class="btn btn-primary" title="Add Workout">
+                <a href="#" class="btn btn-primary" title="Add Workout" data-toggle="modal" data-target="#quickAdd{{  $exercise->name }}Modal">
                   <img src="{{ asset('icons/baseline_add_black_18dp.png') }}" alt="Add Workout">
                 </a>
                 <a href="{{ URL::to('/exercise/' . $exercise->id)  }}" class="btn btn-success" title="Show Progress">
@@ -46,7 +46,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach($exercise->workout_sets()->where('user_id', $user->id)->where('warmup', 0)->get()->sortByDesc('id')->take(5) as $set)
+                  @foreach($exercise->workout_sets()->where('user_id', $user->id)->where('warmup', 0)->get()->sortByDesc('created_at')->take(5) as $set)
                     @if($set->warmup == 0)
                       <tr>
                           <td>{{  $set->created_at->toFormattedDateString()  }}</td>
@@ -61,9 +61,61 @@
           </div>
           <hr />
         </div>
+
+        <!-- Modal for quick workout logging -->
+        <div class="modal fade" id="quickAdd{{  $exercise->name }}Modal" tabindex="-1" role="dialog" aria-labelledby="quickAdd{{  $exercise->name }}ModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="quickAdd{{  $exercise->name }}ModalLabel">Quick add {{ $exercise->name }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                {{	Form::open(array('url' => 'sets'))	}}
+                <input type="text" class="form-control" id="exercise_id" name="exercise_id" value="{{ $exercise->id }}" aria-label="" aria-describedby="basic-addon1" hidden>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <button class="btn btn-outline-secondary" name="{{ $exercise->id }}-reps-btn" id="{{ $exercise->id }}-reps-1" type="button" onclick="btnGroupSelected({{ $exercise->id }}, 1, 'reps')">1</button>
+                      <button class="btn btn-outline-secondary" name="{{ $exercise->id }}-reps-btn" id="{{ $exercise->id }}-reps-2" type="button" onclick="btnGroupSelected({{ $exercise->id }}, 2, 'reps')">2</button>
+                      <button class="btn btn-outline-secondary" name="{{ $exercise->id }}-reps-btn" id="{{ $exercise->id }}-reps-3" type="button" onclick="btnGroupSelected({{ $exercise->id }}, 3, 'reps')">3</button>
+                      <button class="btn btn-outline-secondary" name="{{ $exercise->id }}-reps-btn" id="{{ $exercise->id }}-reps-4" type="button" onclick="btnGroupSelected({{ $exercise->id }}, 4, 'reps')">4</button>
+                      <button class="btn btn-outline-secondary" name="{{ $exercise->id }}-reps-btn" id="{{ $exercise->id }}-reps-5" type="button" onclick="btnGroupSelected({{ $exercise->id }}, 5, 'reps')">5</button>
+                    </div>
+                    <input type="number" class="form-control" id="{{ $exercise->id }}-reps" name="reps" placeholder="Reps" aria-label="" aria-describedby="basic-addon1">
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <button class="btn btn-outline-secondary" name="{{ $exercise->id }}-weight-btn" id="{{ $exercise->id }}-weight-1" type="button" onclick="btnGroupSelected({{ $exercise->id }}, 20, 'weight')">20</button>
+                      <button class="btn btn-outline-secondary" name="{{ $exercise->id }}-weight-btn" id="{{ $exercise->id }}-weight-2" type="button" onclick="btnGroupSelected({{ $exercise->id }}, 30, 'weight')">30</button>
+                      <button class="btn btn-outline-secondary" name="{{ $exercise->id }}-weight-btn" id="{{ $exercise->id }}-weight-3" type="button" onclick="btnGroupSelected({{ $exercise->id }}, 40, 'weight')">40</button>
+                      <button class="btn btn-outline-secondary" name="{{ $exercise->id }}-weight-btn" id="{{ $exercise->id }}-weight-4" type="button" onclick="btnGroupSelected({{ $exercise->id }}, 50, 'weight')">50</button>
+                      <button class="btn btn-outline-secondary" name="{{ $exercise->id }}-weight-btn" id="{{ $exercise->id }}-weight-5" type="button" onclick="btnGroupSelected({{ $exercise->id }}, 60, 'weight')">60</button>
+                    </div>
+                    <input type="number" class="form-control" id="{{ $exercise->id }}-weight" name="weight" placeholder="Weight" aria-label="" aria-describedby="basic-addon1">
+                  </div>
+                  <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-info" id="{{ $exercise->id }}-weightFormat-1" name="{{ $exercise->id }}-weightFormat-btn" onclick="toggleBtn({{ $exercise->id }}, 1, 'kg', 'weightFormat')">Kg</button>
+                    <button type="button" class="btn btn-secondary" id="{{ $exercise->id }}-weightFormat-2" name="{{ $exercise->id }}-weightFormat-btn" onclick="toggleBtn({{ $exercise->id }}, 2, 'lb', 'weightFormat')">Lb</button>
+                  </div>
+                  <input type="text" class="form-control" id="{{ $exercise->id }}-weightFormat" name="weightFormat" placeholder="Weight Type" value="kg" aria-label="" aria-describedby="basic-addon1" hidden>
+                  <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-secondary" id="{{ $exercise->id }}-warmup-1" name="{{ $exercise->id }}-warmup-btn" onclick="toggleBtn({{ $exercise->id }}, 1, '1', 'warmup')">Warmup</button>
+                    <button type="button" class="btn btn-info" id="{{ $exercise->id }}-warmup-2" name="{{ $exercise->id }}-warmup-btn" onclick="toggleBtn({{ $exercise->id }}, 2, '0', 'warmup')">Real</button>
+                  </div>
+                  <input type="text" class="form-control" id="{{ $exercise->id }}-warmup" name="warmup" placeholder="Warmup" value="0" aria-label="" aria-describedby="basic-addon1" hidden>
+                {{	Form::submit('Log the Workout!', array('class' => 'btn btn-primary')) }}
+                {{	Form::reset('Reset', array('class' => 'btn btn-danger')) }}
+          			{{	Form::close()	}}
+              </div>
+            </div>
+          </div>
+        </div>
         @endif
     @endforeach
   </div>
+
   <div class="row">
     <div class="col-md">
       {{  $exercises->links()  }}
