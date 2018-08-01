@@ -1,7 +1,7 @@
 
-function btnGroupSelected(id, num, name){
+function btnGroupSelected(id, num, data, name){
   checkOtherOptions(id, name);
-  document.getElementById(id + '-' + name).value = num;
+  document.getElementById(id + '-' + name).value = data;
   document.getElementById(id + '-' + name + '-' + num).classList.remove('btn-outline-secondary');
   document.getElementById(id + '-' + name + '-' + num).classList.add('btn-success');
 }
