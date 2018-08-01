@@ -77,21 +77,21 @@
                 <input type="text" class="form-control" id="exercise_id" name="exercise_id" value="{{ $exercise->id }}" aria-label="" aria-describedby="basic-addon1" hidden>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                      <button class="btn btn-outline-secondary" name="{{ $exercise->id }}-reps-btn" id="{{ $exercise->id }}-reps-1" type="button" onclick="btnGroupSelected({{ $exercise->id }}, 1, 'reps')">1</button>
-                      <button class="btn btn-outline-secondary" name="{{ $exercise->id }}-reps-btn" id="{{ $exercise->id }}-reps-2" type="button" onclick="btnGroupSelected({{ $exercise->id }}, 2, 'reps')">2</button>
-                      <button class="btn btn-outline-secondary" name="{{ $exercise->id }}-reps-btn" id="{{ $exercise->id }}-reps-3" type="button" onclick="btnGroupSelected({{ $exercise->id }}, 3, 'reps')">3</button>
-                      <button class="btn btn-outline-secondary" name="{{ $exercise->id }}-reps-btn" id="{{ $exercise->id }}-reps-4" type="button" onclick="btnGroupSelected({{ $exercise->id }}, 4, 'reps')">4</button>
-                      <button class="btn btn-outline-secondary" name="{{ $exercise->id }}-reps-btn" id="{{ $exercise->id }}-reps-5" type="button" onclick="btnGroupSelected({{ $exercise->id }}, 5, 'reps')">5</button>
+                      <button class="btn btn-outline-secondary" name="{{ $exercise->id }}-reps-btn" id="{{ $exercise->id }}-reps-1" type="button" onclick="btnGroupSelected({{ $exercise->id }}, 1, 1, 'reps')">1</button>
+                      <button class="btn btn-outline-secondary" name="{{ $exercise->id }}-reps-btn" id="{{ $exercise->id }}-reps-2" type="button" onclick="btnGroupSelected({{ $exercise->id }}, 2, 2, 'reps')">2</button>
+                      <button class="btn btn-outline-secondary" name="{{ $exercise->id }}-reps-btn" id="{{ $exercise->id }}-reps-3" type="button" onclick="btnGroupSelected({{ $exercise->id }}, 3, 3, 'reps')">3</button>
+                      <button class="btn btn-outline-secondary" name="{{ $exercise->id }}-reps-btn" id="{{ $exercise->id }}-reps-4" type="button" onclick="btnGroupSelected({{ $exercise->id }}, 4, 4, 'reps')">4</button>
+                      <button class="btn btn-outline-secondary" name="{{ $exercise->id }}-reps-btn" id="{{ $exercise->id }}-reps-5" type="button" onclick="btnGroupSelected({{ $exercise->id }}, 5, 5, 'reps')">5</button>
                     </div>
                     <input type="number" class="form-control" id="{{ $exercise->id }}-reps" name="reps" placeholder="Reps" aria-label="" aria-describedby="basic-addon1">
                   </div>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                      <button class="btn btn-outline-secondary" name="{{ $exercise->id }}-weight-btn" id="{{ $exercise->id }}-weight-1" type="button" onclick="btnGroupSelected({{ $exercise->id }}, 20, 'weight')">20</button>
-                      <button class="btn btn-outline-secondary" name="{{ $exercise->id }}-weight-btn" id="{{ $exercise->id }}-weight-2" type="button" onclick="btnGroupSelected({{ $exercise->id }}, 30, 'weight')">30</button>
-                      <button class="btn btn-outline-secondary" name="{{ $exercise->id }}-weight-btn" id="{{ $exercise->id }}-weight-3" type="button" onclick="btnGroupSelected({{ $exercise->id }}, 40, 'weight')">40</button>
-                      <button class="btn btn-outline-secondary" name="{{ $exercise->id }}-weight-btn" id="{{ $exercise->id }}-weight-4" type="button" onclick="btnGroupSelected({{ $exercise->id }}, 50, 'weight')">50</button>
-                      <button class="btn btn-outline-secondary" name="{{ $exercise->id }}-weight-btn" id="{{ $exercise->id }}-weight-5" type="button" onclick="btnGroupSelected({{ $exercise->id }}, 60, 'weight')">60</button>
+                      <button class="btn btn-outline-secondary" name="{{ $exercise->id }}-weight-btn" id="{{ $exercise->id }}-weight-1" type="button" onclick="btnGroupSelected({{ $exercise->id }}, 1, 20, 'weight')">20</button>
+                      <button class="btn btn-outline-secondary" name="{{ $exercise->id }}-weight-btn" id="{{ $exercise->id }}-weight-2" type="button" onclick="btnGroupSelected({{ $exercise->id }}, 2, 30, 'weight')">30</button>
+                      <button class="btn btn-outline-secondary" name="{{ $exercise->id }}-weight-btn" id="{{ $exercise->id }}-weight-3" type="button" onclick="btnGroupSelected({{ $exercise->id }}, 3, 40, 'weight')">40</button>
+                      <button class="btn btn-outline-secondary" name="{{ $exercise->id }}-weight-btn" id="{{ $exercise->id }}-weight-4" type="button" onclick="btnGroupSelected({{ $exercise->id }}, 4, 50, 'weight')">50</button>
+                      <button class="btn btn-outline-secondary" name="{{ $exercise->id }}-weight-btn" id="{{ $exercise->id }}-weight-5" type="button" onclick="btnGroupSelected({{ $exercise->id }}, 5, 60, 'weight')">60</button>
                     </div>
                     <input type="number" class="form-control" id="{{ $exercise->id }}-weight" name="weight" placeholder="Weight" aria-label="" aria-describedby="basic-addon1">
                   </div>
