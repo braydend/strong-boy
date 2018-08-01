@@ -1,18 +1,13 @@
-// document.getElementById("reps-1").addEventListener("click", btnGroupSelected(1));
-// document.getElementById("reps-2").addEventListener("click", btnGroupSelected(2));
-// document.getElementById("reps-3").addEventListener("click", btnGroupSelected(3));
-// document.getElementById("reps-4").addEventListener("click", btnGroupSelected(4));
-// document.getElementById("reps-5").addEventListener("click", btnGroupSelected(5));
 
-function btnGroupSelected(num){
-  checkOtherOptions();
-  document.getElementById('reps-count').value = num;
-  document.getElementById('reps-' + num).classList.remove('btn-outline-secondary');
-  document.getElementById('reps-' + num).classList.add('btn-success');
+function btnGroupSelected(id, num, name){
+  checkOtherOptions(id, name);
+  document.getElementById(id + '-' + name).value = num;
+  document.getElementById(id + '-' + name + '-' + num).classList.remove('btn-outline-secondary');
+  document.getElementById(id + '-' + name + '-' + num).classList.add('btn-success');
 }
 
-function checkOtherOptions(){
-  var btnIds = ['reps-1', 'reps-2', 'reps-3', 'reps-4', 'reps-5'];
+function checkOtherOptions(id, name){
+  var btnIds = [id + '-' + name + '-1', id + '-' + name + '-2', id + '-' + name + '-3', id + '-' + name + '-4', id + '-' + name + '-5'];
   var i = 0;
   for(i = 0; i < btnIds.length; i++){
     if(document.getElementById(btnIds[i]).classList.contains('btn-success')){
@@ -20,4 +15,18 @@ function checkOtherOptions(){
       document.getElementById(btnIds[i]).classList.add('btn-outline-secondary');
     }
   }
+}
+
+function toggleBtn(id, num, data, name){
+  var btnIds = [id + '-' + name + '-1', id + '-' + name + '-2'];
+  document.getElementById(id + '-' + name).value = data;
+  var i = 0;
+  for(i = 0; i < btnIds.length; i++){
+    if(document.getElementById(btnIds[i]).classList.contains('btn-info')){
+      document.getElementById(btnIds[i]).classList.remove('btn-info');
+      document.getElementById(btnIds[i]).classList.add('btn-secondary');
+    }
+  }
+  document.getElementById(id + '-' + name + '-' + num).classList.remove('btn-secondary');
+  document.getElementById(id + '-' + name + '-' + num).classList.add('btn-info');
 }

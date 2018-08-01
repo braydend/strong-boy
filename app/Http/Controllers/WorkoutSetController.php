@@ -67,8 +67,8 @@ class WorkoutSetController extends Controller
       $user = Auth::user();
       //Validate
       $rules = array(
-          'weight' => 'required|numeric',
-          'reps' => 'required|numeric',
+          'weight' => 'required|numeric|min:0',
+          'reps' => 'required|numeric|min:0',
       );
 
       $weightFormat = Input::get('weightFormat');
