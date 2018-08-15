@@ -11,6 +11,8 @@ use App\WorkoutSet;
 use \Validator;
 use Input;
 use Session;
+use Carbon\Carbon;
+use DB;
 
 use Khill\Lavacharts\Lavacharts;
 
@@ -90,9 +92,16 @@ class ExerciseController extends Controller
         $weight->addDateColumn('Date')
                     ->addNumberColumn('Weight used');
 
-        foreach($exercise->workout_sets()->where('user_id', $user['id'])->get() as $set){
-          if($set['warmup'] == 0){
-            $weight->addRow(array($set['created_at'], $set['weight']));
+        //Get sets
+        $allSets = $exercise->workout_sets()->where('user_id', $user['id'])
+                  ->get()->groupBy(function($date) {
+        return Carbon::parse($date->created_at)->format('y-m-d'); // grouping by date
+    });
+
+        foreach($allSets as $set){
+                    echo "<p>" . $set . "</p>";
+          if($set->first()['warmup'] == 0){
+            $weight->addRow(array($set->first()['created_at'], $set->first()['weight']));
           }
         }
 
