@@ -15,6 +15,13 @@
       @endif
     </div>
   </div>
+  <!-- Div for testing database -->
+  <div class="row">
+    <div class="col-md">
+      <a href="{{ URL::to('/faker/exercise')  }}" class="btn btn-info">Exercise</a>
+      <a href="{{ URL::to('/faker/set')  }}" class="btn btn-warning">Set</a>
+    </div>
+  </div>
   <div class="row">
     <div class="col-md text-center">
       <h2 class="display-2">Recent Workouts</h2>
