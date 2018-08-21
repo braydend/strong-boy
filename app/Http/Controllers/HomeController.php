@@ -30,7 +30,7 @@ class HomeController extends Controller
     {
         //get 6 most recent exercises per page
         $user = Auth::user();
-        $exercises = Exercise::latest()->paginate(10);
+        $exercises = Exercise::latest()->get();
         $message = null;
         $diff = 0;
         //Check time since last logged set
