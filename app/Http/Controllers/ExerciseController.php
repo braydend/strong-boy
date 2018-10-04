@@ -99,7 +99,7 @@ class ExerciseController extends Controller
     });
 
         foreach($allSets as $set){
-                    echo "<p>" . $set . "</p>";
+                    //echo "<p>" . $set . "</p>";
           if($set->first()['warmup'] == 0){
             $weight->addRow(array($set->first()['created_at'], $set->first()['weight']));
           }
