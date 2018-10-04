@@ -30,9 +30,23 @@ class HomeController extends Controller
     {
         //get 6 most recent exercises per page
         $user = Auth::user();
-        $exercises = Exercise::latest()->get();
+        //$exercises = Exercise::latest()->get();
         $message = null;
         $diff = 0;
+
+        //get all sets for user latest -> oldest
+        $sets = Auth::user()->workout_sets()->orderBy('created_at', 'desc')->get();
+        //printf("Sets:" . $sets);
+
+        //group by exercise
+        $exercises = $sets->groupBy('exercise_id');
+        // echo("Exercies:");
+        // foreach ($exercises as $exercise) {
+        //   printf($exercise);
+        //   echo("<hr />");
+        // }
+
+
         //Check time since last logged set
         if($user->workout_sets()->count() > 0){
           $last_set = $user->workout_sets()->orderBy('created_at', 'desc')->first();
