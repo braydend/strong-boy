@@ -53,7 +53,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach($exercise as $set)
+                  @foreach($exercise->take(5) as $set)
                     @if($set->warmup == 0)
                       <tr>
                           <td>{{  $set->created_at->toFormattedDateString()  }}</td>
