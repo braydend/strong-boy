@@ -35,7 +35,7 @@ class HomeController extends Controller
         $diff = 0;
 
         //get all sets for user latest -> oldest
-        $sets = Auth::user()->workout_sets()->orderBy('created_at', 'desc')->where('warmup', '0')->get();
+        $sets = Auth::user()->workout_sets()->orderBy('created_at', 'desc')->get();
         //printf("Sets:" . $sets);
 
         //group by exercise
