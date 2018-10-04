@@ -93,15 +93,15 @@ class ExerciseController extends Controller
                     ->addNumberColumn('Weight used');
 
         //Get sets
-        $allSets = $exercise->workout_sets()->where('user_id', $user['id'])
-                  ->get()->groupBy(function($date) {
-        return Carbon::parse($date->created_at)->format('y-m-d'); // grouping by date
-    });
+        $allSets = Auth::user()->workout_sets()->orderBy('created_at')->where('exercise_id', $exercise->id)->get();
+        $allSets = $allSets->groupBy(function($date) {
+            return Carbon::parse($date->created_at)->format('y-m-d'); // grouping by date
+        });
 
         foreach($allSets as $set){
                     //echo "<p>" . $set . "</p>";
           if($set->first()['warmup'] == 0){
-            $weight->addRow(array($set->first()['created_at'], $set->first()['weight']));
+            $weight->addRow(array($set->first()['created_at'], $set->max('weight')));
           }
         }
 
