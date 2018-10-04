@@ -23,3 +23,9 @@ Route::Resource('/exercise', 'ExerciseController');
 Route::get('/sets/create/{id}', 'WorkoutSetController@createWithId');
 
 Route::Resource('/sets', 'WorkoutSetController');
+
+//Routes for testing
+
+Route::get('/faker/exercise', 'TestController@FakeExercises');
+
+Route::get('/faker/set', 'TestController@FakeSets');
