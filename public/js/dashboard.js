@@ -10,7 +10,7 @@ function SetupTheme(){
  || navigator.userAgent.match(/BlackBerry/i)
  || navigator.userAgent.match(/Windows Phone/i)
  ){
-    alert("Mobile");
+    //alert("Mobile");
     document.getElementById("dashboard-top").className += " mobile-top col-xs-12";
     document.getElementById("dashboard-title").className += " mobile-title col-xs-12";
     document.getElementById("dashboard-nav").className += " mobile-nav col-xs-12";
@@ -19,7 +19,7 @@ function SetupTheme(){
       navItems[i].className += " mobile-nav-item";
     }
   }else{
-     alert("Desktop");
+     //alert("Desktop");
      //Apply fixed position tags to divs
      document.getElementById("dashboard-top").className += " col-lg-10 position-fixed dashboard-top";
      document.getElementById("dashboard-title").className += " col-lg-2 position-fixed dashboard-title";
