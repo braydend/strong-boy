@@ -22,15 +22,15 @@
 <body>
     <div id="app">
       <div class="row">
-        <div class="col-lg-2 dashboard-title position-fixed">
+        <div id="dashboard-title" class="dashboard-title">
           <a href="{{ URL::to('/')  }}">StrongBoy</a>
         </div>
-        <div class="col-lg-10 dashboard-top position-fixed">
+        <div id="dashboard-top" class="dashboard-top">
           @yield('title')
         </div>
       </div>
       <div class="row">
-        <nav class="col-lg-2 dashboard-nav position-fixed">
+        <nav id="dashboard-nav" class="dashboard-nav">
           <a href="{{ URL::to('/exercise')}}">
             <div class="dashboard-nav-item">
               Exercises
@@ -42,11 +42,12 @@
             </p>
           </a>
         </nav>
-        <main class="col-lg-10 dashboard-content">
+        <main id="dashboard-content" class="dashboard-content">
             @yield('content')
         </main>
       </div>
     </div>
     <script src="{{ asset('js/custom.js') }}"></script>
+    <script src="{{ asset('js/dashboard.js') }}"></script>
 </body>
 </html>
