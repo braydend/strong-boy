@@ -106,7 +106,7 @@
                       <button class="btn btn-outline-secondary" name="{{ $exercise->first()->exercise_id }}-weight-btn" id="{{ $exercise->first()->exercise_id }}-weight-4" type="button" onclick="btnGroupSelected({{ $exercise->first()->exercise_id }}, 4, 50, 'weight')">50</button>
                       <button class="btn btn-outline-secondary" name="{{ $exercise->first()->exercise_id }}-weight-btn" id="{{ $exercise->first()->exercise_id }}-weight-5" type="button" onclick="btnGroupSelected({{ $exercise->first()->exercise_id }}, 5, 60, 'weight')">60</button>
                     </div>
-                    <input type="number" step="0.01" class="form-control" id="{{ $exercise->id }}-weight" name="weight" placeholder="Weight" aria-label="" aria-describedby="basic-addon1">
+                    <input type="number" step="0.01" class="form-control" id="{{ $exercise->first()->id }}-weight" name="weight" placeholder="Weight" aria-label="" aria-describedby="basic-addon1">
                   </div>
                   <div class="btn-group" role="group" aria-label="Basic example">
                     <button type="button" class="btn btn-info" id="{{ $exercise->first()->exercise_id }}-weightFormat-1" name="{{ $exercise->first()->exercise_id }}-weightFormat-btn" onclick="toggleBtn({{ $exercise->first()->exercise_id }}, 1, 'kg', 'weightFormat')">Kg</button>
