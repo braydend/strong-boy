@@ -16,33 +16,34 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/mobile.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
 </head>
 <body>
     <div id="app">
       <div class="row">
-        <div id="dashboard-title" class="dashboard-title">
+        <div id="dashboard-title">
           <a href="{{ URL::to('/')  }}">StrongBoy</a>
         </div>
-        <div id="dashboard-top" class="dashboard-top">
+        <div id="dashboard-top">
           @yield('title')
         </div>
       </div>
       <div class="row">
-        <nav id="dashboard-nav" class="dashboard-nav">
+        <nav id="dashboard-nav">
           <a href="{{ URL::to('/exercise')}}">
-            <div class="dashboard-nav-item">
+            <div name="dashboard-nav-item">
               Exercises
             </div>
           </a>
           <a href="{{ URL::to('/records')}}">
-            <p class="dashboard-nav-item">
+            <div name="dashboard-nav-item">
               Records
-            </p>
+            </div>
           </a>
         </nav>
-        <main id="dashboard-content" class="dashboard-content">
+        <main id="dashboard-content">
             @yield('content')
         </main>
       </div>
