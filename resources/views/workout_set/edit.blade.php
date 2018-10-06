@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 
 @section('title', 'Edit Set')
 
@@ -10,7 +10,7 @@
                 <div class="card-header">Exercises</div>
 
                 <div class="card-body">
-                    {{  $user->name }}
+                    
                 </div>
             </div>
         </div>

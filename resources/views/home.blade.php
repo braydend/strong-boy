@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 
 @section('title')
   {{ $user->name }}'s Dashboard
@@ -47,6 +47,7 @@
               <table class="table">
                 <thead>
                   <tr>
+                    <th scope="col"></th>
                     <th scope="col">Date</th>
                     <th scope="col">Weight</th>
                     <th scope="col">Reps</th>
@@ -56,6 +57,11 @@
                   @foreach($exercise->where('warmup', '0')->take(5) as $set)
                     @if($set->warmup == 0)
                       <tr>
+                          @if($set->created_at->diffInHours() < 1)
+                            <td><a href="{{ URL::to('/sets/' . $set->id . '/edit')  }}" class="btn btn-warning">Edit</a></td>
+                          @else
+                            <td></td>
+                          @endif
                           <td>{{  $set->created_at->toFormattedDateString()  }}</td>
                           <td>{{  $set->weight  }}kg ({{  round($set->weight / 0.453592, 1) }} lb)</td>
                           <td>{{  $set->reps  }}</td>
@@ -100,7 +106,7 @@
                       <button class="btn btn-outline-secondary" name="{{ $exercise->first()->exercise_id }}-weight-btn" id="{{ $exercise->first()->exercise_id }}-weight-4" type="button" onclick="btnGroupSelected({{ $exercise->first()->exercise_id }}, 4, 50, 'weight')">50</button>
                       <button class="btn btn-outline-secondary" name="{{ $exercise->first()->exercise_id }}-weight-btn" id="{{ $exercise->first()->exercise_id }}-weight-5" type="button" onclick="btnGroupSelected({{ $exercise->first()->exercise_id }}, 5, 60, 'weight')">60</button>
                     </div>
-                    <input type="number" class="form-control" id="{{ $exercise->first()->exercise_id }}-weight" name="weight" placeholder="Weight" aria-label="" aria-describedby="basic-addon1">
+                    <input type="number" step="0.01" class="form-control" id="{{ $exercise->first()->id }}-weight" name="weight" placeholder="Weight" aria-label="" aria-describedby="basic-addon1">
                   </div>
                   <div class="btn-group" role="group" aria-label="Basic example">
                     <button type="button" class="btn btn-info" id="{{ $exercise->first()->exercise_id }}-weightFormat-1" name="{{ $exercise->first()->exercise_id }}-weightFormat-btn" onclick="toggleBtn({{ $exercise->first()->exercise_id }}, 1, 'kg', 'weightFormat')">Kg</button>
