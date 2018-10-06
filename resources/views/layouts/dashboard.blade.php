@@ -37,11 +37,12 @@
               Exercises
             </div>
           </a>
-          <a href="{{ URL::to('/records')}}">
+          <!-- Need to create layout for records -->
+          <!--a href="{{ URL::to('/records')}}">
             <div name="dashboard-nav-item">
               Records
             </div>
-          </a>
+          </a-->
         </nav>
         <main id="dashboard-content">
             @yield('content')

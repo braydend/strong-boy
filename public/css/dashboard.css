@@ -14,6 +14,7 @@
   font-size: 24pt;
   top: 0;
   left: 0;
+  z-index: 1;
 }
 
 .dashboard-top{
@@ -24,6 +25,7 @@
   padding-top: 15px;
   top: 0;
   right: 0;
+  z-index: 1;
 }
 
 .dashboard-nav{
@@ -31,6 +33,7 @@
   height: 100vh;
   top: 80px;
   left: 0;
+  z-index: 1;
 }
 
 .dashboard-nav-item{
@@ -40,6 +43,7 @@
   text-align: center;
   width: 100%;
   font-size: 16pt;
+  z-index: 1;
 }
 
 .dashboard-nav-item:hover{
@@ -56,5 +60,4 @@ a, a:active, a:hover, a:visited{
 .dashboard-content{
   left: 200px;
   top: 80px;
-  z-index: -1;
 }
