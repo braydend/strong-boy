@@ -14,11 +14,6 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/jquery.min.js') }}"></script>
 
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
-
     <!-- Styles -->
     <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
@@ -26,17 +21,31 @@
 </head>
 <body>
     <div id="app">
-        <nav>
-            <div class="container">
-              <ul class="navbar-item">
-                <li>1</li>
-              </ul>
+      <div class="row">
+        <div class="col-lg-2 dashboard-title position-fixed">
+          <a href="{{ URL::to('/')  }}">StrongBoy</a>
+        </div>
+        <div class="col-lg-10 dashboard-top position-fixed">
+          @yield('title')
+        </div>
+      </div>
+      <div class="row">
+        <nav class="col-lg-2 dashboard-nav position-fixed">
+          <a href="{{ URL::to('/exercise')}}">
+            <div class="dashboard-nav-item">
+              Exercises
             </div>
+          </a>
+          <a href="{{ URL::to('/records')}}">
+            <p class="dashboard-nav-item">
+              Records
+            </p>
+          </a>
         </nav>
-
-        <main class="py-4">
+        <main class="col-lg-10 dashboard-content">
             @yield('content')
         </main>
+      </div>
     </div>
     <script src="{{ asset('js/custom.js') }}"></script>
 </body>
