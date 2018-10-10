@@ -46,10 +46,16 @@
   z-index: 1;
 }
 
+.dashboard-navbar-footer{
+  background-color: #aadaee;
+  width: 16.6%;
+  bottom: 0;
+  left: 0;
+}
+
 .dashboard-nav-item:hover{
   background-color: #3f8efc;
-  width: 110%;
-  margin-left: -15px;
+  width: 16.6%;
 }
 
 a, a:active, a:hover, a:visited{
