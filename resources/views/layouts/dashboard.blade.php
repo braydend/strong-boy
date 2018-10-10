@@ -43,6 +43,11 @@
               Records
             </div>
           </a-->
+          <a href="{{ URL::to('/logout')  }}">
+            <div class="dashboard-nav-item dashboard-navbar-footer position-fixed">
+              Logout
+            </div>
+          </a>
         </nav>
         <main id="dashboard-content">
             @yield('content')

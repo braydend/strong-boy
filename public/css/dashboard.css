@@ -29,7 +29,7 @@
 }
 
 .dashboard-nav{
-  background-color: #ffffff;
+  background-color: #98d2eb;
   height: 100vh;
   top: 80px;
   left: 0;
@@ -39,17 +39,23 @@
 .dashboard-nav-item{
   padding-top: 30px;
   padding-bottom: 30px;
-  background-color: #ffffff;
+  background-color: #98d2eb;
   text-align: center;
   width: 100%;
   font-size: 16pt;
   z-index: 1;
 }
 
+.dashboard-navbar-footer{
+  background-color: #aadaee;
+  width: 16.6%;
+  bottom: 0;
+  left: 0;
+}
+
 .dashboard-nav-item:hover{
-  background-color: #98d2eb;
-  width: 110%;
-  margin-left: -15px;
+  background-color: #3f8efc;
+  width: 16.6%;
 }
 
 a, a:active, a:hover, a:visited{
