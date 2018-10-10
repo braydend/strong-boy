@@ -15,6 +15,16 @@ use Session;
 class WorkoutSetController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -22,9 +32,6 @@ class WorkoutSetController extends Controller
     public function index()
     {
         $user = Auth::user();
-        if($user == null){
-          return Redirect::to('/');
-        }
         $sets = $user->workout_sets()->orderBy('created_at', 'desc')->paginate(10);
 
         return View::make('workout_set.index')
