@@ -151,16 +151,26 @@ class WorkoutSetController extends Controller
 
       $validator = Validator::make(Input::all(), $rules);
 
+      $weightFormat = Input::get('weightFormat');
+
       if($validator->fails()){
         return Redirect::to('workout_set/edit')
           ->withErrors($validator);
         }else{
+          if($weightFormat == 'lb'){
+            $weight = Input::get('weight') * 0.453592;
+          }else{
+            $weight = Input::get('weight');
+          }
           //Store the data to the Database
           $set = WorkoutSet::find($id);
           $set->user_id = Input::get('user_id');
           $set->exercise_id = Input::get('exercise_id');
           $set->weight = Input::get('weight');
           $set->reps = Input::get('reps');
+          $set->warmup = Input::get('warmup');
+          $set->weight = $weight;
+
           $set->save();
 
           //Redirect

@@ -58,7 +58,7 @@
                     @if($set->warmup == 0)
                       <tr>
                           @if($set->created_at->diffInHours() < 1)
-                            <td><a href="{{ URL::to('/sets/' . $set->id . '/edit')  }}" class="btn btn-warning">Edit</a></td>
+                            <td><a href="#" class="btn btn-warning" data-toggle="modal" data-target="#quickEdit{{  $exercise->first()->id }}Modal">Edit</a></td>
                           @else
                             <td></td>
                           @endif
@@ -75,6 +75,7 @@
           <hr />
         </div>
         @include('modals.quickAddSetModal')
+        @include('modals.quickEditSetModal')
         @endif
     @endforeach
   </div>
