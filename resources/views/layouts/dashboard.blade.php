@@ -10,6 +10,7 @@
 
     <title>@yield('title') | Strong Boy</title>
 
+<<<<<<< HEAD
     <script src="{{ asset('js/jquery-3.3.1.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/popper.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}" type="text/javascript"></script>
@@ -17,6 +18,11 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+=======
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/boostrap.min.css') }}" rel="stylesheet">
+>>>>>>> webpack-refactor
 
 </head>
 <body>
@@ -45,6 +51,7 @@
         </div>
         <div class="col-md-10">
           <main class="container dashboard-content">
+<<<<<<< HEAD
               @if(env("APP_DEBUG"))
                   <div class="row">
                       <div class="col-xs alert alert-danger">
@@ -56,11 +63,19 @@
 
               <div id="exercise-card">
               </div>
+=======
+              @yield('content')
+>>>>>>> webpack-refactor
           </main>
         </div>
       </div>
     </div>
+<<<<<<< HEAD
 
     <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
+=======
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+>>>>>>> webpack-refactor
 </body>
 </html>

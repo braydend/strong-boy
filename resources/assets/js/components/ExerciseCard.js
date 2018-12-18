@@ -68,7 +68,7 @@ export default class ExerciseCard extends Component {
                     this.updateSets(this.state.id);
                 }
             )
-            .catch(alert("error saving data"));
+            .catch(console.log("error saving data"));
 
     }
 
