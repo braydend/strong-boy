@@ -45,6 +45,23 @@ class ExerciseController extends Controller
           ->with('user', $user);
     }
 
+    public function getSetsForDashboard($id){
+        $exercise = Exercise::find($id);
+        return response()->json($exercise->dashboard_workout_sets);
+    }
+
+    public function AjaxIndex(){
+      return View::make('exercise.ajax.index');
+    }
+
+    public function GetButtons($id){
+        $exercise = Exercise::find($id);
+        $repPresets = $exercise->workout_sets_by_reps()->orderBy('reps')->groupBy('reps')->take('5')->get();
+        $weightPresets = $exercise->workout_sets_by_weight()->orderBy('weight')->groupBy('weight')->take('5')->get();
+        $btns = [$repPresets, $weightPresets];
+        return response()->json($btns);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

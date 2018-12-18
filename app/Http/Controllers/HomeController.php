@@ -71,4 +71,17 @@ class HomeController extends Controller
           ->with('message', $message)
           ->with('user', $user);
     }
+
+    public function indexData()
+    {
+        $exercises = Exercise::all();
+        $data = [];
+        foreach ($exercises as $exercise) {
+            $exercise->id;
+            $exercise->name;
+            $exercise->date = $exercise->workout_sets()->latest()->first()->created_at->toDateString();
+        }
+        $exercises->sortBy('date');
+        return response()->json($exercises);
+    }
 }

@@ -108,6 +108,54 @@ class WorkoutSetController extends Controller
     }
 
     /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function saveAjax(Request $request)
+    {
+        $user = Auth::user();
+
+        $weightFormat = $request->request->get('weightFormat');
+        // Store the data to the Database
+        // Convert weight from lb to kg
+        if($weightFormat == 'lb'){
+            $weight = $request->request->get('weight') * 0.453592;
+        }else{
+            $weight = $request->request->get('weight');
+        }
+        $set = new WorkoutSet;
+        $set->user_id = $user->id;
+        $set->exercise_id = $request->request->get('exercise_id');
+        $set->weight = $weight;
+        $set->reps = $request->request->get('reps');
+        $set->warmup = $request->request->get('warmup');
+        $set->created_at = $request->request->get('date');
+        $set->save();
+    }
+
+    public function updateAjax(Request $request, $id)
+    {
+        $user = Auth::user();
+
+        $weightFormat = $request->request->get('weightFormat');
+        // Store the data to the Database
+        // Convert weight from lb to kg
+        if($weightFormat == 'lb'){
+            $weight = $request->request->get('weight') * 0.453592;
+        }else{
+            $weight = $request->request->get('weight');
+        }
+        $set = WorkoutSet::find($id);
+        $set->user_id = $user->id;
+        $set->weight = $weight;
+        $set->reps = $request->request->get('reps');
+        $set->warmup = $request->request->get('warmup');
+        $set->save();
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -162,9 +210,10 @@ class WorkoutSetController extends Controller
           }else{
             $weight = Input::get('weight');
           }
+          $user = Auth::user();
           //Store the data to the Database
           $set = WorkoutSet::find($id);
-          $set->user_id = Input::get('user_id');
+          $set->user_id = $user->id;
           $set->exercise_id = Input::get('exercise_id');
           $set->weight = Input::get('weight');
           $set->reps = Input::get('reps');
