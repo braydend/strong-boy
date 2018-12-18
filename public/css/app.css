@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 .exercise_icons {
   float: right;
 }
@@ -121,6 +122,9 @@ a:visited {
 }
 
 /*!
+=======
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);/*!
+>>>>>>> Stashed changes
  * Bootstrap v4.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
  * Copyright 2011-2018 Twitter, Inc.
@@ -154,7 +158,11 @@ a:visited {
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
+<<<<<<< Updated upstream
   --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+=======
+  --font-family-sans-serif: "Raleway", sans-serif;
+>>>>>>> Stashed changes
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -193,6 +201,7 @@ section {
 
 body {
   margin: 0;
+<<<<<<< Updated upstream
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1rem;
   font-weight: 400;
@@ -200,6 +209,15 @@ body {
   color: #212529;
   text-align: left;
   background-color: #fff;
+=======
+  font-family: "Raleway", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #212529;
+  text-align: left;
+  background-color: #f5f8fa;
+>>>>>>> Stashed changes
 }
 
 [tabindex="-1"]:focus {
@@ -521,36 +539,64 @@ h6,
 
 h1,
 .h1 {
+<<<<<<< Updated upstream
   font-size: 2.5rem;
+=======
+  font-size: 2.25rem;
+>>>>>>> Stashed changes
 }
 
 h2,
 .h2 {
+<<<<<<< Updated upstream
   font-size: 2rem;
+=======
+  font-size: 1.8rem;
+>>>>>>> Stashed changes
 }
 
 h3,
 .h3 {
+<<<<<<< Updated upstream
   font-size: 1.75rem;
+=======
+  font-size: 1.575rem;
+>>>>>>> Stashed changes
 }
 
 h4,
 .h4 {
+<<<<<<< Updated upstream
   font-size: 1.5rem;
+=======
+  font-size: 1.35rem;
+>>>>>>> Stashed changes
 }
 
 h5,
 .h5 {
+<<<<<<< Updated upstream
   font-size: 1.25rem;
+=======
+  font-size: 1.125rem;
+>>>>>>> Stashed changes
 }
 
 h6,
 .h6 {
+<<<<<<< Updated upstream
   font-size: 1rem;
 }
 
 .lead {
   font-size: 1.25rem;
+=======
+  font-size: 0.9rem;
+}
+
+.lead {
+  font-size: 1.125rem;
+>>>>>>> Stashed changes
   font-weight: 300;
 }
 
@@ -622,7 +668,11 @@ mark,
 
 .blockquote {
   margin-bottom: 1rem;
+<<<<<<< Updated upstream
   font-size: 1.25rem;
+=======
+  font-size: 1.125rem;
+>>>>>>> Stashed changes
 }
 
 .blockquote-footer {
@@ -642,7 +692,11 @@ mark,
 
 .img-thumbnail {
   padding: 0.25rem;
+<<<<<<< Updated upstream
   background-color: #fff;
+=======
+  background-color: #f5f8fa;
+>>>>>>> Stashed changes
   border: 1px solid #dee2e6;
   border-radius: 0.25rem;
   max-width: 100%;
@@ -2064,7 +2118,11 @@ pre code {
 }
 
 .table .table {
+<<<<<<< Updated upstream
   background-color: #fff;
+=======
+  background-color: #f5f8fa;
+>>>>>>> Stashed changes
 }
 
 .table-sm th,
@@ -2237,7 +2295,11 @@ pre code {
 }
 
 .table .thead-dark th {
+<<<<<<< Updated upstream
   color: #fff;
+=======
+  color: #f5f8fa;
+>>>>>>> Stashed changes
   background-color: #212529;
   border-color: #32383e;
 }
@@ -2249,7 +2311,11 @@ pre code {
 }
 
 .table-dark {
+<<<<<<< Updated upstream
   color: #fff;
+=======
+  color: #f5f8fa;
+>>>>>>> Stashed changes
   background-color: #212529;
 }
 
@@ -2342,10 +2408,17 @@ pre code {
 .form-control {
   display: block;
   width: 100%;
+<<<<<<< Updated upstream
   height: calc(2.25rem + 2px);
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   line-height: 1.5;
+=======
+  height: calc(2.19rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+>>>>>>> Stashed changes
   color: #495057;
   background-color: #fff;
   background-clip: padding-box;
@@ -2415,20 +2488,32 @@ select.form-control:focus::-ms-value {
   padding-bottom: calc(0.375rem + 1px);
   margin-bottom: 0;
   font-size: inherit;
+<<<<<<< Updated upstream
   line-height: 1.5;
+=======
+  line-height: 1.6;
+>>>>>>> Stashed changes
 }
 
 .col-form-label-lg {
   padding-top: calc(0.5rem + 1px);
   padding-bottom: calc(0.5rem + 1px);
+<<<<<<< Updated upstream
   font-size: 1.25rem;
+=======
+  font-size: 1.125rem;
+>>>>>>> Stashed changes
   line-height: 1.5;
 }
 
 .col-form-label-sm {
   padding-top: calc(0.25rem + 1px);
   padding-bottom: calc(0.25rem + 1px);
+<<<<<<< Updated upstream
   font-size: 0.875rem;
+=======
+  font-size: 0.7875rem;
+>>>>>>> Stashed changes
   line-height: 1.5;
 }
 
@@ -2438,7 +2523,11 @@ select.form-control:focus::-ms-value {
   padding-top: 0.375rem;
   padding-bottom: 0.375rem;
   margin-bottom: 0;
+<<<<<<< Updated upstream
   line-height: 1.5;
+=======
+  line-height: 1.6;
+>>>>>>> Stashed changes
   color: #212529;
   background-color: transparent;
   border: solid transparent;
@@ -2452,17 +2541,29 @@ select.form-control:focus::-ms-value {
 }
 
 .form-control-sm {
+<<<<<<< Updated upstream
   height: calc(1.8125rem + 2px);
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
+=======
+  height: calc(1.68125rem + 2px);
+  padding: 0.25rem 0.5rem;
+  font-size: 0.7875rem;
+>>>>>>> Stashed changes
   line-height: 1.5;
   border-radius: 0.2rem;
 }
 
 .form-control-lg {
+<<<<<<< Updated upstream
   height: calc(2.875rem + 2px);
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
+=======
+  height: calc(2.6875rem + 2px);
+  padding: 0.5rem 1rem;
+  font-size: 1.125rem;
+>>>>>>> Stashed changes
   line-height: 1.5;
   border-radius: 0.3rem;
 }
@@ -2555,8 +2656,13 @@ textarea.form-control {
   max-width: 100%;
   padding: 0.25rem 0.5rem;
   margin-top: .1rem;
+<<<<<<< Updated upstream
   font-size: 0.875rem;
   line-height: 1.5;
+=======
+  font-size: 0.7875rem;
+  line-height: 1.6;
+>>>>>>> Stashed changes
   color: #fff;
   background-color: rgba(40, 167, 69, 0.9);
   border-radius: 0.25rem;
@@ -2636,8 +2742,13 @@ textarea.form-control {
 
 .was-validated .custom-control-input:valid:focus ~ .custom-control-label::before,
 .custom-control-input.is-valid:focus ~ .custom-control-label::before {
+<<<<<<< Updated upstream
   -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
           box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+=======
+  -webkit-box-shadow: 0 0 0 1px #f5f8fa, 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+          box-shadow: 0 0 0 1px #f5f8fa, 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+>>>>>>> Stashed changes
 }
 
 .was-validated .custom-file-input:valid ~ .custom-file-label,
@@ -2679,8 +2790,13 @@ textarea.form-control {
   max-width: 100%;
   padding: 0.25rem 0.5rem;
   margin-top: .1rem;
+<<<<<<< Updated upstream
   font-size: 0.875rem;
   line-height: 1.5;
+=======
+  font-size: 0.7875rem;
+  line-height: 1.6;
+>>>>>>> Stashed changes
   color: #fff;
   background-color: rgba(220, 53, 69, 0.9);
   border-radius: 0.25rem;
@@ -2760,8 +2876,13 @@ textarea.form-control {
 
 .was-validated .custom-control-input:invalid:focus ~ .custom-control-label::before,
 .custom-control-input.is-invalid:focus ~ .custom-control-label::before {
+<<<<<<< Updated upstream
   -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
           box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+=======
+  -webkit-box-shadow: 0 0 0 1px #f5f8fa, 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+          box-shadow: 0 0 0 1px #f5f8fa, 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+>>>>>>> Stashed changes
 }
 
 .was-validated .custom-file-input:invalid ~ .custom-file-label,
@@ -2897,8 +3018,13 @@ textarea.form-control {
           user-select: none;
   border: 1px solid transparent;
   padding: 0.375rem 0.75rem;
+<<<<<<< Updated upstream
   font-size: 1rem;
   line-height: 1.5;
+=======
+  font-size: 0.9rem;
+  line-height: 1.6;
+>>>>>>> Stashed changes
   border-radius: 0.25rem;
   -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
@@ -3609,7 +3735,11 @@ fieldset:disabled a.btn {
 .btn-lg,
 .btn-group-lg > .btn {
   padding: 0.5rem 1rem;
+<<<<<<< Updated upstream
   font-size: 1.25rem;
+=======
+  font-size: 1.125rem;
+>>>>>>> Stashed changes
   line-height: 1.5;
   border-radius: 0.3rem;
 }
@@ -3617,7 +3747,11 @@ fieldset:disabled a.btn {
 .btn-sm,
 .btn-group-sm > .btn {
   padding: 0.25rem 0.5rem;
+<<<<<<< Updated upstream
   font-size: 0.875rem;
+=======
+  font-size: 0.7875rem;
+>>>>>>> Stashed changes
   line-height: 1.5;
   border-radius: 0.2rem;
 }
@@ -3706,7 +3840,11 @@ input[type="button"].btn-block {
   min-width: 10rem;
   padding: 0.5rem 0;
   margin: 0.125rem 0 0;
+<<<<<<< Updated upstream
   font-size: 1rem;
+=======
+  font-size: 0.9rem;
+>>>>>>> Stashed changes
   color: #212529;
   text-align: left;
   list-style: none;
@@ -3871,7 +4009,11 @@ input[type="button"].btn-block {
   display: block;
   padding: 0.5rem 1.5rem;
   margin-bottom: 0;
+<<<<<<< Updated upstream
   font-size: 0.875rem;
+=======
+  font-size: 0.7875rem;
+>>>>>>> Stashed changes
   color: #6c757d;
   white-space: nowrap;
 }
@@ -4153,9 +4295,15 @@ input[type="button"].btn-block {
           align-items: center;
   padding: 0.375rem 0.75rem;
   margin-bottom: 0;
+<<<<<<< Updated upstream
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
+=======
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.6;
+>>>>>>> Stashed changes
   color: #495057;
   text-align: center;
   white-space: nowrap;
@@ -4174,9 +4322,15 @@ input[type="button"].btn-block {
 .input-group-lg > .input-group-append > .input-group-text,
 .input-group-lg > .input-group-prepend > .btn,
 .input-group-lg > .input-group-append > .btn {
+<<<<<<< Updated upstream
   height: calc(2.875rem + 2px);
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
+=======
+  height: calc(2.6875rem + 2px);
+  padding: 0.5rem 1rem;
+  font-size: 1.125rem;
+>>>>>>> Stashed changes
   line-height: 1.5;
   border-radius: 0.3rem;
 }
@@ -4186,9 +4340,15 @@ input[type="button"].btn-block {
 .input-group-sm > .input-group-append > .input-group-text,
 .input-group-sm > .input-group-prepend > .btn,
 .input-group-sm > .input-group-append > .btn {
+<<<<<<< Updated upstream
   height: calc(1.8125rem + 2px);
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
+=======
+  height: calc(1.68125rem + 2px);
+  padding: 0.25rem 0.5rem;
+  font-size: 0.7875rem;
+>>>>>>> Stashed changes
   line-height: 1.5;
   border-radius: 0.2rem;
 }
@@ -4216,7 +4376,11 @@ input[type="button"].btn-block {
 .custom-control {
   position: relative;
   display: block;
+<<<<<<< Updated upstream
   min-height: 1.5rem;
+=======
+  min-height: 1.44rem;
+>>>>>>> Stashed changes
   padding-left: 1.5rem;
 }
 
@@ -4239,8 +4403,13 @@ input[type="button"].btn-block {
 }
 
 .custom-control-input:focus ~ .custom-control-label::before {
+<<<<<<< Updated upstream
   -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
           box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+=======
+  -webkit-box-shadow: 0 0 0 1px #f5f8fa, 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+          box-shadow: 0 0 0 1px #f5f8fa, 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+>>>>>>> Stashed changes
 }
 
 .custom-control-input:active ~ .custom-control-label::before {
@@ -4263,7 +4432,11 @@ input[type="button"].btn-block {
 
 .custom-control-label::before {
   position: absolute;
+<<<<<<< Updated upstream
   top: 0.25rem;
+=======
+  top: 0.22rem;
+>>>>>>> Stashed changes
   left: -1.5rem;
   display: block;
   width: 1rem;
@@ -4279,7 +4452,11 @@ input[type="button"].btn-block {
 
 .custom-control-label::after {
   position: absolute;
+<<<<<<< Updated upstream
   top: 0.25rem;
+=======
+  top: 0.22rem;
+>>>>>>> Stashed changes
   left: -1.5rem;
   display: block;
   width: 1rem;
@@ -4337,9 +4514,15 @@ input[type="button"].btn-block {
 .custom-select {
   display: inline-block;
   width: 100%;
+<<<<<<< Updated upstream
   height: calc(2.25rem + 2px);
   padding: 0.375rem 1.75rem 0.375rem 0.75rem;
   line-height: 1.5;
+=======
+  height: calc(2.19rem + 2px);
+  padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+  line-height: 1.6;
+>>>>>>> Stashed changes
   color: #495057;
   vertical-align: middle;
   background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right 0.75rem center;
@@ -4380,14 +4563,22 @@ input[type="button"].btn-block {
 }
 
 .custom-select-sm {
+<<<<<<< Updated upstream
   height: calc(1.8125rem + 2px);
+=======
+  height: calc(1.68125rem + 2px);
+>>>>>>> Stashed changes
   padding-top: 0.375rem;
   padding-bottom: 0.375rem;
   font-size: 75%;
 }
 
 .custom-select-lg {
+<<<<<<< Updated upstream
   height: calc(2.875rem + 2px);
+=======
+  height: calc(2.6875rem + 2px);
+>>>>>>> Stashed changes
   padding-top: 0.375rem;
   padding-bottom: 0.375rem;
   font-size: 125%;
@@ -4397,7 +4588,11 @@ input[type="button"].btn-block {
   position: relative;
   display: inline-block;
   width: 100%;
+<<<<<<< Updated upstream
   height: calc(2.25rem + 2px);
+=======
+  height: calc(2.19rem + 2px);
+>>>>>>> Stashed changes
   margin-bottom: 0;
 }
 
@@ -4405,7 +4600,11 @@ input[type="button"].btn-block {
   position: relative;
   z-index: 2;
   width: 100%;
+<<<<<<< Updated upstream
   height: calc(2.25rem + 2px);
+=======
+  height: calc(2.19rem + 2px);
+>>>>>>> Stashed changes
   margin: 0;
   opacity: 0;
 }
@@ -4434,9 +4633,15 @@ input[type="button"].btn-block {
   right: 0;
   left: 0;
   z-index: 1;
+<<<<<<< Updated upstream
   height: calc(2.25rem + 2px);
   padding: 0.375rem 0.75rem;
   line-height: 1.5;
+=======
+  height: calc(2.19rem + 2px);
+  padding: 0.375rem 0.75rem;
+  line-height: 1.6;
+>>>>>>> Stashed changes
   color: #495057;
   background-color: #fff;
   border: 1px solid #ced4da;
@@ -4450,9 +4655,15 @@ input[type="button"].btn-block {
   bottom: 0;
   z-index: 3;
   display: block;
+<<<<<<< Updated upstream
   height: 2.25rem;
   padding: 0.375rem 0.75rem;
   line-height: 1.5;
+=======
+  height: 2.19rem;
+  padding: 0.375rem 0.75rem;
+  line-height: 1.6;
+>>>>>>> Stashed changes
   color: #495057;
   content: "Browse";
   background-color: #e9ecef;
@@ -4474,6 +4685,7 @@ input[type="button"].btn-block {
 }
 
 .custom-range:focus::-webkit-slider-thumb {
+<<<<<<< Updated upstream
   -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
           box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
@@ -4484,6 +4696,18 @@ input[type="button"].btn-block {
 
 .custom-range:focus::-ms-thumb {
   box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+=======
+  -webkit-box-shadow: 0 0 0 1px #f5f8fa, 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+          box-shadow: 0 0 0 1px #f5f8fa, 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.custom-range:focus::-moz-range-thumb {
+  box-shadow: 0 0 0 1px #f5f8fa, 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.custom-range:focus::-ms-thumb {
+  box-shadow: 0 0 0 1px #f5f8fa, 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+>>>>>>> Stashed changes
 }
 
 .custom-range::-moz-focus-outer {
@@ -4680,8 +4904,13 @@ input[type="button"].btn-block {
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
   color: #495057;
+<<<<<<< Updated upstream
   background-color: #fff;
   border-color: #dee2e6 #dee2e6 #fff;
+=======
+  background-color: #f5f8fa;
+  border-color: #dee2e6 #dee2e6 #f5f8fa;
+>>>>>>> Stashed changes
 }
 
 .nav-tabs .dropdown-menu {
@@ -4757,10 +4986,17 @@ input[type="button"].btn-block {
 
 .navbar-brand {
   display: inline-block;
+<<<<<<< Updated upstream
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
   margin-right: 1rem;
   font-size: 1.25rem;
+=======
+  padding-top: 0.32rem;
+  padding-bottom: 0.32rem;
+  margin-right: 1rem;
+  font-size: 1.125rem;
+>>>>>>> Stashed changes
   line-height: inherit;
   white-space: nowrap;
 }
@@ -4812,7 +5048,11 @@ input[type="button"].btn-block {
 
 .navbar-toggler {
   padding: 0.25rem 0.75rem;
+<<<<<<< Updated upstream
   font-size: 1.25rem;
+=======
+  font-size: 1.125rem;
+>>>>>>> Stashed changes
   line-height: 1;
   background-color: transparent;
   border: 1px solid transparent;
@@ -5605,7 +5845,11 @@ input[type="button"].btn-block {
 
 .pagination-lg .page-link {
   padding: 0.75rem 1.5rem;
+<<<<<<< Updated upstream
   font-size: 1.25rem;
+=======
+  font-size: 1.125rem;
+>>>>>>> Stashed changes
   line-height: 1.5;
 }
 
@@ -5621,7 +5865,11 @@ input[type="button"].btn-block {
 
 .pagination-sm .page-link {
   padding: 0.25rem 0.5rem;
+<<<<<<< Updated upstream
   font-size: 0.875rem;
+=======
+  font-size: 0.7875rem;
+>>>>>>> Stashed changes
   line-height: 1.5;
 }
 
@@ -5794,7 +6042,11 @@ input[type="button"].btn-block {
 }
 
 .alert-dismissible {
+<<<<<<< Updated upstream
   padding-right: 4rem;
+=======
+  padding-right: 3.85rem;
+>>>>>>> Stashed changes
 }
 
 .alert-dismissible .close {
@@ -5943,7 +6195,11 @@ input[type="button"].btn-block {
   display: flex;
   height: 1rem;
   overflow: hidden;
+<<<<<<< Updated upstream
   font-size: 0.75rem;
+=======
+  font-size: 0.675rem;
+>>>>>>> Stashed changes
   background-color: #e9ecef;
   border-radius: 0.25rem;
 }
@@ -6220,7 +6476,11 @@ input[type="button"].btn-block {
 
 .close {
   float: right;
+<<<<<<< Updated upstream
   font-size: 1.5rem;
+=======
+  font-size: 1.35rem;
+>>>>>>> Stashed changes
   font-weight: 700;
   line-height: 1;
   color: #000;
@@ -6370,7 +6630,11 @@ button.close {
 
 .modal-title {
   margin-bottom: 0;
+<<<<<<< Updated upstream
   line-height: 1.5;
+=======
+  line-height: 1.6;
+>>>>>>> Stashed changes
 }
 
 .modal-body {
@@ -6441,10 +6705,17 @@ button.close {
   z-index: 1070;
   display: block;
   margin: 0;
+<<<<<<< Updated upstream
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
+=======
+  font-family: "Raleway", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.6;
+>>>>>>> Stashed changes
   text-align: left;
   text-align: start;
   text-decoration: none;
@@ -6455,7 +6726,11 @@ button.close {
   word-spacing: normal;
   white-space: normal;
   line-break: auto;
+<<<<<<< Updated upstream
   font-size: 0.875rem;
+=======
+  font-size: 0.7875rem;
+>>>>>>> Stashed changes
   word-wrap: break-word;
   opacity: 0;
 }
@@ -6566,10 +6841,17 @@ button.close {
   z-index: 1060;
   display: block;
   max-width: 276px;
+<<<<<<< Updated upstream
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
+=======
+  font-family: "Raleway", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.6;
+>>>>>>> Stashed changes
   text-align: left;
   text-align: start;
   text-decoration: none;
@@ -6580,7 +6862,11 @@ button.close {
   word-spacing: normal;
   white-space: normal;
   line-break: auto;
+<<<<<<< Updated upstream
   font-size: 0.875rem;
+=======
+  font-size: 0.7875rem;
+>>>>>>> Stashed changes
   word-wrap: break-word;
   background-color: #fff;
   background-clip: padding-box;
@@ -6742,7 +7028,11 @@ button.close {
 .popover-header {
   padding: 0.5rem 0.75rem;
   margin-bottom: 0;
+<<<<<<< Updated upstream
   font-size: 1rem;
+=======
+  font-size: 0.9rem;
+>>>>>>> Stashed changes
   color: inherit;
   background-color: #f7f7f7;
   border-bottom: 1px solid #ebebeb;
