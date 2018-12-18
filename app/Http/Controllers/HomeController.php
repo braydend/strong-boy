@@ -79,9 +79,7 @@ class HomeController extends Controller
         foreach ($exercises as $exercise) {
             $exercise->id;
             $exercise->name;
-            $exercise->date = $exercise->workout_sets()->latest()->first()->created_at->toDateString();
         }
-        $exercises->sortBy('date');
         return response()->json($exercises);
     }
 }
