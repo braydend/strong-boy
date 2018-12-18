@@ -22,6 +22,7 @@ export default class ExerciseCard extends Component {
             sets: [],
             id: props.exercise.id,
             showAdder: false,
+            collapsed: true,
             newData: {
                 date: new Date(),
                 weight: 20,
@@ -165,6 +166,9 @@ export default class ExerciseCard extends Component {
             <Col md={6}>
                 <div className="card text-center">
                     <div className="card-header">
+                        <span className="maximise_card">
+                            <img src="icons/baseline_keyboard_arrow_down_black_18dp.png" onClick={() => this.setState({collapsed: !this.state.collapsed})}/>
+                        </span>
                         <span className="h3"><b>{this.props.exercise.name}</b></span>
                         <span className="exercise_icons">
                             <button className="btn btn-primary" title="Add Workout" id="quckAddSet" onClick={() => this.toggleQuickAdder()}>
@@ -175,129 +179,131 @@ export default class ExerciseCard extends Component {
                             </a>
                         </span>
                     </div>
-                    <Row className="card-body">
-                        <Collapse isOpened={this.state.showAdder}>
-                            <Row>
-                                <Col>
-                                    <DatePicker selected={this.state.newData.date} onChange={this.handleDateChange}/>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col>
-                                    <Row>
-                                        <Col>
-                                            Warmup
-                                        </Col>
-                                    </Row>
-                                    <Row>
-                                        <Col>
-                                            <Button
-                                                variant={this.state.newData.config.warmup ? "secondary" : "outline-secondary"}
-                                                type="radio"
-                                                size="sm"
-                                                onClick={() => this.changeWarmup(true)}
-
-                                            >
+                    <Collapse isOpened={!this.state.collapsed}>
+                        <Row className="card-body">
+                            <Collapse isOpened={this.state.showAdder}>
+                                <Row>
+                                    <Col>
+                                        <DatePicker selected={this.state.newData.date} onChange={this.handleDateChange}/>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col>
+                                        <Row>
+                                            <Col>
                                                 Warmup
-                                            </Button>
-                                        </Col>
-                                    </Row>
-                                    <Row>
-                                        <Col>
-                                            <Button
-                                                variant={this.state.newData.config.warmup ? "outline-success" : "success"}
-                                                type="radio"
-                                                size="sm"
-                                                onClick={() => this.changeWarmup(false)}
-                                            >
-                                                Real
-                                            </Button>
-                                        </Col>
-                                    </Row>
-                                </Col>
-                                <Col>
-                                    Weight
-                                    <Row>
-                                        <Col>
-                                            <InputGroup>
-                                                <InputGroup.Prepend>
-                                                    <Button size="sm" variant="warning" onClick={() => {this.changeWeight(-5)}}>-5</Button>
-                                                </InputGroup.Prepend>
-                                               <FormControl size="sm" value={this.state.newData.weight}/>
-                                                <InputGroup.Append>
-                                                    <Button size="sm" variant="success" onClick={() => {this.changeWeight(10)}}>10</Button>
-                                                </InputGroup.Append>
-                                            </InputGroup>
-                                        </Col>
-                                    </Row>
-                                    <Row>
-                                        <Col>
-                                            <Button
-                                                variant={this.state.newData.config.lb ? "info" : "outline-info"}
-                                                size="sm"
-                                                onClick={() => this.changeWeightFormatToLb(true)}
-                                            >
-                                                LB
-                                            </Button>
-                                            <Button
-                                                variant={this.state.newData.config.lb ? "outline-info" : "info"}
-                                                size="sm"
-                                                onClick={() => this.changeWeightFormatToLb(false)}
-                                            >
-                                                KG
-                                            </Button>
-                                        </Col>
-                                    </Row>
-                                </Col>
-                                <Col>
-                                    Reps
-                                    <Row>
-                                        <Col>
-                                            <InputGroup className="mb-1">
-                                                <InputGroup.Prepend>
-                                                    <Button size="sm" variant="danger" onClick={() => {this.changeReps(-1)}}>-</Button>
-                                                </InputGroup.Prepend>
-                                                    <FormControl size="sm" value={this.state.newData.reps}/>
-                                                <InputGroup.Append>
-                                                    <Button size="sm" variant="success" onClick={() => {this.changeReps(1)}}>+</Button>
-                                                </InputGroup.Append>
-                                            </InputGroup>
-                                        </Col>
-                                    </Row>
-                                </Col>
-                                <Col>
-                                    Save
-                                    <Row>
-                                        <Col>
-                                            <Button variant="success" size="sm" onClick={() => this.saveSetToCard()}>
-                                                <img src="icons/baseline_check_circle_outline_white_18dp.png"/>
-                                            </Button>
-                                            <Button variant="danger" size="sm" onClick={() => this.resetForm()}>
-                                                <img src="icons/baseline_close_white_18dp.png"/>
-                                            </Button>
-                                        </Col>
-                                    </Row>
-                                </Col>
-                            </Row>
-                        </Collapse>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <Table responsive>
-                                <thead>
-                                <tr>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Weight (KG)</th>
-                                    <th scope="col">Reps</th>
-                                    <th scope="col"></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                    {this.state.sets}
-                                </tbody>
-                            </Table>
-                        </Col>
-                    </Row>
+                                            </Col>
+                                        </Row>
+                                        <Row>
+                                            <Col>
+                                                <Button
+                                                    variant={this.state.newData.config.warmup ? "secondary" : "outline-secondary"}
+                                                    type="radio"
+                                                    size="sm"
+                                                    onClick={() => this.changeWarmup(true)}
+
+                                                >
+                                                    Warmup
+                                                </Button>
+                                            </Col>
+                                        </Row>
+                                        <Row>
+                                            <Col>
+                                                <Button
+                                                    variant={this.state.newData.config.warmup ? "outline-success" : "success"}
+                                                    type="radio"
+                                                    size="sm"
+                                                    onClick={() => this.changeWarmup(false)}
+                                                >
+                                                    Real
+                                                </Button>
+                                            </Col>
+                                        </Row>
+                                    </Col>
+                                    <Col>
+                                        Weight
+                                        <Row>
+                                            <Col>
+                                                <InputGroup>
+                                                    <InputGroup.Prepend>
+                                                        <Button size="sm" variant="warning" onClick={() => {this.changeWeight(-5)}}>-5</Button>
+                                                    </InputGroup.Prepend>
+                                                   <FormControl size="sm" value={this.state.newData.weight}/>
+                                                    <InputGroup.Append>
+                                                        <Button size="sm" variant="success" onClick={() => {this.changeWeight(10)}}>10</Button>
+                                                    </InputGroup.Append>
+                                                </InputGroup>
+                                            </Col>
+                                        </Row>
+                                        <Row>
+                                            <Col>
+                                                <Button
+                                                    variant={this.state.newData.config.lb ? "info" : "outline-info"}
+                                                    size="sm"
+                                                    onClick={() => this.changeWeightFormatToLb(true)}
+                                                >
+                                                    LB
+                                                </Button>
+                                                <Button
+                                                    variant={this.state.newData.config.lb ? "outline-info" : "info"}
+                                                    size="sm"
+                                                    onClick={() => this.changeWeightFormatToLb(false)}
+                                                >
+                                                    KG
+                                                </Button>
+                                            </Col>
+                                        </Row>
+                                    </Col>
+                                    <Col>
+                                        Reps
+                                        <Row>
+                                            <Col>
+                                                <InputGroup className="mb-1">
+                                                    <InputGroup.Prepend>
+                                                        <Button size="sm" variant="danger" onClick={() => {this.changeReps(-1)}}>-</Button>
+                                                    </InputGroup.Prepend>
+                                                        <FormControl size="sm" value={this.state.newData.reps}/>
+                                                    <InputGroup.Append>
+                                                        <Button size="sm" variant="success" onClick={() => {this.changeReps(1)}}>+</Button>
+                                                    </InputGroup.Append>
+                                                </InputGroup>
+                                            </Col>
+                                        </Row>
+                                    </Col>
+                                    <Col>
+                                        Save
+                                        <Row>
+                                            <Col>
+                                                <Button variant="success" size="sm" onClick={() => this.saveSetToCard()}>
+                                                    <img src="icons/baseline_check_circle_outline_white_18dp.png"/>
+                                                </Button>
+                                                <Button variant="danger" size="sm" onClick={() => this.resetForm()}>
+                                                    <img src="icons/baseline_close_white_18dp.png"/>
+                                                </Button>
+                                            </Col>
+                                        </Row>
+                                    </Col>
+                                </Row>
+                            </Collapse>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <Table responsive>
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Weight (KG)</th>
+                                        <th scope="col">Reps</th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        {this.state.sets}
+                                    </tbody>
+                                </Table>
+                            </Col>
+                        </Row>
+                    </Collapse>
                 </div>
                 <hr />
             </Col>

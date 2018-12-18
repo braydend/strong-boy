@@ -7,14 +7,13 @@ export default class Dashboard extends Component{
     constructor(props){
         super(props);
         this.state = {
-          exercises: {}
             loading: true,
+            exercises: {}
         };
         this.updateDashboard();
     }
 
     updateDashboard(){
-        console.log("update dashboard");
         axios.get(`/ajax/exercise`)
             .then(res => {
                 console.log(res.data);

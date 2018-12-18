@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import Dashboard from './components/Dashboard';
 /**
@@ -12,8 +12,5 @@ import Dashboard from './components/Dashboard';
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
-require('./ajax');
-
 
 ReactDOM.render(<Dashboard />, document.getElementById('dashboard'));
