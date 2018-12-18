@@ -29,3 +29,10 @@ Route::Resource('/sets', 'WorkoutSetController');
 Route::get('/faker/exercise', 'TestController@FakeExercises');
 
 Route::get('/faker/set', 'TestController@FakeSets');
+
+//Routes for testing AJAX
+Route::get('/ajax/exercise', 'HomeController@indexData');
+Route::get('/ajax/exercise/{id}/btns', 'ExerciseController@GetButtons');
+Route::get('/ajax/exercise/{id}/sets', 'ExerciseController@getSetsForDashboard');
+Route::post('/ajax/set/store', 'WorkoutSetController@saveAjax');
+Route::post('/ajax/set/{id}/update', 'WorkoutSetController@updateAjax');
