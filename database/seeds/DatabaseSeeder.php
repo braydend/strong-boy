@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         }else{
             print ("YOU ARE IN A PRODUCTION ENVIRONMENT. IF YOU WISH TO CREATE A TEST ACCOUNT, YOU MUST DO SO IN THE APPLICATION");
         }
+        $this->call(ExerciseSeeder::class);
     }
 }
