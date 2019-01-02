@@ -1,12 +1,13 @@
-//Custom styles
-@import "dashboard";
-@import "mobile";
-
 // Variables
 @import "variables";
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+//Custom styles
+@import "dashboard";
+@import "mobile";
+@import "login";
 
 .navbar-laravel {
   background-color: #fff;

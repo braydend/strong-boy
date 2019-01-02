@@ -46,9 +46,6 @@
                       </div>
                   </div>
               @endif
-
-              <div id="exercise-card">
-              </div>
               @yield('content')
           </main>
         </div>
