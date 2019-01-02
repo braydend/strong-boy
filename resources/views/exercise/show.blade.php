@@ -16,6 +16,18 @@
         </div>
     </div>
     <br />
+    @if(count($muscles) > 0)
+        <div class="row">
+            <div class="col">
+                <h3 class="h3">The exercise works on:</h3>
+                <ul>
+                    @foreach($muscles as $muscle)
+                        <li>{{$muscle->name}}</li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    @endif
     <div class="row">
       <div class="col-md">
         <a href="{{ URL::to('/sets/create/' . $exercise->id)  }}" class="btn btn-primary" title="Add Workout">

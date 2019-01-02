@@ -13,21 +13,25 @@ class TestAccountSeeder extends Seeder
      */
     public function run()
     {
-        $exists = false;
-        foreach (User::all() as $user){
-            if ($user->email == 'test@email.com'){
-                $exists = true;
+        if(getenv('APP_DEBUG')) {
+            $exists = false;
+            foreach (User::all() as $user){
+                if ($user->email == 'test@email.com'){
+                    $exists = true;
+                }
             }
-        }
-        if(!$exists) {
-            DB::table('users')->insert([
-                'name' => 'Test',
-                'email' => 'test@email.com',
-                'password' => bcrypt('testpass'),
-            ]);
-            print ("TEST ACCOUNT CREATED\n");
+            if(!$exists) {
+                DB::table('users')->insert([
+                    'name' => 'Test',
+                    'email' => 'test@email.com',
+                    'password' => bcrypt('testpass'),
+                ]);
+                print ("TEST ACCOUNT CREATED\n");
+            }else{
+                print ("TEST ACCOUNT ALREADY ACTIVE\n");
+            }
         }else{
-            print ("TEST ACCOUNT ALREADY ACTIVE\n");
+            print ("YOU ARE IN A PRODUCTION ENVIRONMENT. IF YOU WISH TO CREATE A TEST ACCOUNT, YOU MUST DO SO IN THE APPLICATION");
         }
     }
 }
