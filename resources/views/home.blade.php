@@ -6,5 +6,4 @@
 
 @section('content')
 <div id="dashboard"></div>
-  <div id="modal"></div>
 @endsection
