@@ -11,6 +11,10 @@ class Exercise extends Model
     protected $fillable = ['name'];
     protected $hidden = ['created_at', 'updated_at'];
 
+    public function muscles(){
+        return $this->belongsToMany('App\Muscle');
+    }
+
     public function workout_sets(){
         $user_id = Auth::user()->id;
         return $this->hasMany('App\WorkoutSet')->where('user_id', $user_id)->orderBy('created_at');

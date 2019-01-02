@@ -137,6 +137,8 @@ class ExerciseController extends Controller
            'pointSize' => 5
         ]);
 
+        //Get associated muscles
+         $muscles = $exercise->muscles()->get();
         //Store personal best
         $pb = $user->workout_sets()->where('exercise_id', '=', $id)->where('warmup', '0')->orderBy('weight', 'desc')->first()['id'];
         //get all sets
@@ -145,7 +147,8 @@ class ExerciseController extends Controller
          return View::make('exercise.show')
            ->with('exercise', $exercise)
            ->with('sets', $sets)
-           ->with('pb_id', $pb);
+           ->with('pb_id', $pb)
+            ->with('muscles', $muscles);
      }
 
      /**
