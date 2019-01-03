@@ -211,7 +211,6 @@ export default class ExerciseCard extends Component {
                             </a>
                         </span>
                     </div>
-                    <Collapse isOpened={!this.state.collapsed}>
                         <Row className="card-body">
                             <Collapse isOpened={this.state.showAdder}>
                                 <Row>
@@ -318,6 +317,7 @@ export default class ExerciseCard extends Component {
                                 </Row>
                             </Collapse>
                         </Row>
+                    <Collapse isOpened={!this.state.collapsed}>
                         <Row>
                             <Col>
                                 <Table responsive>
