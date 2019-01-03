@@ -34,6 +34,38 @@ export default class ExerciseCard extends Component {
             }
         };
         this.handleDateChange = this.handleDateChange.bind(this);
+        this.handleQuickAddChange = this.handleQuickAddChange.bind(this);
+    }
+
+    handleQuickAddChange(event){
+        switch(event.target.name){
+            case "weight":
+                this.setState({
+                    newData: {
+                        date: this.state.newData.date,
+                        weight: event.target.value,
+                        reps: this.state.newData.reps,
+                        config: {
+                            warmup: this.state.newData.config.warmup,
+                            lb: this.state.newData.config.lb
+                        }
+                    }
+                });
+                break;
+            case "reps":
+                this.setState({
+                    newData: {
+                        date: this.state.newData.date,
+                        weight: this.state.newData.weight,
+                        reps: event.target.value,
+                        config: {
+                            warmup: this.state.newData.config.warmup,
+                            lb: this.state.newData.config.lb
+                        }
+                    }
+                });
+                break;
+        }
     }
 
     componentDidMount() {
@@ -179,7 +211,6 @@ export default class ExerciseCard extends Component {
                             </a>
                         </span>
                     </div>
-                    <Collapse isOpened={!this.state.collapsed}>
                         <Row className="card-body">
                             <Collapse isOpened={this.state.showAdder}>
                                 <Row>
@@ -228,7 +259,7 @@ export default class ExerciseCard extends Component {
                                                     <InputGroup.Prepend>
                                                         <Button size="sm" variant="warning" onClick={() => {this.changeWeight(-5)}}>-5</Button>
                                                     </InputGroup.Prepend>
-                                                   <FormControl size="sm" value={this.state.newData.weight}/>
+                                                   <FormControl size="sm" name="weight" value={this.state.newData.weight} onChange={this.handleQuickAddChange}/>
                                                     <InputGroup.Append>
                                                         <Button size="sm" variant="success" onClick={() => {this.changeWeight(10)}}>10</Button>
                                                     </InputGroup.Append>
@@ -262,7 +293,7 @@ export default class ExerciseCard extends Component {
                                                     <InputGroup.Prepend>
                                                         <Button size="sm" variant="danger" onClick={() => {this.changeReps(-1)}}>-</Button>
                                                     </InputGroup.Prepend>
-                                                        <FormControl size="sm" value={this.state.newData.reps}/>
+                                                        <FormControl name="reps" size="sm" value={this.state.newData.reps} onChange={this.handleQuickAddChange}/>
                                                     <InputGroup.Append>
                                                         <Button size="sm" variant="success" onClick={() => {this.changeReps(1)}}>+</Button>
                                                     </InputGroup.Append>
@@ -286,6 +317,7 @@ export default class ExerciseCard extends Component {
                                 </Row>
                             </Collapse>
                         </Row>
+                    <Collapse isOpened={!this.state.collapsed}>
                         <Row>
                             <Col>
                                 <Table responsive>
