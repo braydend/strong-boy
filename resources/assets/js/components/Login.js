@@ -229,7 +229,7 @@ export default class Dashboard extends Component {
 
     render(){
         return(
-            <Row>
+            <Row id="login-card">
                 <Col className="text-center">
                     <Collapse isOpened={this.state.message !== undefined}>
                         <Card bg="danger" text="white">{this.state.message}</Card>

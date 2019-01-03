@@ -5,7 +5,7 @@
   background-size: 5%;
   background-image: url(/images/background-dumbbell-white-mirror.png);
 
-  .card{
+  #login-card{
     margin-top: 20%;
     @include media-breakpoint-up(sm) {
       width: 80%;
