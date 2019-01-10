@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import ExerciseCardRow from './ExerciseCardRow';
 import {Collapse} from 'react-collapse';
 import axios from "axios";
 import Button from "react-bootstrap/lib/Button";
 import InputGroup from "react-bootstrap/lib/InputGroup";
 import FormControl from "react-bootstrap/lib/FormControl";
-import ButtonGroup from "react-bootstrap/lib/ButtonGroup";
-import ToggleButton from "react-bootstrap/lib/ToggleButton";
 import Row from "react-bootstrap/lib/Row";
 import Col from "react-bootstrap/lib/Col";
 import Table from "react-bootstrap/es/Table";
@@ -129,23 +126,31 @@ export default class ExerciseCard extends Component {
     }
 
     changeWeight(value){
-        this.setState({newData: {
-                warmup: this.state.newData.warmup,
-                date: this.state.newData.date,
-                reps: this.state.newData.reps,
-                weight: this.state.newData.weight + value,
-                config: this.state.newData.config
-            }})
+        if(this.state.newData.weight + value >= 0) {
+            this.setState({
+                newData: {
+                    warmup: this.state.newData.warmup,
+                    date: this.state.newData.date,
+                    reps: this.state.newData.reps,
+                    weight: this.state.newData.weight + value,
+                    config: this.state.newData.config
+                }
+            })
+        }
     }
 
     changeReps(value){
-        this.setState({newData: {
-                warmup: this.state.newData.warmup,
-                date: this.state.newData.date,
-                reps: this.state.newData.reps + value,
-                weight: this.state.newData.weight,
-                config: this.state.newData.config
-            }})
+        if(this.state.newData.reps + value >= 1){
+            this.setState({
+                newData: {
+                    warmup: this.state.newData.warmup,
+                    date: this.state.newData.date,
+                    reps: this.state.newData.reps + value,
+                    weight: this.state.newData.weight,
+                    config: this.state.newData.config
+                }
+            });
+        }
     }
 
     changeWarmup(value){

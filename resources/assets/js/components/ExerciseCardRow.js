@@ -122,7 +122,7 @@ export default class ExerciseCardRow extends Component {
         return(
             <tr>
                 <td>{!this.state.edit ? this.state.date : <InputGroup><FormControl disabled={true} defaultValue={ this.state.date }/></InputGroup>}</td>
-                <td>{!this.state.edit ? this.state.weight : <InputGroup><FormControl name="weight" defaultValue={ this.state.weight } onChange={this.handleChange}/></InputGroup>}</td>
+                <td>{!this.state.edit ? (this.state.weight === 0 ? "Bodyweight" : this.state.weight) : <InputGroup><FormControl name="weight" defaultValue={ this.state.weight } onChange={this.handleChange}/></InputGroup>}</td>
                 <td>{!this.state.edit ? this.state.reps : <InputGroup><FormControl name="reps" defaultValue={ this.state.reps } onChange={this.handleChange}/></InputGroup>}</td>
                 <td hidden={!this.state.edittable}>{ !this.state.edit ? <Button variant="warning" onClick={() => this.toggleEdit()}>Edit</Button> : this.editButtons()}</td>
             </tr>
