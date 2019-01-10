@@ -115,7 +115,7 @@ export default class ExerciseCard extends Component {
         //Clear Data
         this.setState({newData: {
                 warmup: false,
-                date: undefined,
+                date: new Date(),
                 weight: 20,
                 reps: 5,
                 config: {
