@@ -200,7 +200,7 @@ export default class ExerciseCard extends Component {
 
     render() {
         return(
-            <Col md={6}>
+            <Col lg={6}>
                 <div className="card text-center">
                     <div className="card-header">
                         <span className="maximise_card">
