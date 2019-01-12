@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Dashboard from './components/Dashboard';
+import DashboardLayout from './layouts/DashboardLayout';
 import Login from './components/Login';
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -16,7 +16,7 @@ import Login from './components/Login';
 
 if(document.getElementById('dashboard') != undefined)
 {
-    ReactDOM.render(<Dashboard/>, document.getElementById('dashboard'));
+    ReactDOM.render(<DashboardLayout/>, document.getElementById('dashboard'));
 }
 if(document.getElementById('login') != undefined)
 {

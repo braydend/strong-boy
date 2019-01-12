@@ -11,6 +11,7 @@ import Table from "react-bootstrap/es/Table";
 import DatePicker from "react-datepicker/es";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
+import ReactLoading from 'react-loading';
 
 export default class ExerciseCard extends Component {
     constructor(props){
@@ -20,6 +21,7 @@ export default class ExerciseCard extends Component {
             id: props.exercise.id,
             showAdder: false,
             collapsed: true,
+            loading: false,
             newData: {
                 date: new Date(),
                 weight: 20,
@@ -32,8 +34,15 @@ export default class ExerciseCard extends Component {
         };
         this.handleDateChange = this.handleDateChange.bind(this);
         this.handleQuickAddChange = this.handleQuickAddChange.bind(this);
+        this.toggleCollapse = this.toggleCollapse.bind(this);
     }
 
+    toggleCollapse(){
+        if(this.state.collapsed){
+            this.updateSets(this.state.id);
+        }
+        this.setState({collapsed: !this.state.collapsed});
+    }
     handleQuickAddChange(event){
         switch(event.target.name){
             case "weight":
@@ -69,13 +78,12 @@ export default class ExerciseCard extends Component {
         this.updateSets(this.state.id);
     }
 
-    componentWillUnmount() {
-    }
-
     updateSets(id){
+        this.setState({loading: true});
         axios.get('ajax/exercise/' + id + '/sets')
             .then((response) => {
                 console.log(response);
+                this.setState({loading: false});
                 this.setState({sets: []});
                 this.setState({sets: response.data.map((set, i) => <ExerciseCardRow key={i} id={set.id} exercise_id={this.state.id} date={set.date} weight={set.weight} reps={set.reps} />)});
             });
@@ -93,6 +101,7 @@ export default class ExerciseCard extends Component {
         }
         data.date = moment(this.state.newData.date).unix();
         console.log(data);
+        this.setState({loading: true});
         axios.post('ajax/set/store', data)
             .then(() => {
                     this.updateSets(this.state.id);
@@ -204,7 +213,7 @@ export default class ExerciseCard extends Component {
                 <div className="card text-center">
                     <div className="card-header">
                         <span className="maximise_card">
-                            <img src="icons/baseline_keyboard_arrow_down_black_18dp.png" onClick={() => this.setState({collapsed: !this.state.collapsed})}/>
+                            <img src="icons/baseline_keyboard_arrow_down_black_18dp.png" onClick={() => this.toggleCollapse()}/>
                         </span>
                         <span className="h3"><b>{this.props.exercise.name}</b></span>
                         <span className="exercise_icons">
@@ -224,7 +233,7 @@ export default class ExerciseCard extends Component {
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Col>
+                                    <Col lg={3} md={6}>
                                         <Row>
                                             <Col>
                                                 Warmup
@@ -256,7 +265,7 @@ export default class ExerciseCard extends Component {
                                             </Col>
                                         </Row>
                                     </Col>
-                                    <Col>
+                                    <Col lg={3} md={6}>
                                         Weight
                                         <Row>
                                             <Col>
@@ -290,7 +299,7 @@ export default class ExerciseCard extends Component {
                                             </Col>
                                         </Row>
                                     </Col>
-                                    <Col>
+                                    <Col lg={3} md={6}>
                                         Reps
                                         <Row>
                                             <Col>
@@ -306,7 +315,7 @@ export default class ExerciseCard extends Component {
                                             </Col>
                                         </Row>
                                     </Col>
-                                    <Col>
+                                    <Col lg={3} md={6}>
                                         Save
                                         <Row>
                                             <Col>
@@ -325,6 +334,11 @@ export default class ExerciseCard extends Component {
                     <Collapse isOpened={!this.state.collapsed}>
                         <Row>
                             <Col>
+                                <ReactLoading className="centered-loader" type="spin" color="#949494" height="10%" width="10%" hidden={!this.state.loading} />
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col className="justify-content-center">
                                 <Table responsive>
                                     <thead>
                                     <tr>
@@ -335,14 +349,14 @@ export default class ExerciseCard extends Component {
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        {this.state.sets}
+                                    {this.state.sets}
                                     </tbody>
                                 </Table>
                             </Col>
                         </Row>
                     </Collapse>
                 </div>
-                <hr />
+                <br />
             </Col>
         );
     }

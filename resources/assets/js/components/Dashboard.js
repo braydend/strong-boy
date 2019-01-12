@@ -1,47 +1,45 @@
-import React, {Component} from 'react';
-import ExerciseCard from './ExerciseCard';
-import axios from 'axios';
-import ReactLoading from 'react-loading';
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import axios from "axios";
+import ExerciseCard from "./ExerciseCard";
+import {Row, Col} from "react-bootstrap";
 
-export default class Dashboard extends Component{
+export default class Dashboard extends Component {
     constructor(props){
         super(props);
         this.state = {
-            loading: true,
-            exercises: {}
+            cards: undefined
         };
-        this.updateDashboard();
+        this.updateCards = this.updateCards.bind(this);
+        this.updateCards()
     }
 
-    updateDashboard(){
+    updateCards(){
         axios.get(`/ajax/exercise`)
             .then(res => {
-                console.log(res.data);
-                const cards = res.data.map((obj, i) => <ExerciseCard exercise={obj} key={i} updater={this.updateDashboard}/>);
-                console.log(cards);
+                const cards = res.data.map((obj, i) => <ExerciseCard exercise={obj} key={i} />);
                 this.setState({
-                    cards: cards,
-                    loading: false
-                    });
+                    cards: cards
+                });
+            })
+            .catch((error) => {
+                this.setState({
+                    cards:
+                        <Row>
+                            <p>Errors occurred on loading</p>
+                        </Row>
+                });
             });
     }
 
-    componentDidMount() {
-        this.updateDashboard();
-    }
-
-    render(){
-        return(
-            <div className="container">
-                <div className="row">
-                    <div className="col-md text-center">
-                        <h2 className="display-2">Recent Workouts</h2>
-                    </div>
-                </div>
-                <div className="row text-center">
-                    <ReactLoading type="balls" color="#555555" height="5%" width="100%" hidden={!this.state.loading} />
-                    {this.state.cards}
-                </div>
+    render() {
+        return (
+            <div className="dashboard-container">
+                <Row>
+                    <Col>
+                        {this.state.cards}
+                    </Col>
+                </Row>
             </div>
         );
     }
