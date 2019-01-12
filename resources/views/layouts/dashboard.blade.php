@@ -14,43 +14,15 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-      <div class="row">
-        <div class="col-md-2">
-          <div class="dashboard-title">
-            <a href="{{ URL::to('/')  }}">StrongBoy</a>
-          </div>
-        </div>
-        <div class="col-md-10">
-          <div class="dashboard-top">
-            @yield('title')
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2">
-          <nav class="dashboard-nav">
-            <a href="{{ URL::to('/exercise')}}">
-              <div name="dashboard-nav-item">
-                Exercises
-              </div>
-            </a>
-          </nav>
-        </div>
-        <div class="col-md-10">
-          <main class="container dashboard-content">
+
+          <div>
               @if(env("APP_DEBUG"))
-                  <div class="row">
-                      <div class="col-xs alert alert-danger">
-                          <h1>You are currently in development mode</h1>
+                      <div class="mb-1 alert alert-danger dev-mode-banner">
+                          <b>You are currently in development mode</b>
                       </div>
-                  </div>
               @endif
               @yield('content')
-          </main>
-        </div>
-      </div>
-    </div>
+          </div>
 
     <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/jquery.min.js') }}"></script>
