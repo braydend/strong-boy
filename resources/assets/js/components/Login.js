@@ -21,6 +21,7 @@ export default class Dashboard extends Component {
         this.handleReset = this.handleReset.bind(this);
         this.handleRegistration = this.handleRegistration.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
+        this.handleEnterOnLogin = this.handleEnterOnLogin.bind(this);
     }
 
     handleRegistration(){
@@ -105,6 +106,11 @@ export default class Dashboard extends Component {
         );
     }
 
+    handleEnterOnLogin(){
+        console.log("enter on login");
+        this.handleLogin();
+    }
+
     login(){
         return(
             <Card>
@@ -120,7 +126,7 @@ export default class Dashboard extends Component {
                                     <InputGroup.Prepend>
                                         <InputGroup.Text>@</InputGroup.Text>
                                     </InputGroup.Prepend>
-                                <Form.Control type="email" name="email" placeholder="email@here.com" value={this.state.email} onChange={this.handleChange} />
+                                <Form.Control type="email" name="email" placeholder="email@here.com" value={this.state.email} onKeyPress={this.handleEnterOnLogin} onChange={this.handleChange} />
                                 </InputGroup>
                             </Col>
                         </Form.Group>
@@ -131,7 +137,7 @@ export default class Dashboard extends Component {
                                     <InputGroup.Prepend>
                                         <InputGroup.Text>***</InputGroup.Text>
                                     </InputGroup.Prepend>
-                                 <Form.Control type="password" name="password" placeholder="YourSecretPassword" value={this.state.password} onChange={this.handleChange} />
+                                 <Form.Control type="password" name="password" placeholder="YourSecretPassword" value={this.state.password} onKeyPress={this.handleEnterOnLogin} onChange={this.handleChange} />
                                 </InputGroup>
                             </Col>
                         </Form.Group>
@@ -170,7 +176,7 @@ export default class Dashboard extends Component {
                                     <InputGroup.Prepend>
                                         <InputGroup.Text>ABC</InputGroup.Text>
                                     </InputGroup.Prepend>
-                                    <Form.Control type="text" name="name" placeholder="Your Name" value={this.state.name} onChange={this.handleChange} />
+                                    <Form.Control type="text" name="name" placeholder="Your Name" value={this.state.name} onKeyPress={this.handleEnterOnLogin} onChange={this.handleChange} />
                                 </InputGroup>
                             </Col>
                         </Form.Group>
@@ -181,7 +187,7 @@ export default class Dashboard extends Component {
                                     <InputGroup.Prepend>
                                         <InputGroup.Text>@</InputGroup.Text>
                                     </InputGroup.Prepend>
-                                    <Form.Control type="email" name="email" placeholder="email@here.com" value={this.state.email} onChange={this.handleChange} />
+                                    <Form.Control type="email" name="email" placeholder="email@here.com" value={this.state.email} onKeyPress={this.handleEnterOnLogin} onChange={this.handleChange} />
                                 </InputGroup>
                             </Col>
                         </Form.Group>
@@ -192,7 +198,7 @@ export default class Dashboard extends Component {
                                     <InputGroup.Prepend>
                                         <InputGroup.Text>***</InputGroup.Text>
                                     </InputGroup.Prepend>
-                                    <Form.Control type="password" name="password" placeholder="YourSecretPassword" value={this.state.password} onChange={this.handleChange} />
+                                    <Form.Control type="password" name="password" placeholder="YourSecretPassword" value={this.state.password} onKeyPress={this.handleEnterOnLogin} onChange={this.handleChange} />
                                 </InputGroup>
                             </Col>
                         </Form.Group>
@@ -203,7 +209,7 @@ export default class Dashboard extends Component {
                                     <InputGroup.Prepend>
                                         <InputGroup.Text>***</InputGroup.Text>
                                     </InputGroup.Prepend>
-                                    <Form.Control type="password" name="passwordC" placeholder="YourSecretPassword" value={this.state.passwordC} onChange={this.handleChange} />
+                                    <Form.Control type="password" name="passwordC" placeholder="YourSecretPassword" value={this.state.passwordC} onKeyPress={this.handleEnterOnLogin} onChange={this.handleChange} />
                                 </InputGroup>
                             </Col>
                         </Form.Group>
