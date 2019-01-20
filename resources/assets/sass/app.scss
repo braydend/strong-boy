@@ -9,6 +9,9 @@
 @import "mobile";
 @import "login";
 
+@import "pages/_exercises";
+@import "pages/_sets";
+
 body{
   background-color: $background-color;
   background-image: url(/images/background-dumbbell-white-mirror.png);
