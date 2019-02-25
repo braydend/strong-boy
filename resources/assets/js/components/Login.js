@@ -106,9 +106,10 @@ export default class Dashboard extends Component {
         );
     }
 
-    handleEnterOnLogin(){
-        console.log("enter on login");
-        this.handleLogin();
+    handleEnterOnLogin(event){
+        if(event.key === 'Enter') {
+            this.handleLogin();
+        }
     }
 
     login(){
