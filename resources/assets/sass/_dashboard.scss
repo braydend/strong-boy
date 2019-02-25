@@ -44,8 +44,11 @@ $dashboard-content-width: 80%;
 }
 
 .dashboard-container{
-  padding-left: 15px;
-  padding-right: 15px;
+
+  padding: 15px 15px 0px 15px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
   height: 100%;
   @include media-breakpoint-up(md) {
     width: $dashboard-content-width;
@@ -54,6 +57,7 @@ $dashboard-content-width: 80%;
   }
   @include media-breakpoint-down(lg) {
     width: 100%;
+    margin-left: 0px;
   }
 }
 
