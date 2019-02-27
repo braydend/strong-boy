@@ -35,6 +35,25 @@ export default class Dashboard extends Component {
     render() {
         return (
             <div className="dashboard-container">
+                <div className="dashboard-stats">
+                    <div className="stat">
+                        <h3>Current Weight</h3>
+                        <h1>70KG</h1>
+                    </div>
+                    <div className="stat">
+                        <h3>Sets Logged</h3>
+                        <h1>69</h1>
+                    </div>
+                    <div className="stat">
+                        <h3>Streak</h3>
+                        <h1>2 Days</h1>
+                        <small>Best: 10 Days</small>
+                    </div>
+                    <div className="stat">
+                        <h3>Most Logged</h3>
+                        <h1>Bench Press</h1>
+                    </div>
+                </div>
                 <Row>
                     <Col>
                         {this.state.cards}
