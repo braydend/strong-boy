@@ -36,3 +36,4 @@ Route::get('/ajax/exercise/{id}/btns', 'ExerciseController@GetButtons');
 Route::get('/ajax/exercise/{id}/sets', 'ExerciseController@getSetsForDashboard');
 Route::post('/ajax/set/store', 'WorkoutSetController@saveAjax');
 Route::post('/ajax/set/{id}/update', 'WorkoutSetController@updateAjax');
+Route::get('/ajax/dashboard-stats', 'HomeController@dashboardStats');

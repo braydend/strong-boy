@@ -82,4 +82,33 @@ class HomeController extends Controller
         }
         return response()->json($exercises);
     }
+
+    public function dashboardStats()
+    {
+        $user = Auth::user();
+        $weight = "Current Unavailable";
+        $sets = $user->workout_sets()->count();
+        $bestStreak = "Currently Unavailable";
+        $currentStreak = "Currently Unavailable";
+        // Get most common exercise
+        $mostCommonExerciseData = ["id" => 0, "count" => 0];
+        foreach (Exercise::all() as $exercise){
+            $count = $exercise->workout_sets()
+                                ->where("user_id", $user->id)
+                                ->count();
+            if($count > $mostCommonExerciseData["count"]){
+                $mostCommonExerciseData["id"] = $exercise->id;
+                $mostCommonExerciseData["count"] = $count;
+            }
+        }
+        $exercise = Exercise::find($mostCommonExerciseData["id"])->name;
+        $data = [
+            "weight" => $weight,
+            "sets" => $sets,
+            "bestStreak" => $bestStreak,
+            "currentStreak" => $currentStreak,
+            "exercise" => $exercise
+        ];
+        return response()->json($data);
+    }
 }
