@@ -74,10 +74,6 @@ export default class ExerciseCard extends Component {
         }
     }
 
-    componentDidMount() {
-        this.updateSets(this.state.id);
-    }
-
     updateSets(id){
         this.setState({loading: true});
         axios.get('ajax/exercise/' + id + '/sets')
