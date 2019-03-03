@@ -221,7 +221,7 @@ export default class ExerciseCard extends Component {
                             </a>
                         </span>
                     </div>
-                    <Row className="card-body">
+                    <div className="card-body">
                         <Collapse className="quickadder-collapse" isOpened={this.state.showAdder}>
                             <div className="quickadder-date">
                                 <span className="date-title">Date:</span>
@@ -288,15 +288,11 @@ export default class ExerciseCard extends Component {
                                 </div>
                             </div>
                         </Collapse>
-                    </Row>
-                    <Collapse isOpened={!this.state.collapsed}>
-                        <Row>
-                            <Col>
+                        <Collapse isOpened={!this.state.collapsed}>
+                            <div className="loader">
                                 <ReactLoading className="centered-loader" type="spin" color="#949494" height="10%" width="10%" hidden={!this.state.loading} />
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col className="justify-content-center">
+                            </div>
+                            <div className="card-data">
                                 <Table responsive>
                                     <thead>
                                     <tr>
@@ -307,15 +303,15 @@ export default class ExerciseCard extends Component {
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {this.state.sets}
+                                        {this.state.sets}
                                     </tbody>
                                 </Table>
-                            </Col>
-                        </Row>
-                    </Collapse>
+                            </div>
+                        </Collapse>
+                    </div>
                 </div>
                 <br />
-            </Col>
+            </div>
         );
     }
 }
