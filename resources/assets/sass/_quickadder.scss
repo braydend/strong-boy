@@ -1,0 +1,25 @@
+.quickadder-collapse{
+  width: 100%;
+}
+
+.quickadder-date{
+  span{
+    margin-right: 5px;
+  }
+}
+
+.quickadder-values{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  .warmup, .warmup, .reps, .save{
+    display: flex;
+    flex-direction: column;
+
+    .number-field{
+      max-width: 8em;
+      min-width: 4em;
+    }
+  }
+}

@@ -221,112 +221,74 @@ export default class ExerciseCard extends Component {
                             </a>
                         </span>
                     </div>
-                        <Row className="card-body">
-                            <Collapse isOpened={this.state.showAdder}>
-                                <Row>
-                                    <Col>
-                                        <DatePicker selected={this.state.newData.date} onChange={this.handleDateChange}/>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col lg={3} md={6}>
-                                        <Row>
-                                            <Col>
-                                                Warmup
-                                            </Col>
-                                        </Row>
-                                        <Row>
-                                            <Col>
-                                                <Button
-                                                    variant={this.state.newData.config.warmup ? "secondary" : "outline-secondary"}
-                                                    type="radio"
-                                                    size="sm"
-                                                    onClick={() => this.changeWarmup(true)}
-
-                                                >
-                                                    Warmup
-                                                </Button>
-                                            </Col>
-                                        </Row>
-                                        <Row>
-                                            <Col>
-                                                <Button
-                                                    variant={this.state.newData.config.warmup ? "outline-success" : "success"}
-                                                    type="radio"
-                                                    size="sm"
-                                                    onClick={() => this.changeWarmup(false)}
-                                                >
-                                                    Real
-                                                </Button>
-                                            </Col>
-                                        </Row>
-                                    </Col>
-                                    <Col lg={3} md={6}>
-                                        Weight
-                                        <Row>
-                                            <Col>
-                                                <InputGroup>
-                                                    <InputGroup.Prepend>
-                                                        <Button size="sm" variant="warning" onClick={() => {this.changeWeight(-5)}}>-5</Button>
-                                                    </InputGroup.Prepend>
-                                                   <FormControl size="sm" name="weight" type="number" value={this.state.newData.weight} onChange={this.handleQuickAddChange}/>
-                                                    <InputGroup.Append>
-                                                        <Button size="sm" variant="success" onClick={() => {this.changeWeight(10)}}>10</Button>
-                                                    </InputGroup.Append>
-                                                </InputGroup>
-                                            </Col>
-                                        </Row>
-                                        <Row>
-                                            <Col>
-                                                <Button
-                                                    variant={this.state.newData.config.lb ? "info" : "outline-info"}
-                                                    size="sm"
-                                                    onClick={() => this.changeWeightFormatToLb(true)}
-                                                >
-                                                    LB
-                                                </Button>
-                                                <Button
-                                                    variant={this.state.newData.config.lb ? "outline-info" : "info"}
-                                                    size="sm"
-                                                    onClick={() => this.changeWeightFormatToLb(false)}
-                                                >
-                                                    KG
-                                                </Button>
-                                            </Col>
-                                        </Row>
-                                    </Col>
-                                    <Col lg={3} md={6}>
-                                        Reps
-                                        <Row>
-                                            <Col>
-                                                <InputGroup className="mb-1">
-                                                    <InputGroup.Prepend>
-                                                        <Button size="sm" variant="danger" onClick={() => {this.changeReps(-1)}}>-</Button>
-                                                    </InputGroup.Prepend>
-                                                        <FormControl name="reps" type="number" size="sm" value={this.state.newData.reps} onChange={this.handleQuickAddChange}/>
-                                                    <InputGroup.Append>
-                                                        <Button size="sm" variant="success" onClick={() => {this.changeReps(1)}}>+</Button>
-                                                    </InputGroup.Append>
-                                                </InputGroup>
-                                            </Col>
-                                        </Row>
-                                    </Col>
-                                    <Col lg={3} md={6}>
-                                        Save
-                                        <Row>
-                                            <Col>
-                                                <Button variant="success" size="sm" onClick={() => this.saveSetToCard()}>
-                                                    <img src="icons/baseline_check_circle_outline_white_18dp.png"/>
-                                                </Button>
-                                                <Button variant="danger" size="sm" onClick={() => this.resetForm()}>
-                                                    <img src="icons/baseline_close_white_18dp.png"/>
-                                                </Button>
-                                            </Col>
-                                        </Row>
-                                    </Col>
-                                </Row>
-                            </Collapse>
-                        </Row>
+                    <Row className="card-body">
+                        <Collapse className="quickadder-collapse" isOpened={this.state.showAdder}>
+                            <div className="quickadder-date">
+                                <span className="date-title">Date:</span>
+                                <DatePicker selected={this.state.newData.date} onChange={this.handleDateChange}/>
+                            </div>
+                            <div className="quickadder-values">
+                                <div className="warmup">
+                                    <span>Warmup</span>
+                                    <Button variant={this.state.newData.config.warmup ? "secondary" : "outline-secondary"}
+                                            type="radio"
+                                            size="sm"
+                                            onClick={() => this.changeWarmup(true)}>
+                                        Warmup
+                                    </Button>
+                                    <Button variant={this.state.newData.config.warmup ? "outline-success" : "success"}
+                                            type="radio"
+                                            size="sm"
+                                            onClick={() => this.changeWarmup(false)}>
+                                        Real
+                                    </Button>
+                                </div>
+                                <div className="weight">
+                                    <span>Weight</span>
+                                    <InputGroup>
+                                        <InputGroup.Prepend>
+                                            <Button size="sm" variant="warning" onClick={() => {this.changeWeight(-5)}}>-5</Button>
+                                        </InputGroup.Prepend>
+                                        <FormControl size="sm" className="number-field" name="weight" value={this.state.newData.weight} onChange={this.handleQuickAddChange}/>
+                                        <InputGroup.Append>
+                                            <Button size="sm" variant="success" onClick={() => {this.changeWeight(10)}}>10</Button>
+                                        </InputGroup.Append>
+                                    </InputGroup>
+                                    <Button variant={this.state.newData.config.lb ? "info" : "outline-info"}
+                                            size="sm"
+                                            onClick={() => this.changeWeightFormatToLb(true)}>
+                                        LB
+                                    </Button>
+                                    <Button variant={this.state.newData.config.lb ? "outline-info" : "info"}
+                                            size="sm"
+                                            onClick={() => this.changeWeightFormatToLb(false)}>
+                                        KG
+                                    </Button>
+                                </div>
+                                <div className="reps">
+                                    <span>Reps</span>
+                                    <InputGroup className="mb-1">
+                                        <InputGroup.Prepend>
+                                            <Button size="sm" variant="danger" onClick={() => {this.changeReps(-1)}}>-</Button>
+                                        </InputGroup.Prepend>
+                                        <FormControl name="reps" size="sm" className="number-field" value={this.state.newData.reps} onChange={this.handleQuickAddChange}/>
+                                        <InputGroup.Append>
+                                            <Button size="sm" variant="success" onClick={() => {this.changeReps(1)}}>+</Button>
+                                        </InputGroup.Append>
+                                    </InputGroup>
+                                </div>
+                                <div className="save">
+                                    <span>Save</span>
+                                    <Button variant="success" size="sm" onClick={() => this.saveSetToCard()}>
+                                        <img src="icons/baseline_check_circle_outline_white_18dp.png"/>
+                                    </Button>
+                                    <Button variant="danger" size="sm" onClick={() => this.resetForm()}>
+                                        <img src="icons/baseline_close_white_18dp.png"/>
+                                    </Button>
+                                </div>
+                            </div>
+                        </Collapse>
+                    </Row>
                     <Collapse isOpened={!this.state.collapsed}>
                         <Row>
                             <Col>
