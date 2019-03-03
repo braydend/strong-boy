@@ -205,14 +205,15 @@ export default class ExerciseCard extends Component {
 
     render() {
         return(
-            <Col md={6}>
+            <div className="card-container">
                 <div className="card text-center">
                     <div className="card-header">
-                        <span className="maximise_card">
-                            <img src="icons/baseline_keyboard_arrow_down_black_18dp.png" onClick={() => this.toggleCollapse()}/>
+                        <span className="maximise-card">
+                            <i className="fas fa-plus-circle" hidden={!this.state.collapsed} onClick={() => this.toggleCollapse()}></i>
+                            <i className="fas fa-minus-circle" hidden={this.state.collapsed} onClick={() => this.toggleCollapse()}></i>
                         </span>
                         <span className="h3"><b>{this.props.exercise.name}</b></span>
-                        <span className="exercise_icons">
+                        <span className="exercise-icons">
                             <button className="btn btn-primary" title="Add Workout" id="quckAddSet" onClick={() => this.toggleQuickAdder()}>
                                 <img src="icons/baseline_add_black_18dp.png" alt="Add Workout" />
                             </button>
