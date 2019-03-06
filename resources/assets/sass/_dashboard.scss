@@ -3,12 +3,13 @@ $dashboard-top-panel-height: 80px;
 $dashboard-side-panel-width: 20%;
 $dashboard-content-width: 80%;
 
-.exercise_icons{
+.exercise-icons{
   float: right;
 }
 
-.maximise_card{
+.maximise-card{
   float: left;
+  font-size: 2em;
 }
 
 .centered-loader{
@@ -44,14 +45,13 @@ $dashboard-content-width: 80%;
 }
 
 .dashboard-container{
-
   padding: 15px 15px 0px 15px;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
   height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
   @include media-breakpoint-up(md) {
-    width: $dashboard-content-width;
     margin-top: $dashboard-top-panel-height;
     margin-left: $dashboard-side-panel-width;
   }
@@ -60,6 +60,7 @@ $dashboard-content-width: 80%;
     margin-left: 0px;
   }
 }
+
 
 .dashboard-side-panel{
   background-color: $background-color - 50;
