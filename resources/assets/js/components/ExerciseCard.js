@@ -137,7 +137,7 @@ export default class ExerciseCard extends Component {
                     warmup: this.state.newData.warmup,
                     date: this.state.newData.date,
                     reps: this.state.newData.reps,
-                    weight: this.state.newData.weight + value,
+                    weight: Number(this.state.newData.weight) + value,
                     config: this.state.newData.config
                 }
             })
@@ -150,7 +150,7 @@ export default class ExerciseCard extends Component {
                 newData: {
                     warmup: this.state.newData.warmup,
                     date: this.state.newData.date,
-                    reps: this.state.newData.reps + value,
+                    reps: Number(this.state.newData.reps) + value,
                     weight: this.state.newData.weight,
                     config: this.state.newData.config
                 }
