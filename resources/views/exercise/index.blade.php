@@ -3,7 +3,7 @@
 @section('title', 'All Exercises')
 
 @section('content')
-<div class="container justify-content-center">
+<div class="container justify-content-center exercise-container">
     <div class="row">
         <div class="col-md">
           <h2 class="display-2">Exercises</h2>

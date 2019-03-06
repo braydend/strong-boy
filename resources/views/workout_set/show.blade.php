@@ -3,7 +3,7 @@
 @section('title', 'View Set')
 
 @section('content')
-<div class="container justify-content-center">
+<div class="container justify-content-center set-container">
     <div class="row">
         <div class="col-md">
           <h2 class="display-2">{{  $set->exercise->name  }} workout</h2>

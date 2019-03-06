@@ -9,10 +9,10 @@ Set
 @endsection
 
 @section('content')
-<div class="container justify-content-center">
+<div class="container justify-content-center set-container">
     <div class="row">
         <div class="col-md">
-            <h2 class="display-2">Log a new workout</h1>
+            <h2 class="display-2">Log a new workout</h2>
         </div>
     </div>
     <div class="row">

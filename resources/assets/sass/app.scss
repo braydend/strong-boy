@@ -9,8 +9,16 @@
 @import "mobile";
 @import "login";
 
+@import "pages/_exercises";
+@import "pages/_sets";
+
 body{
   background-color: $background-color;
-  background-size: 5%;
   background-image: url(/images/background-dumbbell-white-mirror.png);
+  @include media-breakpoint-up(md) {
+    background-size: 5%;
+  }
+  @include media-breakpoint-down(lg) {
+    background-size: 30%;
+  }
 }

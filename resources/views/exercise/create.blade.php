@@ -3,10 +3,10 @@
 @section('title', 'Create Exercise')
 
 @section('content')
-<div class="container justify-content-center">
+<div class="container justify-content-center exercise-container">
     <div class="row">
         <div class="col-md">
-            <h2 class="display-2">Create a new exercise</h1>
+            <h2 class="display-2">Create a new exercise</h2>
         </div>
     </div>
     <div class="row">
