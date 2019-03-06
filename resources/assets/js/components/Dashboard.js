@@ -18,6 +18,7 @@ export default class Dashboard extends Component {
         axios.get(`/ajax/exercise`)
             .then(res => {
                 const cards = res.data.map((obj, i) => <ExerciseCard exercise={obj} key={i} />);
+                console.log(cards);
                 this.setState({
                     cards: cards
                 });
@@ -35,11 +36,7 @@ export default class Dashboard extends Component {
     render() {
         return (
             <div className="dashboard-container">
-                <Row>
-                    <Col>
-                        {this.state.cards}
-                    </Col>
-                </Row>
+                {this.state.cards}
             </div>
         );
     }
