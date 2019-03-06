@@ -137,7 +137,7 @@ export default class ExerciseCard extends Component {
                     warmup: this.state.newData.warmup,
                     date: this.state.newData.date,
                     reps: this.state.newData.reps,
-                    weight: this.state.newData.weight + value,
+                    weight: Number(this.state.newData.weight) + value,
                     config: this.state.newData.config
                 }
             })
@@ -150,7 +150,7 @@ export default class ExerciseCard extends Component {
                 newData: {
                     warmup: this.state.newData.warmup,
                     date: this.state.newData.date,
-                    reps: this.state.newData.reps + value,
+                    reps: Number(this.state.newData.reps) + value,
                     weight: this.state.newData.weight,
                     config: this.state.newData.config
                 }
@@ -269,7 +269,7 @@ export default class ExerciseCard extends Component {
                                                     <InputGroup.Prepend>
                                                         <Button size="sm" variant="warning" onClick={() => {this.changeWeight(-5)}}>-5</Button>
                                                     </InputGroup.Prepend>
-                                                   <FormControl size="sm" name="weight" value={this.state.newData.weight} onChange={this.handleQuickAddChange}/>
+                                                   <FormControl size="sm" name="weight" type="number" value={this.state.newData.weight} onChange={this.handleQuickAddChange}/>
                                                     <InputGroup.Append>
                                                         <Button size="sm" variant="success" onClick={() => {this.changeWeight(10)}}>10</Button>
                                                     </InputGroup.Append>
@@ -303,7 +303,7 @@ export default class ExerciseCard extends Component {
                                                     <InputGroup.Prepend>
                                                         <Button size="sm" variant="danger" onClick={() => {this.changeReps(-1)}}>-</Button>
                                                     </InputGroup.Prepend>
-                                                        <FormControl name="reps" size="sm" value={this.state.newData.reps} onChange={this.handleQuickAddChange}/>
+                                                        <FormControl name="reps" type="number" size="sm" value={this.state.newData.reps} onChange={this.handleQuickAddChange}/>
                                                     <InputGroup.Append>
                                                         <Button size="sm" variant="success" onClick={() => {this.changeReps(1)}}>+</Button>
                                                     </InputGroup.Append>
