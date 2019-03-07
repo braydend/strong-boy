@@ -1,3 +1,19 @@
-.exercise-container{
+.exercise-container, .exerciselist-container{
   background-color: rgba(200,200,200,.8);
+}
+
+.exerciselist-container{
+  margin: 15px;
+  margin-top: $dashboard-top-panel-height;
+  margin-left: $dashboard-side-panel-width;
+  width: 100%;
+
+  table{
+    justify-content: center;
+    width: 80%;
+
+    tr:nth-child(even){
+      background-color: $background-color - 20%;
+    }
+  }
 }

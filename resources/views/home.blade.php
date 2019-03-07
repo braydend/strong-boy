@@ -5,5 +5,5 @@
 @endsection
 
 @section('content')
-<div id="dashboard"></div>
+  <div id="dashboard"></div>
 @endsection

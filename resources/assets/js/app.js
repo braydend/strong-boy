@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import DashboardLayout from './layouts/DashboardLayout';
+import ExerciseLayout from './layouts/ExerciseLayout';
 import Login from './components/Login';
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -18,7 +19,13 @@ if(document.getElementById('dashboard') != undefined)
 {
     ReactDOM.render(<DashboardLayout/>, document.getElementById('dashboard'));
 }
+
 if(document.getElementById('login') != undefined)
 {
     ReactDOM.render(<Login/>, document.getElementById('login'));
+}
+
+if(document.getElementById('exercises') != undefined)
+{
+    ReactDOM.render(<ExerciseLayout/>, document.getElementById('exercises'));
 }
