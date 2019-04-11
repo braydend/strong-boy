@@ -32,6 +32,7 @@ Route::get('/faker/set', 'TestController@FakeSets');
 
 //Routes for testing AJAX
 Route::get('/ajax/exercise', 'HomeController@indexData');
+Route::get('/ajax/exercise/add', 'ExerciseController@addAjax');
 Route::get('/ajax/exercise/{id}/btns', 'ExerciseController@GetButtons');
 Route::get('/ajax/exercise/{id}/sets', 'ExerciseController@getSetsForDashboard');
 Route::post('/ajax/set/store', 'WorkoutSetController@saveAjax');

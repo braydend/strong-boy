@@ -102,6 +102,12 @@ class ExerciseController extends Controller
        }
      }
 
+     public function addAjax(){
+         $exercise = new Exercise;
+         $exercise->name = Input::get('name');
+         $exercise->save();
+     }
+
      /**
       * Display the specified resource.
       *
