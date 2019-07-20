@@ -1,7 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import DashboardLayout from './layouts/DashboardLayout';
-import Login from './components/Login';
+import React from "react";
+import ReactDOM from "react-dom";
+import DashboardLayout from "./layouts/DashboardLayout";
+import Login from "./components/Login";
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes React and other helpers. It's a great starting point while
@@ -14,11 +14,11 @@ import Login from './components/Login';
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-if(document.getElementById('dashboard') != undefined)
+if(document.getElementById("dashboard") != undefined)
 {
-    ReactDOM.render(<DashboardLayout/>, document.getElementById('dashboard'));
+	ReactDOM.render(<DashboardLayout/>, document.getElementById("dashboard"));
 }
-if(document.getElementById('login') != undefined)
+if(document.getElementById("login") != undefined)
 {
-    ReactDOM.render(<Login/>, document.getElementById('login'));
+	ReactDOM.render(<Login/>, document.getElementById("login"));
 }
