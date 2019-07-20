@@ -10,7 +10,8 @@ class Muscle extends Model
     protected $fillable = ['name', 'desc'];
     protected $hidden = ['created_at', 'updated_at'];
 
-    public function exercises(){
+    public function exercises()
+    {
         return $this->belongsToMany('App\Exercise');
     }
 }

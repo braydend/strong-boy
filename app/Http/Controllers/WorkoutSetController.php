@@ -45,8 +45,8 @@ class WorkoutSetController extends Controller
      */
     public function create()
     {
-      $exercises = Exercise::all();
-      return View::make('workout_set.create')
+        $exercises = Exercise::all();
+        return View::make('workout_set.create')
         ->with('exercises', $exercises);
     }
 
@@ -58,8 +58,8 @@ class WorkoutSetController extends Controller
      */
     public function createWithId($id)
     {
-      $exercise = Exercise::find($id);
-      return View::make('workout_set.create')
+        $exercise = Exercise::find($id);
+        return View::make('workout_set.create')
         ->with('exercise', $exercise);
     }
 
@@ -71,40 +71,40 @@ class WorkoutSetController extends Controller
      */
     public function store(Request $request)
     {
-      $user = Auth::user();
-      //Validate
-      $rules = array(
+        $user = Auth::user();
+        //Validate
+        $rules = array(
           'weight' => 'required|numeric|min:0',
           'reps' => 'required|numeric|min:0',
       );
 
-      $weightFormat = Input::get('weightFormat');
+        $weightFormat = Input::get('weightFormat');
 
-      $validator = Validator::make(Input::all(), $rules);
+        $validator = Validator::make(Input::all(), $rules);
 
-      if($validator->fails()){
-        return Redirect::to('sets/create')
+        if ($validator->fails()) {
+            return Redirect::to('sets/create')
           ->withErrors($validator);
-        }else{
-          // Store the data to the Database
-          // Convert weight from lb to kg
-          if($weightFormat == 'lb'){
-            $weight = Input::get('weight') * 0.453592;
-          }else{
-            $weight = Input::get('weight');
-          }
-          $set = new WorkoutSet;
-          $set->user_id = $user->id;
-          $set->exercise_id = Input::get('exercise_id');
-          $set->weight = $weight;
-          $set->reps = Input::get('reps');
-          $set->warmup = Input::get('warmup');
-          $set->save();
+        } else {
+            // Store the data to the Database
+            // Convert weight from lb to kg
+            if ($weightFormat == 'lb') {
+                $weight = Input::get('weight') * 0.453592;
+            } else {
+                $weight = Input::get('weight');
+            }
+            $set = new WorkoutSet;
+            $set->user_id = $user->id;
+            $set->exercise_id = Input::get('exercise_id');
+            $set->weight = $weight;
+            $set->reps = Input::get('reps');
+            $set->warmup = Input::get('warmup');
+            $set->save();
 
-          //Redirect
-          Session::flash('message', 'Successfully logged workout! ' . $weightFormat);
-          return Redirect::to('/');
-      }
+            //Redirect
+            Session::flash('message', 'Successfully logged workout! ' . $weightFormat);
+            return Redirect::to('/');
+        }
     }
 
     /**
@@ -120,9 +120,9 @@ class WorkoutSetController extends Controller
         $weightFormat = $request->request->get('weightFormat');
         // Store the data to the Database
         // Convert weight from lb to kg
-        if($weightFormat == 'lb'){
+        if ($weightFormat == 'lb') {
             $weight = $request->request->get('weight') * 0.453592;
-        }else{
+        } else {
             $weight = $request->request->get('weight');
         }
         $set = new WorkoutSet;
@@ -142,9 +142,9 @@ class WorkoutSetController extends Controller
         $weightFormat = $request->request->get('weightFormat');
         // Store the data to the Database
         // Convert weight from lb to kg
-        if($weightFormat == 'lb'){
+        if ($weightFormat == 'lb') {
             $weight = $request->request->get('weight') * 0.453592;
-        }else{
+        } else {
             $weight = $request->request->get('weight');
         }
         $set = WorkoutSet::find($id);
@@ -191,41 +191,41 @@ class WorkoutSetController extends Controller
      */
     public function update(Request $request, $id)
     {
-      //Validate
-      $rules = array(
+        //Validate
+        $rules = array(
           'weight' => 'required|numeric',
           'reps' => 'required|numeric',
       );
 
-      $validator = Validator::make(Input::all(), $rules);
+        $validator = Validator::make(Input::all(), $rules);
 
-      $weightFormat = Input::get('weightFormat');
+        $weightFormat = Input::get('weightFormat');
 
-      if($validator->fails()){
-        return Redirect::to('workout_set/edit')
+        if ($validator->fails()) {
+            return Redirect::to('workout_set/edit')
           ->withErrors($validator);
-        }else{
-          if($weightFormat == 'lb'){
-            $weight = Input::get('weight') * 0.453592;
-          }else{
-            $weight = Input::get('weight');
-          }
-          $user = Auth::user();
-          //Store the data to the Database
-          $set = WorkoutSet::find($id);
-          $set->user_id = $user->id;
-          $set->exercise_id = Input::get('exercise_id');
-          $set->weight = Input::get('weight');
-          $set->reps = Input::get('reps');
-          $set->warmup = Input::get('warmup');
-          $set->weight = $weight;
+        } else {
+            if ($weightFormat == 'lb') {
+                $weight = Input::get('weight') * 0.453592;
+            } else {
+                $weight = Input::get('weight');
+            }
+            $user = Auth::user();
+            //Store the data to the Database
+            $set = WorkoutSet::find($id);
+            $set->user_id = $user->id;
+            $set->exercise_id = Input::get('exercise_id');
+            $set->weight = Input::get('weight');
+            $set->reps = Input::get('reps');
+            $set->warmup = Input::get('warmup');
+            $set->weight = $weight;
 
-          $set->save();
+            $set->save();
 
-          //Redirect
-          Session::flash('message', 'Successfully updated workout!');
-          return Redirect::to('/');
-      }
+            //Redirect
+            Session::flash('message', 'Successfully updated workout!');
+            return Redirect::to('/');
+        }
     }
 
     /**
