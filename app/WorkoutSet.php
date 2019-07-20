@@ -6,20 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class WorkoutSet extends Model
 {
-  protected $table = 'workout_sets';
-  protected $fillable = ['exercise_id', 'user_id', 'weight', 'reps', 'warmup'];
-  protected $hidden = ['exercise_id', 'user_id', 'name', 'updated_at'];
+    protected $table = 'workout_sets';
+    protected $fillable = ['exercise_id', 'user_id', 'weight', 'reps', 'warmup'];
+    protected $hidden = ['exercise_id', 'user_id', 'name', 'updated_at'];
 
-  public function user(){
-    return $this->belongsTo('App\User');
-  }
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 
-  public function exercise(){
-    return $this->belongsTo('App\Exercise');
-  }
+    public function exercise()
+    {
+        return $this->belongsTo('App\Exercise');
+    }
 
     // override the toArray function (called by toJson)
-    public function toArray() {
+    public function toArray()
+    {
         // get the original array to be displayed
         $data = parent::toArray();
 

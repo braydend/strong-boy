@@ -36,8 +36,8 @@ class ExerciseController extends Controller
     public function index()
     {
         $user = Auth::user();
-        if($user == null){
-          return Redirect::to('/');
+        if ($user == null) {
+            return Redirect::to('/');
         }
         $exercises = Exercise::paginate(10);
         return View::make('exercise.index')
@@ -45,16 +45,19 @@ class ExerciseController extends Controller
           ->with('user', $user);
     }
 
-    public function getSetsForDashboard($id){
+    public function getSetsForDashboard($id)
+    {
         $exercise = Exercise::find($id);
         return response()->json($exercise->dashboard_workout_sets);
     }
 
-    public function AjaxIndex(){
-      return View::make('exercise.ajax.index');
+    public function AjaxIndex()
+    {
+        return View::make('exercise.ajax.index');
     }
 
-    public function GetButtons($id){
+    public function GetButtons($id)
+    {
         $exercise = Exercise::find($id);
         $repPresets = $exercise->workout_sets_by_reps()->orderBy('reps')->groupBy('reps')->take('5')->get();
         $weightPresets = $exercise->workout_sets_by_weight()->orderBy('weight')->groupBy('weight')->take('5')->get();
@@ -67,55 +70,56 @@ class ExerciseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-     public function create()
-     {
-       return View::make('exercise.create');
-     }
+    public function create()
+    {
+        return View::make('exercise.create');
+    }
 
-     /**
-      * Store a newly created resource in storage.
-      *
-      * @param  \Illuminate\Http\Request  $request
-      * @return \Illuminate\Http\Response
-      */
-     public function store(Request $request)
-     {
-       //Validate
-       $rules = array(
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //Validate
+        $rules = array(
            'name' => 'required'
        );
 
-       $validator = Validator::make(Input::all(), $rules);
+        $validator = Validator::make(Input::all(), $rules);
 
-       if($validator->fails()){
-         return Redirect::to('exercise/create')
+        if ($validator->fails()) {
+            return Redirect::to('exercise/create')
            ->withErrors($validator);
-         }else{
-           //Store the data to the Database
-           $exercise = new Exercise;
-           $exercise->name = Input::get('name');
-           $exercise->save();
+        } else {
+            //Store the data to the Database
+            $exercise = new Exercise;
+            $exercise->name = Input::get('name');
+            $exercise->save();
 
-           //Redirect
-           Session::flash('message', 'Successfully created exercise!');
-           return Redirect::to('/');
-       }
-     }
+            //Redirect
+            Session::flash('message', 'Successfully created exercise!');
+            return Redirect::to('/');
+        }
+    }
 
-     public function addAjax(){
-         $exercise = new Exercise;
-         $exercise->name = Input::get('name');
-         $exercise->save();
-     }
+    public function addAjax()
+    {
+        $exercise = new Exercise;
+        $exercise->name = Input::get('name');
+        $exercise->save();
+    }
 
-     /**
-      * Display the specified resource.
-      *
-      * @param  int  $id
-      * @return \Illuminate\Http\Response
-      */
-     public function show($id)
-     {
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
         $exercise = Exercise::find($id);
         $user = Auth::user();
 
@@ -127,15 +131,15 @@ class ExerciseController extends Controller
 
         //Get sets
         $allSets = Auth::user()->workout_sets()->orderBy('created_at')->where('exercise_id', $exercise->id)->get();
-        $allSets = $allSets->groupBy(function($date) {
+        $allSets = $allSets->groupBy(function ($date) {
             return Carbon::parse($date->created_at)->format('y-m-d'); // grouping by date
         });
 
-        foreach($allSets as $set){
-                    //echo "<p>" . $set . "</p>";
-          if($set->first()['warmup'] == 0){
-            $weight->addRow(array($set->first()['created_at'], $set->max('weight')));
-          }
+        foreach ($allSets as $set) {
+            //echo "<p>" . $set . "</p>";
+            if ($set->first()['warmup'] == 0) {
+                $weight->addRow(array($set->first()['created_at'], $set->max('weight')));
+            }
         }
 
         \Lava::LineChart('Weight', $weight, [
@@ -144,96 +148,98 @@ class ExerciseController extends Controller
         ]);
 
         //Get associated muscles
-         $muscles = $exercise->muscles()->get();
+        $muscles = $exercise->muscles()->get();
         //Store personal best
         $pb = $user->workout_sets()->where('exercise_id', '=', $id)->where('warmup', '0')->orderBy('weight', 'desc')->first()['id'];
         //get all sets
         $sets = $exercise->workout_sets()->where('user_id', $user['id'])->get()->sortByDesc('created_at');
         //display to user
-         return View::make('exercise.show')
+        return View::make('exercise.show')
            ->with('exercise', $exercise)
            ->with('sets', $sets)
            ->with('pb_id', $pb)
             ->with('muscles', $muscles);
-     }
+    }
 
-     public function getSets($id){
-         $exercise = Exercise::find($id);
-         $allSets = Auth::user()->workout_sets()->orderBy('created_at')->where('exercise_id', $exercise->id)->get();
-         return(response()->json($allSets));
-     }
+    public function getSets($id)
+    {
+        $exercise = Exercise::find($id);
+        $allSets = Auth::user()->workout_sets()->orderBy('created_at')->where('exercise_id', $exercise->id)->get();
+        return(response()->json($allSets));
+    }
 
-     public function getChartData($id){
-         $exercise = Exercise::find($id);
-         $allSets = Auth::user()->workout_sets()->orderBy('created_at')->where('exercise_id', $exercise->id)->get();
-         $allSets = $allSets->groupBy(function($date) {
-             return Carbon::parse($date->created_at)->format('y-m-d'); // grouping by date
-         });
-         $weight = [];
-         foreach($allSets as $set){
-             if($set->first()['warmup'] == 0){
-                 array_push($weight, array($set->first()['created_at'], $set->max('weight')));
-             }
-         }
-         return(response()->json($weight));
-     }
+    public function getChartData($id)
+    {
+        $exercise = Exercise::find($id);
+        $allSets = Auth::user()->workout_sets()->orderBy('created_at')->where('exercise_id', $exercise->id)->get();
+        $allSets = $allSets->groupBy(function ($date) {
+            return Carbon::parse($date->created_at)->format('y-m-d'); // grouping by date
+        });
+        $weight = [];
+        foreach ($allSets as $set) {
+            if ($set->first()['warmup'] == 0) {
+                array_push($weight, array($set->first()['created_at'], $set->max('weight')));
+            }
+        }
+        return(response()->json($weight));
+    }
 
-     /**
-      * Show the form for editing the specified resource.
-      *
-      * @param  int  $id
-      * @return \Illuminate\Http\Response
-      */
-     public function edit($id)
-     {
-         $exercise = Exercise::find($id);
-         return View::make('exercise.edit')
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $exercise = Exercise::find($id);
+        return View::make('exercise.edit')
            ->with('exercise', $exercise);
-     }
+    }
 
-     /**
-      * Update the specified resource in storage.
-      *
-      * @param  \Illuminate\Http\Request  $request
-      * @param  int  $id
-      * @return \Illuminate\Http\Response
-      */
-     public function update(Request $request, $id)
-     {
-       //Validate
-       $rules = array(
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //Validate
+        $rules = array(
            'name' => 'required'
        );
 
-       $validator = Validator::make(Input::all(), $rules);
+        $validator = Validator::make(Input::all(), $rules);
 
-       if($validator->fails()){
-         return Redirect::to('exercise/edit')
+        if ($validator->fails()) {
+            return Redirect::to('exercise/edit')
            ->withErrors($validator);
-         }else{
-           //Store the data to the Database
-           $exercise = Exercise::find($id);
-           $exercise->name = Input::get('name');
-           $exercise->save();
+        } else {
+            //Store the data to the Database
+            $exercise = Exercise::find($id);
+            $exercise->name = Input::get('name');
+            $exercise->save();
 
-           //Redirect
-           Session::flash('message', 'Successfully updated exercise!');
-           return Redirect::to('/');
-       }
-     }
+            //Redirect
+            Session::flash('message', 'Successfully updated exercise!');
+            return Redirect::to('/');
+        }
+    }
 
-     /**
-      * Remove the specified resource from storage.
-      *
-      * @param  int  $id
-      * @return \Illuminate\Http\Response
-      */
-     public function destroy($id)
-     {
-         $exercise = Exercise::find($id);
-         $exercise->delete();
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $exercise = Exercise::find($id);
+        $exercise->delete();
 
-         Session::flash('message', 'Successfully deleted the exercise');
-         return Redirect::to('/');
-     }
- }
+        Session::flash('message', 'Successfully deleted the exercise');
+        return Redirect::to('/');
+    }
+}

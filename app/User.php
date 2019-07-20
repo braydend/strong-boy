@@ -27,7 +27,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function workout_sets(){
-      return $this->hasMany('App\WorkoutSet');
+    public function workout_sets()
+    {
+        return $this->hasMany('App\WorkoutSet');
     }
 }

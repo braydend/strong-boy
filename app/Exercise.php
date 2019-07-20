@@ -11,16 +11,19 @@ class Exercise extends Model
     protected $fillable = ['name'];
     protected $hidden = ['created_at', 'updated_at'];
 
-    public function muscles(){
+    public function muscles()
+    {
         return $this->belongsToMany('App\Muscle');
     }
 
-    public function workout_sets(){
+    public function workout_sets()
+    {
         $user_id = Auth::user()->id;
         return $this->hasMany('App\WorkoutSet')->where('user_id', $user_id)->orderBy('created_at');
     }
 
-    public function dashboard_workout_sets(){
+    public function dashboard_workout_sets()
+    {
         $user_id = Auth::user()->id;
         return $this
             ->hasMany('App\WorkoutSet')
@@ -30,18 +33,21 @@ class Exercise extends Model
             ->take(5);
     }
 
-    public function workout_sets_by_reps(){
+    public function workout_sets_by_reps()
+    {
         $user_id = Auth::user()->id;
         return $this->hasMany('App\WorkoutSet')->where('user_id', $user_id)->orderBy('reps');
     }
 
-    public function workout_sets_by_weight(){
+    public function workout_sets_by_weight()
+    {
         $user_id = Auth::user()->id;
         return $this->hasMany('App\WorkoutSet')->where('user_id', $user_id)->orderBy('weight');
     }
 
     // override the toArray function (called by toJson)
-    public function toArray() {
+    public function toArray()
+    {
         // get the original array to be displayed
         $data = parent::toArray();
 
