@@ -4,6 +4,7 @@ import {
 	Button, FormControl, InputGroup, Row, Spinner,
 } from "react-bootstrap";
 import ExerciseCard from "./ExerciseCard";
+import $ from "jquery";
 
 export default class ExerciseList extends Component {
 	constructor(props) {
@@ -37,9 +38,9 @@ export default class ExerciseList extends Component {
 			.catch((error) => {
 				this.setState({
 					exercises:
-  <Row>
-  	<p>Errors occurred on loading</p>
-  </Row>,
+					  <Row>
+						  <p>Errors occurred on loading</p>
+					  </Row>,
 				});
 			});
 	}
