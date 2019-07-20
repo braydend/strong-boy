@@ -1,12 +1,14 @@
-import React, {Component} from "react";
-import {Row, Col, Card, Form, InputGroup, Button} from "react-bootstrap";
-import {Collapse} from "react-collapse";
+import React, { Component } from "react";
+import {
+	Row, Col, Card, Form, InputGroup, Button,
+} from "react-bootstrap";
+import { Collapse } from "react-collapse";
 import axios from "axios";
 import ReactLoading from "react-loading";
-import {forEach} from "react-bootstrap/es/utils/ElementChildren";
+import { forEach } from "react-bootstrap/es/utils/ElementChildren";
 
 export default class Dashboard extends Component {
-	constructor(props){
+	constructor(props) {
 		super(props);
 		this.state = {
 			loading: false,
@@ -15,7 +17,7 @@ export default class Dashboard extends Component {
 			email: "",
 			password: "",
 			passwordC: "",
-			message: undefined
+			message: undefined,
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.handleReset = this.handleReset.bind(this);
@@ -24,96 +26,96 @@ export default class Dashboard extends Component {
 		this.handleEnterOnLogin = this.handleEnterOnLogin.bind(this);
 	}
 
-	handleRegistration(){
+	handleRegistration() {
 		this.setState({
 			loading: true,
-			message: undefined
+			message: undefined,
 		});
 		axios.post("register", {
 			name: this.state.name,
 			email: this.state.email,
 			password: this.state.password,
-			password_confirmation: this.state.passwordC
+			password_confirmation: this.state.passwordC,
 		})
 			.then((response) => {
 				location.reload();
 			})
 			.catch((error) => {
-				this.state.message === undefined ? this.setState({message: ""}) : null;
-				error.response.data.errors.name !== undefined ? this.setState({message: this.state.message + error.response.data.errors.name + " | "}) : null;
-				error.response.data.errors.email !== undefined ? this.setState({message: this.state.message + error.response.data.errors.email + " | "}) : null;
-				error.response.data.errors.password !== undefined ? this.setState({message: this.state.message + error.response.data.errors.password}) : null;
+				this.state.message === undefined ? this.setState({ message: "" }) : null;
+				error.response.data.errors.name !== undefined ? this.setState({ message: `${this.state.message + error.response.data.errors.name} | ` }) : null;
+				error.response.data.errors.email !== undefined ? this.setState({ message: `${this.state.message + error.response.data.errors.email} | ` }) : null;
+				error.response.data.errors.password !== undefined ? this.setState({ message: this.state.message + error.response.data.errors.password }) : null;
 				this.setState({
-					loading: false
+					loading: false,
 				});
 			});
 	}
 
-	handleLogin(){
+	handleLogin() {
 		this.setState({
 			loading: true,
-			message: undefined
+			message: undefined,
 		});
 		axios.post("login", {
 			email: this.state.email,
-			password: this.state.password
+			password: this.state.password,
 		})
-			.then(function(response){
+			.then((response) => {
 				location.reload();
 			})
 			.catch((error) => {
-				this.state.message === undefined ? this.setState({message: ""}) : null;
-				error.response.data.errors.email !== undefined ? this.setState({message: this.state.message + error.response.data.errors.email}) : null;
-				error.response.data.errors.password !== undefined ? this.setState({message: this.state.message + error.response.data.errors.password}) : null;
+				this.state.message === undefined ? this.setState({ message: "" }) : null;
+				error.response.data.errors.email !== undefined ? this.setState({ message: this.state.message + error.response.data.errors.email }) : null;
+				error.response.data.errors.password !== undefined ? this.setState({ message: this.state.message + error.response.data.errors.password }) : null;
 				this.setState({
-					loading: false
+					loading: false,
 				});
 			});
 	}
 
-	handleReset(){
+	handleReset() {
 		this.setState({
 			name: "",
 			email: "",
 			password: "",
-			passwordC: ""
+			passwordC: "",
 		});
 	}
 
-	handleChange(event){
-		switch(event.target.name) {
+	handleChange(event) {
+		switch (event.target.name) {
 		case "name":
-			this.setState({name: event.target.value});
+			this.setState({ name: event.target.value });
 			break;
 
 		case "email":
-			this.setState({email: event.target.value});
+			this.setState({ email: event.target.value });
 			break;
 
 		case "password":
-			this.setState({password: event.target.value});
+			this.setState({ password: event.target.value });
 			break;
 
 		case "passwordC":
-			this.setState({passwordC: event.target.value});
+			this.setState({ passwordC: event.target.value });
 			break;
 		}
 	}
 
-	loading(){
-		return(
+	loading() {
+		return (
 			<ReactLoading type="spin" color="#555555" hidden={!this.state.loading} />
 		);
 	}
 
-	handleEnterOnLogin(event){
-		if(event.key === "Enter") {
+	handleEnterOnLogin(event) {
+		if (event.key === "Enter") {
 			this.handleLogin();
 		}
 	}
 
-	login(){
-		return(
+	login() {
+		return (
 			<Card>
 				<Card.Header>
                     Login to Strongr
@@ -156,14 +158,14 @@ export default class Dashboard extends Component {
 					</Form>
 				</Card.Body>
 				<Card.Footer>
-					<b onClick={() => this.setState({status: "register"})}>Click here to get Strongr</b>
+					<b onClick={() => this.setState({ status: "register" })}>Click here to get Strongr</b>
 				</Card.Footer>
 			</Card>
 		);
 	}
 
-	register(){
-		return(
+	register() {
+		return (
 			<Card>
 				<Card.Header>
                     Register to Strongr
@@ -228,14 +230,14 @@ export default class Dashboard extends Component {
 					</Form>
 				</Card.Body>
 				<Card.Footer>
-					<b onClick={() => this.setState({status: "unauthenticated"})}>Already have an account? Click here to login</b>
+					<b onClick={() => this.setState({ status: "unauthenticated" })}>Already have an account? Click here to login</b>
 				</Card.Footer>
 			</Card>
 		);
 	}
 
-	render(){
-		return(
+	render() {
+		return (
 			<Row id="login-card">
 				<Col className="text-center">
 					<Collapse isOpened={this.state.message !== undefined}>

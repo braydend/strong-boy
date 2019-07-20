@@ -1,26 +1,22 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import TopPanel from "../components/TopPanel";
 import SidePanel from "../components/SidePanel";
 import Dashboard from "../components/Dashboard";
 
-export default class DashboardLayout extends Component{
-	constructor(props){
+export default class DashboardLayout extends Component {
+	constructor(props) {
 		super(props);
 		this.state = {
 			content: undefined,
 			loading: true,
-			exercises: {}
+			exercises: {},
 		};
 		this.dashboard = this.dashboard.bind(this);
 	}
 
-	updateDashboard(){
-
-	}
-
-	dashboard(){
+	dashboard() {
 		this.setState({
-			content: <Dashboard/>
+			content: <Dashboard />,
 		});
 	}
 
@@ -28,9 +24,9 @@ export default class DashboardLayout extends Component{
 		this.dashboard();
 	}
 
-	render(){
-		return(
-			<div className="dashboard-layout">
+	render() {
+		return (
+			<div className="layout">
 				<TopPanel pageName="Dashboard" user="bar" />
 				<SidePanel />
 				{this.state.content}

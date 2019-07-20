@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
 export default class NavItem extends Component {
-	constructor(props){
+	constructor(props) {
 		super(props);
 		this.state = {
 			name: this.props.name,
-			link: this.props.link
+			link: this.props.link,
 		};
 	}
 
@@ -20,4 +20,3 @@ export default class NavItem extends Component {
 		);
 	}
 }
-

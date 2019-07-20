@@ -1,26 +1,49 @@
-.quickadder-collapse{
-  width: 100%;
-  margin-bottom: 15px;
-}
-
-.quickadder-date{
-  span{
-    margin-right: 5px;
-  }
-}
-
-.quickadder-values{
+.quickadder-container{
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
   justify-content: space-around;
+  //min-width: 40em;
+  padding-bottom: 2em;
 
-  .warmup, .warmup, .reps, .save{
+  .date{
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
 
-    .number-field{
-      max-width: 8em;
-      min-width: 4em;
+  .set-data{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+
+    .weight{
+      width: 10em;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+
+    .reps{
+      width: 10em;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+  }
+
+  .adder-buttons{
+    padding-top: 0.5em;
+  }
+
+  .save{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    .save-button{
+      width: 6em;
     }
   }
 }

@@ -102,6 +102,12 @@ class ExerciseController extends Controller
        }
      }
 
+     public function addAjax(){
+         $exercise = new Exercise;
+         $exercise->name = Input::get('name');
+         $exercise->save();
+     }
+
      /**
       * Display the specified resource.
       *
@@ -149,6 +155,27 @@ class ExerciseController extends Controller
            ->with('sets', $sets)
            ->with('pb_id', $pb)
             ->with('muscles', $muscles);
+     }
+
+     public function getSets($id){
+         $exercise = Exercise::find($id);
+         $allSets = Auth::user()->workout_sets()->orderBy('created_at')->where('exercise_id', $exercise->id)->get();
+         return(response()->json($allSets));
+     }
+
+     public function getChartData($id){
+         $exercise = Exercise::find($id);
+         $allSets = Auth::user()->workout_sets()->orderBy('created_at')->where('exercise_id', $exercise->id)->get();
+         $allSets = $allSets->groupBy(function($date) {
+             return Carbon::parse($date->created_at)->format('y-m-d'); // grouping by date
+         });
+         $weight = [];
+         foreach($allSets as $set){
+             if($set->first()['warmup'] == 0){
+                 array_push($weight, array($set->first()['created_at'], $set->max('weight')));
+             }
+         }
+         return(response()->json($weight));
      }
 
      /**
