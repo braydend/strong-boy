@@ -37,6 +37,6 @@ class CreateExerciseMuscleTable extends Migration
             $table->dropForeign('exercise_muscle_muscle_id_foreign');
             $table->dropIndex('exercise_muscle_muscle_id_index');
         });
-        Schema::dropIfExists('exercises_muscles');
+        Schema::dropIfExists('exercise_muscle');
     }
 }
