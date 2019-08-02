@@ -22,4 +22,8 @@ MySQL RDB
 # Deployment
 The current version of strongboy production can be used <a href="http://54.153.211.3">here</a>
 ## Updates
-Any updates that you wish to deploy must be on master, deploys are handled via a simple `git pull` on the production server
+Any updates that you wish to deploy must be on master, deploys are handled via running the following commands on the production server:
+- `git pull`
+- `composer install`
+- `php artisan migrate`
+- `yarn run prod`
