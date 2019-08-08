@@ -18,7 +18,6 @@ Auth::routes();
 
 //Route::Resource('/exercise', 'ExerciseController');
 Route::get('/exercise', 'ExerciseController@index');
-Route::get('/ajax/exercise/{id}/sets', 'ExerciseController@getSets');
 Route::get('/ajax/exercise/{id}/chart', 'ExerciseController@getChartData');
 
 
@@ -32,6 +31,5 @@ Route::get('/faker/exercise', 'TestController@FakeExercises');
 Route::get('/faker/set', 'TestController@FakeSets');
 
 //Routes for testing AJAX
-Route::get('/ajax/exercise/{id}/sets', 'ExerciseController@getSetsForDashboard');
 Route::post('/ajax/set/store', 'WorkoutSetController@saveAjax');
 Route::post('/ajax/set/{id}/update', 'WorkoutSetController@updateAjax');

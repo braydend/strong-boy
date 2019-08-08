@@ -45,12 +45,6 @@ class ExerciseController extends Controller
           ->with('user', $user);
     }
 
-    public function getSetsForDashboard($id)
-    {
-        $exercise = Exercise::find($id);
-        return response()->json($exercise->dashboard_workout_sets);
-    }
-
     public function AjaxIndex()
     {
         return View::make('exercise.ajax.index');
@@ -143,13 +137,6 @@ class ExerciseController extends Controller
            ->with('sets', $sets)
            ->with('pb_id', $pb)
             ->with('muscles', $muscles);
-    }
-
-    public function getSets($id)
-    {
-        $exercise = Exercise::find($id);
-        $allSets = Auth::user()->workout_sets()->orderBy('created_at')->where('exercise_id', $exercise->id)->get();
-        return(response()->json($allSets));
     }
 
     public function getChartData($id)

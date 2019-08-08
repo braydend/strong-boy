@@ -32,7 +32,7 @@ class Exercise extends Model
             ->orderBy('created_at', 'desc')
             ->take(5);
     }
-    
+
     public function workout_sets_by_weight()
     {
         $user_id = Auth::user()->id;

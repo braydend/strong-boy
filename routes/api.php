@@ -19,3 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/exercises', 'ApiController@getExercises');
 Route::post('/exercise/add', 'ApiController@addExercise');
+
+Route::get('/exercise/{id}/sets', 'ApiController@getSets');
