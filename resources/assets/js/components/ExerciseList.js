@@ -48,7 +48,7 @@ export default class ExerciseList extends Component {
 	// Adds new exercise via AJAX. Clears search bar and resets icon.
 	saveExercise() {
 		this.setState({ loading: true });
-		axios.get(`/ajax/exercise/add?name=${$("#exercise-search-adder").val()}`)
+		axios.post(`/api/exercise/add`, { name: $("#exercise-search-adder").val()})
 			.then((res) => {
 				$("#exercise-search-adder-btn").removeClass("fa-plus").addClass("fa-search");
 				this.updateCards();
