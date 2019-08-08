@@ -11,11 +11,10 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 //Route::Resource('/exercise', 'ExerciseController');
 Route::get('/exercise', 'ExerciseController@index');
@@ -25,8 +24,6 @@ Route::get('/ajax/exercise/{id}/chart', 'ExerciseController@getChartData');
 
 //Create set with exercise id
 Route::get('/sets/create/{id}', 'WorkoutSetController@createWithId');
-
-Route::Resource('/sets', 'WorkoutSetController');
 
 //Routes for testing
 
