@@ -27,7 +27,7 @@ export default class ExerciseList extends Component {
 	// Updates the list of exercise cards in the state of Component
 	updateCards() {
 		this.setState({ loading: true });
-		axios.get("/ajax/exercise")
+		axios.get("/api/exercises")
 			.then((res) => {
 				const exerciseCard = res.data.map((obj, i) => <ExerciseCard exercise={obj} key={i} />);
 				this.setState({
