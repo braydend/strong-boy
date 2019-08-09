@@ -1,12 +1,13 @@
 # Strong Boy
 
-Strong boy is an exercise tracker to aid in monitoring and logging progression of workouts (mainly gym sets). It is a web app that runs both on desktop and mobile.
+Strong boy is an exercise tracker to aid in monitoring and logging progression of workouts (mainly weight lifting). It is a web app that has partial mobile support
 
 # Features
 - User Accounts
 - Global exercise creation. Users can create exercises that other users of the app can see/use.
 - Sets can be created from the dashboard and are graphed.
-- Sets can be flagged as warmup sets; This will ensure they are not graphed and not displayed on the dashboard.
+- Sets can be flagged as warmup sets; This will ensure they are not graphed or displayed on the dashboard.
+- Sets can be logged in lb or kg. Weights will be displayed in kg.
 
 # Development
 ## Setup
