@@ -33,7 +33,7 @@ export default class ExerciseCard extends Component {
 
 	async updateSets(id) {
 		this.setState({ loading: true });
-		await axios.get(`/api/exercise/${id}/sets`)
+		await axios.get(`/int-api/exercise/${id}/sets`)
 			.then((response) => {
 				this.setState({ sets: [] });
 				this.setState({ sets: response.data.map((set, i) => {

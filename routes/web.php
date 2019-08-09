@@ -20,6 +20,13 @@ Auth::routes();
 Route::get('/exercise', 'ExerciseController@index');
 Route::get('/ajax/exercise/{id}/chart', 'ExerciseController@getChartData');
 
+// API for app
+Route::get('/int-api/exercises', 'ApiController@getExercises');
+Route::post('/int-api/exercise/add', 'ApiController@addExercise');
+Route::get('int-api/exercise/{id}/sets', 'ApiController@getSets');
+Route::post('/int-api/set/store', 'ApiController@addSet');
+
+
 
 //Create set with exercise id
 Route::get('/sets/create/{id}', 'WorkoutSetController@createWithId');
@@ -31,5 +38,4 @@ Route::get('/faker/exercise', 'TestController@FakeExercises');
 Route::get('/faker/set', 'TestController@FakeSets');
 
 //Routes for testing AJAX
-Route::post('/ajax/set/store', 'WorkoutSetController@saveAjax');
 Route::post('/ajax/set/{id}/update', 'WorkoutSetController@updateAjax');
