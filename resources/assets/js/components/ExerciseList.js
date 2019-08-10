@@ -3,7 +3,7 @@ import axios from "axios";
 import {
 	Button, FormControl, InputGroup, Row, Spinner,
 } from "react-bootstrap";
-import ExerciseCard from "./ExerciseCard";
+import { Card as ExerciseCard } from "./exercise/Card";
 import $ from "jquery";
 
 export default class ExerciseList extends Component {
