@@ -4,7 +4,7 @@ import axios from "axios";
 import { Table, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ExerciseCardRow from "./ExerciseCardRow";
-import QuickAdder from "./exercise/QuickAdder";
+import { QuickAdder } from "./exercise/QuickAdder";
 import moment from "moment";
 
 export default class ExerciseCard extends Component {
