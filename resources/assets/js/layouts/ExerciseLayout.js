@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import TopPanel from "../components/TopPanel";
 import SidePanel from "../components/SidePanel";
-import ExerciseList from "../components/ExerciseList";
+import { List as ExerciseList } from "../components/exercise/List";
 import ExerciseView from "../components/ExerciseView";
 
 export default class ExerciseLayout extends Component {
