@@ -3,7 +3,7 @@ import { Collapse } from "react-collapse";
 import axios from "axios";
 import { Table, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import ExerciseCardRow from "../ExerciseCardRow";
+import { CardRow as ExerciseCardRow } from "./CardRow";
 import { QuickAdder } from "./QuickAdder";
 import moment from "moment";
 
