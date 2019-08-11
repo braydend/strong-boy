@@ -32,7 +32,7 @@ export default class ExerciseView extends Component {
 
 	// Get sets related to the exercise
 	getSets() {
-		axios.get(`/ajax/exercise/${this.state.id}/sets`)
+		axios.get(`/int-api/exercise/${this.state.id}/sets`)
 			.then((res) => {
 				this.setState({
 					sets: res.data.map((set, i) => (

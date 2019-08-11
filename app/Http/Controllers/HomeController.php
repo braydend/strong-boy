@@ -71,15 +71,4 @@ class HomeController extends Controller
           ->with('message', $message)
           ->with('user', $user);
     }
-
-    public function indexData()
-    {
-        $exercises = Exercise::all();
-        $data = [];
-        foreach ($exercises as $exercise) {
-            $exercise->id;
-            $exercise->name;
-        }
-        return response()->json($exercises);
-    }
 }

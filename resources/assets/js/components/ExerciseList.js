@@ -27,7 +27,7 @@ export default class ExerciseList extends Component {
 	// Updates the list of exercise cards in the state of Component
 	updateCards() {
 		this.setState({ loading: true });
-		axios.get("/ajax/exercise")
+		axios.get("/int-api/exercises")
 			.then((res) => {
 				const exerciseCard = res.data.map((obj, i) => <ExerciseCard exercise={obj} key={i} />);
 				this.setState({
@@ -48,7 +48,7 @@ export default class ExerciseList extends Component {
 	// Adds new exercise via AJAX. Clears search bar and resets icon.
 	saveExercise() {
 		this.setState({ loading: true });
-		axios.get(`/ajax/exercise/add?name=${$("#exercise-search-adder").val()}`)
+		axios.post(`/int-api/exercise/add`, { name: $("#exercise-search-adder").val()})
 			.then((res) => {
 				$("#exercise-search-adder-btn").removeClass("fa-plus").addClass("fa-search");
 				this.updateCards();

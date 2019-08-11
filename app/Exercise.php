@@ -33,12 +33,6 @@ class Exercise extends Model
             ->take(5);
     }
 
-    public function workout_sets_by_reps()
-    {
-        $user_id = Auth::user()->id;
-        return $this->hasMany('App\WorkoutSet')->where('user_id', $user_id)->orderBy('reps');
-    }
-
     public function workout_sets_by_weight()
     {
         $user_id = Auth::user()->id;

@@ -45,24 +45,9 @@ class ExerciseController extends Controller
           ->with('user', $user);
     }
 
-    public function getSetsForDashboard($id)
-    {
-        $exercise = Exercise::find($id);
-        return response()->json($exercise->dashboard_workout_sets);
-    }
-
     public function AjaxIndex()
     {
         return View::make('exercise.ajax.index');
-    }
-
-    public function GetButtons($id)
-    {
-        $exercise = Exercise::find($id);
-        $repPresets = $exercise->workout_sets_by_reps()->orderBy('reps')->groupBy('reps')->take('5')->get();
-        $weightPresets = $exercise->workout_sets_by_weight()->orderBy('weight')->groupBy('weight')->take('5')->get();
-        $btns = [$repPresets, $weightPresets];
-        return response()->json($btns);
     }
 
     /**
@@ -103,13 +88,6 @@ class ExerciseController extends Controller
             Session::flash('message', 'Successfully created exercise!');
             return Redirect::to('/');
         }
-    }
-
-    public function addAjax()
-    {
-        $exercise = new Exercise;
-        $exercise->name = Input::get('name');
-        $exercise->save();
     }
 
     /**
@@ -159,13 +137,6 @@ class ExerciseController extends Controller
            ->with('sets', $sets)
            ->with('pb_id', $pb)
             ->with('muscles', $muscles);
-    }
-
-    public function getSets($id)
-    {
-        $exercise = Exercise::find($id);
-        $allSets = Auth::user()->workout_sets()->orderBy('created_at')->where('exercise_id', $exercise->id)->get();
-        return(response()->json($allSets));
     }
 
     public function getChartData($id)

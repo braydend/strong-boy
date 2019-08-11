@@ -56,7 +56,7 @@ export default class QuickAdder extends Component {
 		this.setState({ loading: true });
 		// Save Data
 		const data = this.perpareData();
-		axios.post("/ajax/set/store", data)
+		axios.post("/int-api/set/store", data)
 			.then(() => {
 				this.props.updater(this.state.id);
 				// Hide form

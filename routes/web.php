@@ -11,22 +11,25 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 //Route::Resource('/exercise', 'ExerciseController');
 Route::get('/exercise', 'ExerciseController@index');
-Route::get('/ajax/exercise/{id}/sets', 'ExerciseController@getSets');
 Route::get('/ajax/exercise/{id}/chart', 'ExerciseController@getChartData');
+
+// API for app
+Route::get('/int-api/exercises', 'ApiController@getExercises');
+Route::post('/int-api/exercise/add', 'ApiController@addExercise');
+Route::get('int-api/exercise/{id}/sets', 'ApiController@getSets');
+Route::post('/int-api/set/store', 'ApiController@addSet');
+
 
 
 //Create set with exercise id
 Route::get('/sets/create/{id}', 'WorkoutSetController@createWithId');
-
-Route::Resource('/sets', 'WorkoutSetController');
 
 //Routes for testing
 
@@ -35,9 +38,4 @@ Route::get('/faker/exercise', 'TestController@FakeExercises');
 Route::get('/faker/set', 'TestController@FakeSets');
 
 //Routes for testing AJAX
-Route::get('/ajax/exercise', 'HomeController@indexData');
-Route::get('/ajax/exercise/add', 'ExerciseController@addAjax');
-Route::get('/ajax/exercise/{id}/btns', 'ExerciseController@GetButtons');
-Route::get('/ajax/exercise/{id}/sets', 'ExerciseController@getSetsForDashboard');
-Route::post('/ajax/set/store', 'WorkoutSetController@saveAjax');
 Route::post('/ajax/set/{id}/update', 'WorkoutSetController@updateAjax');
