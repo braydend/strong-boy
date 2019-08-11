@@ -13,3 +13,5 @@ public/js/
 public/css/
 
 public/images/
+
+\.php_cs\.cache
