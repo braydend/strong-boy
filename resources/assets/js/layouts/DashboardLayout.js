@@ -1,36 +1,23 @@
-import React, { Component } from "react";
-import TopPanel from "../components/TopPanel";
-import SidePanel from "../components/SidePanel";
-import Dashboard from "../components/Dashboard";
+import React from "react";
+import { TopPanel } from "../components/dashboard/TopPanel";
+import { SidePanel } from "../components/dashboard/SidePanel";
+import { Dashboard } from "../components/Dashboard";
+import {List as ExerciseList} from "../components/exercise/List";
+import {Graph as ExerciseGraph} from "../components/exercise/Graph";
+import {BrowserRouter, Route} from "react-router-dom";
 
-export default class DashboardLayout extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			content: undefined,
-			loading: true,
-			exercises: {},
-		};
-		this.dashboard = this.dashboard.bind(this);
-	}
-
-	dashboard() {
-		this.setState({
-			content: <Dashboard />,
-		});
-	}
-
-	componentDidMount() {
-		this.dashboard();
-	}
-
-	render() {
-		return (
+export function DashboardLayout()
+{
+	return(
+		<BrowserRouter>
 			<div className="layout">
-				<TopPanel pageName="Dashboard" user="bar" />
+				<TopPanel pageName="Exercises" user="bar" />
 				<SidePanel />
-				{this.state.content}
+				{/* Routes */}
+				<Route exact path="/" component={Dashboard} />
+				<Route exact path="/exercise/" component={ExerciseList} />
+				<Route path="/exercise/:exerciseId" component={ExerciseGraph} />
 			</div>
-		);
-	}
+		</BrowserRouter>
+	);
 }
