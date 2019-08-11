@@ -1,25 +1,20 @@
 import React, { Component } from "react";
 import { Col, Row } from "react-bootstrap";
 
-export function TopPanel({ pageName, user })
-{
+export function TopPanel({ pageName, user }) {
 	return (
 		<div className="dashboard-top-panel">
 			<Row>
 				<Col md={12} lg={4}>
-					<div className="brand">
-						Strongr
-					</div>
+					<div className="brand">Strongr</div>
 				</Col>
 				<Col md={12} lg={4}>
-					<div className="context">
-						{ pageName}
-					</div>
+					<div className="context">{pageName}</div>
 				</Col>
 				<Col md={12} lg={4}>
 					<div className="auth">
 						<span className="icon">icon</span>
-						{ user }
+						{user}
 					</div>
 				</Col>
 			</Row>

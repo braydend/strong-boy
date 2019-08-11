@@ -4,19 +4,22 @@ import React, { useState } from "react";
 import moment from "moment";
 import axios from "axios";
 import {
-	Button, ButtonGroup, FormControl, InputGroup, Spinner,
+	Button,
+	ButtonGroup,
+	FormControl,
+	InputGroup,
+	Spinner
 } from "react-bootstrap";
-import {DEFAULT_SET_REPS, DEFAULT_SET_WEIGHT, KG_PER_LB} from "../../const";
+import { DEFAULT_SET_REPS, DEFAULT_SET_WEIGHT, KG_PER_LB } from "../../const";
 
-export function QuickAdder({exercise_id, updater, toggle})
-{
-	const [ exerciseId, setExerciseId ] = useState(exercise_id);
-	const [ date, setDate ] = useState(new Date());
-	const [ weight, setWeight ] = useState(DEFAULT_SET_WEIGHT);
-	const [ reps, setReps ] = useState(DEFAULT_SET_REPS);
-	const [ isWarmup, setIsWarmup ] = useState(false);
-	const [ isLb, setIsLb ] = useState(false);
-	const [ isLoading, setIsLoading ] = useState(false);
+export function QuickAdder({ exercise_id, updater, toggle }) {
+	const [exerciseId, setExerciseId] = useState(exercise_id);
+	const [date, setDate] = useState(new Date());
+	const [weight, setWeight] = useState(DEFAULT_SET_WEIGHT);
+	const [reps, setReps] = useState(DEFAULT_SET_REPS);
+	const [isWarmup, setIsWarmup] = useState(false);
+	const [isLb, setIsLb] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
 
 	const resetForm = () => {
 		setIsWarmup(false);
@@ -33,9 +36,10 @@ export function QuickAdder({exercise_id, updater, toggle})
 			warmup: isWarmup,
 			weight: isLb ? weight / KG_PER_LB : weight,
 			reps: reps,
-			date: moment(date).unix(),
+			date: moment(date).unix()
 		};
-		axios.post("/ajax/set/store", data)
+		axios
+			.post("/ajax/set/store", data)
 			.then(() => {
 				updater(exerciseId);
 				toggle();
@@ -55,11 +59,33 @@ export function QuickAdder({exercise_id, updater, toggle})
 					<span>Weight</span>
 					<InputGroup>
 						<InputGroup.Prepend>
-							<Button size="sm" variant="warning" onClick={() => { setWeight(weight - 5); }}>-5</Button>
+							<Button
+								size="sm"
+								variant="warning"
+								onClick={() => {
+									setWeight(weight - 5);
+								}}
+							>
+								-5
+							</Button>
 						</InputGroup.Prepend>
-						<FormControl size="sm" className="number-field" name="weight" value={weight} onChange={e => setWeight(e.target.value)} />
+						<FormControl
+							size="sm"
+							className="number-field"
+							name="weight"
+							value={weight}
+							onChange={e => setWeight(e.target.value)}
+						/>
 						<InputGroup.Append>
-							<Button size="sm" variant="success" onClick={() => { setWeight(weight + 10); }}>10</Button>
+							<Button
+								size="sm"
+								variant="success"
+								onClick={() => {
+									setWeight(weight + 10);
+								}}
+							>
+								10
+							</Button>
 						</InputGroup.Append>
 					</InputGroup>
 					<ButtonGroup className="adder-buttons">
@@ -83,11 +109,33 @@ export function QuickAdder({exercise_id, updater, toggle})
 					<span>Reps</span>
 					<InputGroup>
 						<InputGroup.Prepend>
-							<Button size="sm" variant="danger" onClick={() => { setReps(reps - 1); }}>-</Button>
+							<Button
+								size="sm"
+								variant="danger"
+								onClick={() => {
+									setReps(reps - 1);
+								}}
+							>
+								-
+							</Button>
 						</InputGroup.Prepend>
-						<FormControl name="reps" size="sm" className="number-field" value={reps} onChange={e => setReps(e.target.value)} />
+						<FormControl
+							name="reps"
+							size="sm"
+							className="number-field"
+							value={reps}
+							onChange={e => setReps(e.target.value)}
+						/>
 						<InputGroup.Append>
-							<Button size="sm" variant="success" onClick={() => { setReps(reps + 1); }}>+</Button>
+							<Button
+								size="sm"
+								variant="success"
+								onClick={() => {
+									setReps(reps + 1);
+								}}
+							>
+								+
+							</Button>
 						</InputGroup.Append>
 					</InputGroup>
 					<ButtonGroup className="adder-buttons">
@@ -112,10 +160,20 @@ export function QuickAdder({exercise_id, updater, toggle})
 			</div>
 			<div className="save">
 				<ButtonGroup>
-					<Button className="save-button" variant="success" size="sm" onClick={() => saveSet()}>
+					<Button
+						className="save-button"
+						variant="success"
+						size="sm"
+						onClick={() => saveSet()}
+					>
 						<i className="fa fa-check fa-3x" />
 					</Button>
-					<Button className="save-button" variant="danger" size="sm" onClick={() => resetForm()}>
+					<Button
+						className="save-button"
+						variant="danger"
+						size="sm"
+						onClick={() => resetForm()}
+					>
 						<i className="fa fa-times fa-3x" />
 					</Button>
 				</ButtonGroup>

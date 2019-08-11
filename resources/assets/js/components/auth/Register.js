@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import {
-	Row, Col, Card, Form, InputGroup, Button,
-} from "react-bootstrap";
+import { Row, Col, Card, Form, InputGroup, Button } from "react-bootstrap";
 import axios from "axios";
 import ReactLoading from "react-loading";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export function Register({ setMessage }) {
 	const [name, setName] = useState("");
@@ -13,7 +11,7 @@ export function Register({ setMessage }) {
 	const [cPassword, setCPassword] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
 
-	const handleEnterOnLogin = (event) => {
+	const handleEnterOnLogin = event => {
 		if (event.key === "Enter") {
 			handleRegistration();
 		}
@@ -21,20 +19,25 @@ export function Register({ setMessage }) {
 
 	const handleRegistration = () => {
 		setIsLoading(true);
-		axios.post("register", {
-			name: name,
-			email: email,
-			password: password,
-			password_confirmation: cPassword,
-		})
-			.then((response) => {
+		axios
+			.post("register", {
+				name: name,
+				email: email,
+				password: password,
+				password_confirmation: cPassword
+			})
+			.then(response => {
 				location.reload();
 			})
-			.catch((error) => {
+			.catch(error => {
 				setMessage(`
 					${error.response.data.errors.name ? error.response.data.errors.name : ""}
 					${error.response.data.errors.email ? error.response.data.errors.email : ""}
-					${error.response.data.errors.password ? error.response.data.errors.password : ""}
+					${
+	error.response.data.errors.password
+		? error.response.data.errors.password
+		: ""
+}
 					`);
 				setIsLoading(false);
 			});
@@ -49,13 +52,13 @@ export function Register({ setMessage }) {
 
 	return (
 		<Card>
-			<Card.Header>
-				Register to Strongr
-			</Card.Header>
+			<Card.Header>Register to Strongr</Card.Header>
 			<Card.Body>
 				<Form>
 					<Form.Group as={Row} controlId="userName">
-						<Form.Label column sm={2}>Name:</Form.Label>
+						<Form.Label column sm={2}>
+							Name:
+						</Form.Label>
 						<Col sm={10}>
 							<InputGroup>
 								<InputGroup.Prepend>
@@ -66,14 +69,16 @@ export function Register({ setMessage }) {
 									name="name"
 									placeholder="Your Name"
 									value={name}
-									onKeyPress={(e) => handleEnterOnLogin(e)}
-									onChange={(e) => setName(e.target.value)}
+									onKeyPress={e => handleEnterOnLogin(e)}
+									onChange={e => setName(e.target.value)}
 								/>
 							</InputGroup>
 						</Col>
 					</Form.Group>
 					<Form.Group as={Row} controlId="userEmail">
-						<Form.Label column sm={2}>Email:</Form.Label>
+						<Form.Label column sm={2}>
+							Email:
+						</Form.Label>
 						<Col sm={10}>
 							<InputGroup>
 								<InputGroup.Prepend>
@@ -91,7 +96,9 @@ export function Register({ setMessage }) {
 						</Col>
 					</Form.Group>
 					<Form.Group as={Row}>
-						<Form.Label column sm={2}>Password:</Form.Label>
+						<Form.Label column sm={2}>
+							Password:
+						</Form.Label>
 						<Col sm={10}>
 							<InputGroup>
 								<InputGroup.Prepend>
@@ -109,7 +116,9 @@ export function Register({ setMessage }) {
 						</Col>
 					</Form.Group>
 					<Form.Group as={Row}>
-						<Form.Label column sm={2}>Confirm Password:</Form.Label>
+						<Form.Label column sm={2}>
+							Confirm Password:
+						</Form.Label>
 						<Col sm={10}>
 							<InputGroup>
 								<InputGroup.Prepend>
@@ -128,13 +137,17 @@ export function Register({ setMessage }) {
 					</Form.Group>
 					<Form.Group as={Row} controlId="loginButtons">
 						<Col sm={4}>
-							<Button variant="success" onClick={() => handleRegistration()}>Register</Button>
+							<Button variant="success" onClick={() => handleRegistration()}>
+								Register
+							</Button>
 						</Col>
 						<Col sm={4}>
-							<ReactLoading type="spin" color="#555555" hidden={!isLoading}/>
+							<ReactLoading type="spin" color="#555555" hidden={!isLoading} />
 						</Col>
 						<Col sm={4}>
-							<Button variant="danger" onClick={() => handleReset()}>Reset</Button>
+							<Button variant="danger" onClick={() => handleReset()}>
+								Reset
+							</Button>
 						</Col>
 					</Form.Group>
 				</Form>
