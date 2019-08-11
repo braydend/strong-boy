@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import {Link} from "react-router-dom";
 
 export default class NavItem extends Component {
 	constructor(props) {
@@ -12,11 +13,11 @@ export default class NavItem extends Component {
 
 	render() {
 		return (
-			<a href={this.state.link}>
+			<Link to={this.state.link}>
 				<div className="nav-item">
 					<h2>{this.state.name}</h2>
 				</div>
-			</a>
+			</Link>
 		);
 	}
 }
