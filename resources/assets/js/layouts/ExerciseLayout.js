@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import TopPanel from "../components/TopPanel";
+import { TopPanel } from "../components/dashboard/TopPanel";
 import SidePanel from "../components/SidePanel";
 import { List as ExerciseList } from "../components/exercise/List";
 import { Graph as ExerciseGraph } from "../components/exercise/Graph";

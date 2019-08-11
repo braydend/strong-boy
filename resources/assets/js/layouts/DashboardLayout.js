@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import TopPanel from "../components/TopPanel";
+import { TopPanel } from "../components/dashboard/TopPanel";
 import SidePanel from "../components/SidePanel";
 import Dashboard from "../components/Dashboard";
 
