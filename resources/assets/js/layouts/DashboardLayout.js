@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { TopPanel } from "../components/dashboard/TopPanel";
-import SidePanel from "../components/SidePanel";
+import { SidePanel } from "../components/dashboard/SidePanel";
 import Dashboard from "../components/Dashboard";
 
 export default class DashboardLayout extends Component {
