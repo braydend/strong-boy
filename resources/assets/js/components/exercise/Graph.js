@@ -45,7 +45,6 @@ export function Graph({ match }) {
 			updateChartData();
 			setInit(true);
 		}
-		console.log(chartData);
 	});
 
 	return (
