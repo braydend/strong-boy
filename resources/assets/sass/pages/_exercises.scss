@@ -1,70 +1,70 @@
-.exerciseList{
-  background-color: rgba(200,200,200,.8);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+.exerciseList {
+	background-color: rgba(200, 200, 200, 0.8);
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
 
-  @include media-breakpoint-up(md) {
-    margin-top: $dashboard-top-panel-height;
-    margin-left: $dashboard-side-panel-width;
-  }
-  @include media-breakpoint-down(lg) {
-    margin-top: 0;
-    margin-left: 0;
-  }
+	@include media-breakpoint-up(md) {
+		margin-top: $dashboard-top-panel-height;
+		margin-left: $dashboard-side-panel-width;
+	}
+	@include media-breakpoint-down(lg) {
+		margin-top: 0;
+		margin-left: 0;
+	}
 
-  table{
-    justify-content: center;
+	table {
+		justify-content: center;
 
-    tr:nth-child(even){
-      background-color: $background-color - 20%;
-    }
-  }
+		tr:nth-child(even) {
+			background-color: $background-color - 20%;
+		}
+	}
 
-  .quickAdder{
-    width: 100%;
-    margin: 2em;
-  }
+	.quickAdder {
+		width: 100%;
+		margin: 2em;
+	}
 }
 
-.exercise-view{
-  @include media-breakpoint-up(md) {
-    margin-top: $dashboard-top-panel-height;
-    margin-left: $dashboard-side-panel-width;
-  }
-  @include media-breakpoint-down(lg) {
-    margin-top: 0;
-    margin-left: 0;
-  }
-  justify-content: space-around;
-  flex-wrap: wrap;
-  padding: 2em;
+.exercise-view {
+	@include media-breakpoint-up(md) {
+		margin-top: $dashboard-top-panel-height;
+		margin-left: $dashboard-side-panel-width;
+	}
+	@include media-breakpoint-down(lg) {
+		margin-top: 0;
+		margin-left: 0;
+	}
+	justify-content: space-around;
+	flex-wrap: wrap;
+	padding: 2em;
 }
 
 .card-container {
-  padding: 2rem;
-  @include media-breakpoint-up(md) {
-    width: 50%
-  }
+	padding: 2rem;
+	@include media-breakpoint-up(md) {
+		width: 50%;
+	}
 
-  @include media-breakpoint-down(lg) {
-    width: 100%;
-  }
+	@include media-breakpoint-down(lg) {
+		width: 100%;
+	}
 }
 
-#add-exercise{
-  margin: 1.5em;
-  font-size: medium;
+#add-exercise {
+	margin: 1.5em;
+	font-size: medium;
 }
 
-.fas{
-  color: #000000;
+.fas {
+	color: #000000;
 }
 
-.btn{
-  z-index: 0 !important;
+.btn {
+	z-index: 0 !important;
 }
 
-.loader{
-  padding: 1em;
+.loader {
+	padding: 1em;
 }

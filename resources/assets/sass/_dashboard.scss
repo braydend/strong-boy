@@ -3,134 +3,133 @@ $dashboard-top-panel-height: 80px;
 $dashboard-side-panel-width: 20%;
 $dashboard-content-width: 80%;
 
-.exercise-icons{
-  float: right;
+.exercise-icons {
+	float: right;
 }
 
-.maximise-card{
-  float: left;
-  font-size: 2em;
+.maximise-card {
+	float: left;
+	font-size: 2em;
 }
 
-.centered-loader{
-  margin-left: auto;
-  margin-right: auto;
+.centered-loader {
+	margin-left: auto;
+	margin-right: auto;
 }
 
 /*
     Styles For DashboardLayout
 */
 .dev-mode-banner {
-  @include media-breakpoint-up(md) {
-    width: 20%;
-    left: 0;
-    top: 90vh;
-    z-index: 20;
-    position: fixed;
-  }
-  @include media-breakpoint-down(lg) {
-    width: 100%;
-  }
+	@include media-breakpoint-up(md) {
+		width: 20%;
+		left: 0;
+		top: 90vh;
+		z-index: 20;
+		position: fixed;
+	}
+	@include media-breakpoint-down(lg) {
+		width: 100%;
+	}
 }
 
-.dashboard-content{
-  padding-top: $dashboard-top-panel-height + 20px;
-  top: $dashboard-top-panel-height;
-  background-color: $background-color;
+.dashboard-content {
+	padding-top: $dashboard-top-panel-height + 20px;
+	top: $dashboard-top-panel-height;
+	background-color: $background-color;
 }
 
 .layout {
-  width: 100%;
-  height: 100vh;
+	width: 100%;
+	height: 100vh;
 }
 
-.dashboard-container{
-  padding: 15px 15px 0px 15px;
-  height: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+.dashboard-container {
+	padding: 15px 15px 0px 15px;
+	height: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
 
-  @include media-breakpoint-up(md) {
-    margin-top: $dashboard-top-panel-height;
-    margin-left: $dashboard-side-panel-width;
-  }
-  @include media-breakpoint-down(lg) {
-    width: 100%;
-    margin-left: 0px;
-  }
+	@include media-breakpoint-up(md) {
+		margin-top: $dashboard-top-panel-height;
+		margin-left: $dashboard-side-panel-width;
+	}
+	@include media-breakpoint-down(lg) {
+		width: 100%;
+		margin-left: 0px;
+	}
 }
 
-
-.dashboard-side-panel{
-  background-color: $background-color - 50;
-  z-index: 1;
-  color: black;
-  @include media-breakpoint-up(md) {
-    width: $dashboard-side-panel-width;
-    height: 100vh;
-    position: fixed;
-    top: $dashboard-top-panel-height;
-  }
-  @include media-breakpoint-down(lg){
-    width: 100%;
-    height: auto;
-  }
-  .nav-item{
-    background-color: $background-color - 20;
-    height: 15%;
-    padding-top: 1.5em;
-    padding-right: 15px;
-    align-items: center;
-    @include media-breakpoint-up(md) {
-      text-align: right;
-    }
-    @include media-breakpoint-down(lg) {
-      text-align: center;
-    }
-  }
-  .nav-item:link{
-    color: black;
-    text-decoration: none;
-  }
-  .nav-item:visited{
-    color: black;
-    text-decoration: none;
-  }
-  .nav-item:hover{
-    background-color: $background-color + 20;
-    color: black;
-    text-decoration: none;
-  }
-  .active{
-    color: black;
-    text-decoration: none;
-  }
+.dashboard-side-panel {
+	background-color: $background-color - 50;
+	z-index: 1;
+	color: black;
+	@include media-breakpoint-up(md) {
+		width: $dashboard-side-panel-width;
+		height: 100vh;
+		position: fixed;
+		top: $dashboard-top-panel-height;
+	}
+	@include media-breakpoint-down(lg) {
+		width: 100%;
+		height: auto;
+	}
+	.nav-item {
+		background-color: $background-color - 20;
+		height: 15%;
+		padding-top: 1.5em;
+		padding-right: 15px;
+		align-items: center;
+		@include media-breakpoint-up(md) {
+			text-align: right;
+		}
+		@include media-breakpoint-down(lg) {
+			text-align: center;
+		}
+	}
+	.nav-item:link {
+		color: black;
+		text-decoration: none;
+	}
+	.nav-item:visited {
+		color: black;
+		text-decoration: none;
+	}
+	.nav-item:hover {
+		background-color: $background-color + 20;
+		color: black;
+		text-decoration: none;
+	}
+	.active {
+		color: black;
+		text-decoration: none;
+	}
 }
 
-.dashboard-top-panel{
-  background-color: #264653;
-  color: white;
-  font-size: 30pt;
-  padding-top: 15px;
-  top: 0;
-  z-index: 1;
-  width: 100%;
-  @include media-breakpoint-up(md) {
-    height: $dashboard-top-panel-height;
-    position: fixed;
-  }
-  @include media-breakpoint-down(lg) {
-    text-align: center;
-  }
-    .brand{
-    margin-left: 15px;
-    text-align: center;
-  }
-  .auth{
-    .icon{
-      border-radius: 50%;
-      background-color: red;
-    }
-  }
+.dashboard-top-panel {
+	background-color: #264653;
+	color: white;
+	font-size: 30pt;
+	padding-top: 15px;
+	top: 0;
+	z-index: 1;
+	width: 100%;
+	@include media-breakpoint-up(md) {
+		height: $dashboard-top-panel-height;
+		position: fixed;
+	}
+	@include media-breakpoint-down(lg) {
+		text-align: center;
+	}
+	.brand {
+		margin-left: 15px;
+		text-align: center;
+	}
+	.auth {
+		.icon {
+			border-radius: 50%;
+			background-color: red;
+		}
+	}
 }

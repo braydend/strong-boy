@@ -2,7 +2,7 @@
 @import "variables";
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
 
 //Custom styles
 @import "dashboard";
@@ -13,13 +13,13 @@
 @import "pages/_exercises";
 @import "pages/_sets";
 
-body{
-  background-color: $background-color;
-  background-image: url(/images/background-dumbbell-white-mirror.png);
-  @include media-breakpoint-up(md) {
-    background-size: 5%;
-  }
-  @include media-breakpoint-down(lg) {
-    background-size: 30%;
-  }
+body {
+	background-color: $background-color;
+	background-image: url(/images/background-dumbbell-white-mirror.png);
+	@include media-breakpoint-up(md) {
+		background-size: 5%;
+	}
+	@include media-breakpoint-down(lg) {
+		background-size: 30%;
+	}
 }

@@ -1,19 +1,19 @@
-.login-container{
-  min-width: 100%;
-  min-height: 100vh;
-  background-color: #949494;
-  background-size: 5%;
-  background-image: url(/images/background-dumbbell-white-mirror.png);
+.login-container {
+	min-width: 100%;
+	min-height: 100vh;
+	background-color: #949494;
+	background-size: 5%;
+	background-image: url(/images/background-dumbbell-white-mirror.png);
 
-  #login-card{
-    margin-top: 20%;
-    @include media-breakpoint-up(sm) {
-      width: 80%;
-      margin-left: 10%;
-    }
-    @include media-breakpoint-up(lg) {
-      width: 40%;
-      margin-left: 30%;
-    }
-  }
+	#login-card {
+		margin-top: 20%;
+		@include media-breakpoint-up(sm) {
+			width: 80%;
+			margin-left: 10%;
+		}
+		@include media-breakpoint-up(lg) {
+			width: 40%;
+			margin-left: 30%;
+		}
+	}
 }

@@ -1,49 +1,49 @@
-.quickadder-container{
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: space-around;
-  //min-width: 40em;
-  padding-bottom: 2em;
+.quickadder-container {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	justify-content: space-around;
+	//min-width: 40em;
+	padding-bottom: 2em;
 
-  .date{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
+	.date {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+	}
 
-  .set-data{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-around;
+	.set-data {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row;
+		justify-content: space-around;
 
-    .weight{
-      width: 10em;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-    }
+		.weight {
+			width: 10em;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
+		}
 
-    .reps{
-      width: 10em;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-    }
-  }
+		.reps {
+			width: 10em;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
+		}
+	}
 
-  .adder-buttons{
-    padding-top: 0.5em;
-  }
+	.adder-buttons {
+		padding-top: 0.5em;
+	}
 
-  .save{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+	.save {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
 
-    .save-button{
-      width: 6em;
-    }
-  }
+		.save-button {
+			width: 6em;
+		}
+	}
 }

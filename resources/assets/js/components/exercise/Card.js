@@ -8,25 +8,35 @@ import { QuickAdder } from "./QuickAdder";
 import moment from "moment";
 
 export function Card({ exercise }) {
-	const [ sets, setSets ] = useState([]);
-	const [ exerciseId, setExerciseId ] = useState(exercise.id);
-	const [ showAdder, setShowAdder ] = useState(false);
-	const [ isCollapsed, setIsCollapsed ] = useState(true);
-	const [ isLoading, setIsLoading ] = useState(false);
-	const [ showEdit, setShowEdit ] = useState(false);
+	const [sets, setSets] = useState([]);
+	const [exerciseId, setExerciseId] = useState(exercise.id);
+	const [showAdder, setShowAdder] = useState(false);
+	const [isCollapsed, setIsCollapsed] = useState(true);
+	const [isLoading, setIsLoading] = useState(false);
+	const [showEdit, setShowEdit] = useState(false);
 
 	const updateSets = async () => {
 		setIsLoading(true);
-		await axios.get(`/ajax/exercise/${exercise.id}/sets`)
-			.then((response) => {
-				setSets( response.data.map((set, i) => {
+		await axios.get(`/ajax/exercise/${exercise.id}/sets`).then(response => {
+			setSets(
+				response.data.map((set, i) => {
 					if (set.date === moment(new Date()).format("MMM DD[,] YYYY")) {
 						setShowEdit(true);
 					}
-					return <ExerciseCardRow key={i} id={set.id} exercise_id={exerciseId} date={set.date} weight={set.weight} reps={set.reps} />;
-				}));
-				setIsLoading(false);
-			});
+					return (
+						<ExerciseCardRow
+							key={i}
+							id={set.id}
+							exercise_id={exerciseId}
+							date={set.date}
+							weight={set.weight}
+							reps={set.reps}
+						/>
+					);
+				})
+			);
+			setIsLoading(false);
+		});
 	};
 
 	return (
@@ -34,16 +44,38 @@ export function Card({ exercise }) {
 			<div className="card text-center">
 				<div className="card-header">
 					<span className="maximise-card">
-						<i className="fas fa-plus-circle" hidden={!isCollapsed} onClick={() => {setIsCollapsed(!isCollapsed); updateSets();}} />
-						<i className="fas fa-minus-circle" hidden={isCollapsed} onClick={() => setIsCollapsed(!isCollapsed)} />
+						<i
+							className="fas fa-plus-circle"
+							hidden={!isCollapsed}
+							onClick={() => {
+								setIsCollapsed(!isCollapsed);
+								updateSets();
+							}}
+						/>
+						<i
+							className="fas fa-minus-circle"
+							hidden={isCollapsed}
+							onClick={() => setIsCollapsed(!isCollapsed)}
+						/>
 					</span>
-					<span className="h3"><b>{exercise.name}</b></span>
+					<span className="h3">
+						<b>{exercise.name}</b>
+					</span>
 					<span className="exercise-icons">
-						<button className="btn btn-primary" title="Add Workout" id="quckAddSet" onClick={() => setShowAdder(!showAdder)}>
+						<button
+							className="btn btn-primary"
+							title="Add Workout"
+							id="quckAddSet"
+							onClick={() => setShowAdder(!showAdder)}
+						>
 							<i className="fas fa-plus" />
 						</button>
 						<Link to={`/exercise/${exerciseId}`}>
-							<button className="btn btn-success" title="Show Progress" id="viewExercise">
+							<button
+								className="btn btn-success"
+								title="Show Progress"
+								id="viewExercise"
+							>
 								<i className="fas fa-chart-line" />
 							</button>
 						</Link>
@@ -51,11 +83,19 @@ export function Card({ exercise }) {
 				</div>
 				<div className="card-body">
 					<Collapse className="quickadder-collapse" isOpened={showAdder}>
-						<QuickAdder toggle={() => setIsCollapsed(!isCollapsed)} exercise_id={exercise.id} updater={() => updateSets()} />
+						<QuickAdder
+							toggle={() => setIsCollapsed(!isCollapsed)}
+							exercise_id={exercise.id}
+							updater={() => updateSets()}
+						/>
 					</Collapse>
 					<Collapse isOpened={!isCollapsed}>
 						<div className="loader" hidden={!isLoading}>
-							<Spinner animation="border" variant="secondary" hidden={!isLoading} />
+							<Spinner
+								animation="border"
+								variant="secondary"
+								hidden={!isLoading}
+							/>
 						</div>
 						<div className="card-data">
 							<Table responsive>
@@ -67,9 +107,7 @@ export function Card({ exercise }) {
 										<th scope="col" hidden={!showEdit} />
 									</tr>
 								</thead>
-								<tbody>
-									{sets}
-								</tbody>
+								<tbody>{sets}</tbody>
 							</Table>
 						</div>
 					</Collapse>
