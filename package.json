@@ -10,7 +10,8 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "lintJS": "./node_modules/.bin/eslint resources/assets/js/* --fix",
         "lintPHP": "php php-cs-fixer-v2.phar fix app",
-        "lint": "npm run lintJS && npm run lintPHP"
+        "lint": "npm run lintJS && npm run lintPHP && npm run prettier",
+        "prettier": "prettier-eslint --write \"resources/assets/**/*.js\" \"resources/assets/**/*.scss\""
     },
     "devDependencies": {
         "axios": "^0.18.1",
@@ -26,13 +27,14 @@
         "laravel-mix": "^2.0",
         "lodash": "^4.17.4",
         "popper.js": "^1.14.5",
+        "prettier-eslint": "^9.0.0",
+        "prettier-eslint-cli": "^5.0.0",
         "react": "^16.6.3",
         "react-dom": "^16.2.0"
     },
     "dependencies": {
         "chart.js": "^2.8.0",
         "moment": "^2.23.0",
-        "prettier-eslint": "^9.0.0",
         "react-bootstrap": "^1.0.0-beta.3",
         "react-chartkick": "^0.3.0",
         "react-collapse": "^4.0.3",
