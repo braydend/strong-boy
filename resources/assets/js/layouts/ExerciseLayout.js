@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import TopPanel from "../components/TopPanel";
 import SidePanel from "../components/SidePanel";
 import { List as ExerciseList } from "../components/exercise/List";
-import ExerciseView from "../components/ExerciseView";
+import { Graph as ExerciseGraph } from "../components/exercise/Graph";
 
 export default class ExerciseLayout extends Component {
 	render() {
@@ -13,7 +13,7 @@ export default class ExerciseLayout extends Component {
 					<TopPanel pageName="Exercises" user="bar" />
 					<SidePanel />
 					<Route exact path="/exercise/" component={ExerciseList} />
-					<Route path="/exercise/:exerciseId" component={ExerciseView} />
+					<Route path="/exercise/:exerciseId" component={ExerciseGraph} />
 				</div>
 			</BrowserRouter>
 		);
