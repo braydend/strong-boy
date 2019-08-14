@@ -84,7 +84,7 @@ export function Card({ exercise }) {
 				<div className="card-body">
 					<Collapse className="quickadder-collapse" isOpened={showAdder}>
 						<QuickAdder
-							toggle={() => setIsCollapsed(!isCollapsed)}
+							toggle={() => setShowAdder(!showAdder)}
 							exercise_id={exercise.id}
 							updater={() => updateSets()}
 						/>

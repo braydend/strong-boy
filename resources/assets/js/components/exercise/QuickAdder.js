@@ -38,15 +38,18 @@ export function QuickAdder({ exercise_id, updater, toggle }) {
 			reps: reps,
 			date: moment(date).unix()
 		};
-		axios
-			.post("/ajax/set/store", data)
-			.then(() => {
+		axios.post("/ajax/set/store", data).then(
+			() => {
 				updater(exerciseId);
 				toggle();
 				resetForm();
 				setIsLoading(false);
-			})
-			.catch(console.log("error saving data to database"));
+			},
+			() => {
+				console.log("error saving data to database");
+				setIsLoading(false);
+			}
+		);
 	};
 
 	return (
