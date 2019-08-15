@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { CardRow as ExerciseCardRow } from "./CardRow";
 import { QuickAdder } from "./QuickAdder";
 import moment from "moment";
+import PropTypes from "prop-types";
 
 export function Card({ exercise }) {
 	const [sets, setSets] = useState([]);
@@ -117,3 +118,10 @@ export function Card({ exercise }) {
 		</div>
 	);
 }
+
+Card.propTypes = {
+	exercise: PropTypes.shape({
+		name: PropTypes.string.isRequired,
+		id: PropTypes.number.isRequired
+	}).isRequired
+};

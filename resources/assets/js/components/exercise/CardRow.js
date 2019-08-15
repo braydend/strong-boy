@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import moment from "moment";
 import { InputGroup, FormControl, Button } from "react-bootstrap";
 import axios from "axios";
+import PropTypes from "prop-types";
 
 export function CardRow({ id, exercise_id, date, weight, reps }) {
 	const [setId, setSetId] = useState(id);
@@ -99,3 +100,11 @@ export function CardRow({ id, exercise_id, date, weight, reps }) {
 		</tr>
 	);
 }
+
+CardRow.propTypes = {
+	id: PropTypes.number.isRequired,
+	exercise_id: PropTypes.number.isRequired,
+	date: PropTypes.string.isRequired,
+	weight: PropTypes.number.isRequired,
+	reps: PropTypes.number.isRequired
+};
