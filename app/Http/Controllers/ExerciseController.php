@@ -164,7 +164,7 @@ class ExerciseController extends Controller
     public function getSets($id)
     {
         $exercise = Exercise::find($id);
-        $allSets = Auth::user()->workout_sets()->orderBy('created_at')->where('exercise_id', $exercise->id)->get();
+        $allSets = Auth::user()->workout_sets()->orderBy('created_at', 'desc')->where('exercise_id', $exercise->id)->get();
         return(response()->json($allSets));
     }
 
