@@ -17,26 +17,28 @@ export function Card({ exercise }) {
 
 	const updateSets = async () => {
 		setIsLoading(true);
-		await axios.get(`/ajax/exercise/${exercise.id}/sets`).then(response => {
-			setSets(
-				response.data.map((set, i) => {
-					if (set.date === moment(new Date()).format("MMM DD[,] YYYY")) {
-						setShowEdit(true);
-					}
-					return (
-						<ExerciseCardRow
-							key={i}
-							id={set.id}
-							exercise_id={exerciseId}
-							date={set.date}
-							weight={set.weight}
-							reps={set.reps}
-						/>
-					);
-				})
-			);
-			setIsLoading(false);
-		});
+		await axios
+			.get(`/ajax/dashboard/exercise/${exercise.id}/sets`)
+			.then(response => {
+				setSets(
+					response.data.map((set, i) => {
+						if (set.date === moment(new Date()).format("MMM DD[,] YYYY")) {
+							setShowEdit(true);
+						}
+						return (
+							<ExerciseCardRow
+								key={i}
+								id={set.id}
+								exercise_id={exerciseId}
+								date={set.date}
+								weight={set.weight}
+								reps={set.reps}
+							/>
+						);
+					})
+				);
+				setIsLoading(false);
+			});
 	};
 
 	return (
