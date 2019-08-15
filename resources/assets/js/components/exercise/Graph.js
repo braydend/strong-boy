@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import ReactChartkick, { LineChart } from "react-chartkick";
 import Chart from "chart.js";
+import PropTypes from "prop-types";
 
 export function Graph({ match }) {
 	const [exerciseId, setExerciseId] = useState(match.params.exerciseId);
@@ -74,3 +75,11 @@ export function Graph({ match }) {
 		</div>
 	);
 }
+
+Graph.propTypes = {
+	match: PropTypes.shape({
+		params: PropTypes.shape({
+			exerciseId: PropTypes.string.isRequired
+		}).isRequired
+	}).isRequired
+};

@@ -11,6 +11,7 @@ import {
 	Spinner
 } from "react-bootstrap";
 import { DEFAULT_SET_REPS, DEFAULT_SET_WEIGHT, KG_PER_LB } from "../../const";
+import PropTypes from "prop-types";
 
 export function QuickAdder({ exercise_id, updater, toggle }) {
 	const [exerciseId, setExerciseId] = useState(exercise_id);
@@ -187,3 +188,9 @@ export function QuickAdder({ exercise_id, updater, toggle }) {
 		</div>
 	);
 }
+
+QuickAdder.propTypes = {
+	exercise_id: PropTypes.number.isRequired,
+	updater: PropTypes.func.isRequired,
+	toggle: PropTypes.func.isRequired
+};

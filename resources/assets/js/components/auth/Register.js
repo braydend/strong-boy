@@ -3,6 +3,8 @@ import { Row, Col, Card, Form, InputGroup, Button } from "react-bootstrap";
 import axios from "axios";
 import ReactLoading from "react-loading";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { Login } from "./Login";
 
 export function Register({ setMessage }) {
 	const [name, setName] = useState("");
@@ -158,3 +160,7 @@ export function Register({ setMessage }) {
 		</Card>
 	);
 }
+
+Register.propTypes = {
+	setMessage: PropTypes.func.isRequired
+};

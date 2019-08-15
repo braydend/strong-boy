@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Col, Row } from "react-bootstrap";
+import PropTypes from "prop-types";
 
-export function TopPanel({ pageName, user }) {
+export function TopPanel({ pageName, userName }) {
 	return (
 		<div className="dashboard-top-panel">
 			<Row>
@@ -14,10 +15,15 @@ export function TopPanel({ pageName, user }) {
 				<Col md={12} lg={4}>
 					<div className="auth">
 						<span className="icon">icon</span>
-						{user}
+						{userName}
 					</div>
 				</Col>
 			</Row>
 		</div>
 	);
 }
+
+TopPanel.propTypes = {
+	pageName: PropTypes.string.isRequired,
+	userName: PropTypes.string.isRequired
+};

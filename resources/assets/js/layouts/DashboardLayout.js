@@ -10,7 +10,7 @@ export function DashboardLayout() {
 	return (
 		<BrowserRouter>
 			<div className="layout">
-				<TopPanel pageName="Exercises" user="bar" />
+				<TopPanel pageName="Exercises" userName="bar" />
 				<SidePanel />
 				{/* Routes */}
 				<Route exact path="/" component={Dashboard} />
