@@ -17,6 +17,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/api/weight', 'WeightController@getWeightData');
+Route::post('/api/weight', 'WeightController@storeWeightData');
 Route::get('/ajax/exercise/{id}/sets', 'ExerciseController@getSets');
 Route::get('/ajax/exercise/{id}/chart', 'ExerciseController@getChartData');
 

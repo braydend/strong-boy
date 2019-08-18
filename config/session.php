@@ -74,7 +74,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Session Database Table
+    | Session Database WeightTable
     |--------------------------------------------------------------------------
     |
     | When using the "database" session driver, you may specify the table we

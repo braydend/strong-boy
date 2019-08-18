@@ -5,6 +5,7 @@ import { Dashboard } from "../components/Dashboard";
 import { List as ExerciseList } from "../components/exercise/List";
 import { Graph as ExerciseGraph } from "../components/exercise/Graph";
 import { BrowserRouter, Route } from "react-router-dom";
+import WeightLayout from "../layouts/WeightLayout";
 
 export function DashboardLayout() {
 	return (
@@ -14,8 +15,11 @@ export function DashboardLayout() {
 				<SidePanel />
 				{/* Routes */}
 				<Route exact path="/" component={Dashboard} />
+
 				<Route exact path="/exercise/" component={ExerciseList} />
 				<Route path="/exercise/:exerciseId" component={ExerciseGraph} />
+
+				<Route path="/weight" component={WeightLayout} />
 			</div>
 		</BrowserRouter>
 	);
