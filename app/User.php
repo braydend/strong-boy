@@ -31,4 +31,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\WorkoutSet');
     }
+
+    public function getWeights()
+    {
+        return $this->hasMany('App\Weight');
+    }
 }
